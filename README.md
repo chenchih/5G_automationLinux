@@ -3,9 +3,10 @@ This repoistory wil be automation script on 5G system.
 I been using the 5G system which ues Ubuntu as it's OS. 
 
 ## checklist 
-[x] CDU
-[x] iperf_multipy
-[] unorganize
+- [x] CDU
+- [x] iperf_multipy
+- [ ] unorganize
+
 
 ## Code description:
 
