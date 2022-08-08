@@ -1,0 +1,10 @@
+#send ssh password on command 
+#install sshpass
+sshpass -p "YOUR_PASSWORD" ssh -o StrictHostKeyChecking=no YOUR_USERNAME@SOME_SITE.COM
+
+# ref: https://stackoverflow.com/questions/12202587/automatically-enter-ssh-password-with-script
+#not asking fingerprint 
+
+# not ask finferprint
+ssh -o StrictHostKeyChecking=no  YOUR_USERNAME@SOME_SITE.COM
+
