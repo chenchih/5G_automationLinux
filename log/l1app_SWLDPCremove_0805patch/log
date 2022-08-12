@@ -1,0 +1,1665 @@
+
+
+root@nrgnb:~/gnbfs/gNB_L1/nr_phy# 
+root@nrgnb:~/gnbfs/gNB_L1/nr_phy# 
+root@nrgnb:~/gnbfs/gNB_L1/nr_phy# 
+root@nrgnb:~/gnbfs/gNB_L1/nr_phy# 
+root@nrgnb:~/gnbfs/gNB_L1/nr_phy# 
+root@nrgnb:~/gnbfs/gNB_L1/nr_phy# 
+root@nrgnb:~/gnbfs/gNB_L1/nr_phy# 
+root@nrgnb:~/gnbfs/gNB_L1/nr_phy# 
+root@nrgnb:~/gnbfs/gNB_L1/nr_phy# 
+root@nrgnb:~/gnbfs/gNB_L1/nr_phy# 
+root@nrgnb:~/gnbfs/gNB_L1/nr_phy# 
+root@nrgnb:~/gnbfs/gNB_L1/nr_phy# 
+root@nrgnb:~/gnbfs/gNB_L1/nr_phy# 
+root@nrgnb:~/gnbfs/gNB_L1/nr_phy# clear
+
+root@nrgnb:~/gnbfs/gNB_L1/nr_phy# ./l1_test.sh 
+RADIO Mode
+Unloading any existing DPDK UIO module
+Loading DPDK UIO module
+HOST
+
+Network devices using DPDK-compatible driver
+============================================
+<none>
+
+Network devices using kernel driver
+===================================
+0000:03:00.0 'I210 Gigabit Network Connection' if=enp3s0 drv=igb unused=igb_uio 
+0000:04:00.0 'I210 Gigabit Network Connection' if=enp4s0 drv=igb unused=igb_uio 
+0000:18:00.2 'Ethernet Controller X710 for 10GbE SFP+' if=enp24s0f2 drv=i40e unused=igb_uio 
+0000:18:00.3 'Ethernet Controller X710 for 10GbE SFP+' if=enp24s0f3 drv=i40e unused=igb_uio 
+0000:19:00.0 'Ethernet Controller XXV710 for 25GbE SFP28' if=enp25s0f0 drv=i40e unused=igb_uio 
+0000:19:00.1 'Ethernet Controller XXV710 for 25GbE SFP28' if=enp25s0f1 drv=i40e unused=igb_uio 
+0000:86:00.0 'Ethernet Controller X710 for 10GbE SFP+' if=enp134s0f0 drv=i40e unused=igb_uio 
+0000:86:00.1 'Ethernet Controller X710 for 10GbE SFP+' if=enp134s0f1 drv=i40e unused=igb_uio 
+0000:86:00.2 'Ethernet Controller X710 for 10GbE SFP+' if=enp134s0f2 drv=i40e unused=igb_uio 
+0000:86:00.3 'Ethernet Controller X710 for 10GbE SFP+' if=enp134s0f3 drv=i40e unused=igb_uio 
+0000:87:00.0 'Ethernet Controller XXV710 for 25GbE SFP28' if=enp135s0f0 drv=i40e unused=igb_uio 
+0000:87:00.1 'Ethernet Controller XXV710 for 25GbE SFP28' if=enp135s0f1 drv=i40e unused=igb_uio 
+
+Other network devices
+=====================
+0000:18:00.0 'Ethernet Controller X710 for 10GbE SFP+' unused=i40e,igb_uio
+0000:18:00.1 'Ethernet Controller X710 for 10GbE SFP+' unused=i40e,igb_uio
+
+Crypto devices using DPDK-compatible driver
+===========================================
+<none>
+
+Crypto devices using kernel driver
+==================================
+<none>
+
+Other crypto devices
+====================
+0000:60:00.0 'C62x Chipset QuickAssist Technology' unused=igb_uio
+0000:61:00.0 'C62x Chipset QuickAssist Technology' unused=igb_uio
+0000:62:00.0 'C62x Chipset QuickAssist Technology' unused=igb_uio
+
+Network devices using DPDK-compatible driver
+============================================
+0000:18:00.0 'Ethernet Controller X710 for 10GbE SFP+' drv=igb_uio unused=i40e
+0000:18:00.1 'Ethernet Controller X710 for 10GbE SFP+' drv=igb_uio unused=i40e
+
+Network devices using kernel driver
+===================================
+0000:03:00.0 'I210 Gigabit Network Connection' if=enp3s0 drv=igb unused=igb_uio 
+0000:04:00.0 'I210 Gigabit Network Connection' if=enp4s0 drv=igb unused=igb_uio 
+0000:18:00.2 'Ethernet Controller X710 for 10GbE SFP+' if=enp24s0f2 drv=i40e unused=igb_uio 
+0000:18:00.3 'Ethernet Controller X710 for 10GbE SFP+' if=enp24s0f3 drv=i40e unused=igb_uio 
+0000:19:00.0 'Ethernet Controller XXV710 for 25GbE SFP28' if=enp25s0f0 drv=i40e unused=igb_uio 
+0000:19:00.1 'Ethernet Controller XXV710 for 25GbE SFP28' if=enp25s0f1 drv=i40e unused=igb_uio 
+0000:86:00.0 'Ethernet Controller X710 for 10GbE SFP+' if=enp134s0f0 drv=i40e unused=igb_uio 
+0000:86:00.1 'Ethernet Controller X710 for 10GbE SFP+' if=enp134s0f1 drv=i40e unused=igb_uio 
+0000:86:00.2 'Ethernet Controller X710 for 10GbE SFP+' if=enp134s0f2 drv=i40e unused=igb_uio 
+0000:86:00.3 'Ethernet Controller X710 for 10GbE SFP+' if=enp134s0f3 drv=i40e unused=igb_uio 
+0000:87:00.0 'Ethernet Controller XXV710 for 25GbE SFP28' if=enp135s0f0 drv=i40e unused=igb_uio 
+0000:87:00.1 'Ethernet Controller XXV710 for 25GbE SFP28' if=enp135s0f1 drv=i40e unused=igb_uio 
+
+Other network devices
+=====================
+<none>
+
+Crypto devices using DPDK-compatible driver
+===========================================
+<none>
+
+Crypto devices using kernel driver
+==================================
+<none>
+
+Other crypto devices
+====================
+0000:60:00.0 'C62x Chipset QuickAssist Technology' unused=igb_uio
+0000:61:00.0 'C62x Chipset QuickAssist Technology' unused=igb_uio
+0000:62:00.0 'C62x Chipset QuickAssist Technology' unused=igb_uio
+Command String = 
+using configuration file phycfg.xml
+>> Running... gdb --args ././l1app 1 31 3.0 0.999999 0.000001 51.0 151.0 9.0 0 4 1 1 --cfgfile=phycfg.xml
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ././l1app...done.
+(gdb) r
+Starting program: /home/nrgnb/gnbfs/gNB_L1/nr_phy/l1app 1 31 3.0 0.999999 0.000001 51.0 151.0 9.0 0 4 1 1 --cfgfile=phycfg.xml
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+argc:14 /home/nrgnb/gnbfs/gNB_L1/nr_phy/l1app 1 31 3.0 0.999999 0.000001 51.0 151.0 9.0 0 4 1 1
+RACH_TA_OFFSET:1
+PUSCH_TA_DEFAULT:31
+TA_SNR_THREAD:3.000000
+TA_RATE_1:0.999999
+TA_RATE_2:0.000001
+TCP_L1_REF_RSSI:51.000000
+TPC_L2_BASE_VALUE:151.000000
+TPC_L2_TO_L1_RATE:9.000000
+TA_DEBUG_LOG:0
+TARGER_POWER_OFFSET_BY_TA_REF:4
+RU comp TX:1 RX:1
+=========================
+  5G-NR PHY Application  
+=========================
+Searching for string: cfgfile. Length of string: 7
+Found cfgfile: Val = phycfg.xml
+PhyCfg XML file parsed
+Version found returned 0 6.5
+
+
+---------------------------
+PhyCfg.xml Version: 6.5
+---------------------------
+
+Apply config..
+Incomming settings:  --version=6.5
+ --mac2PhyBatchApi=1
+ --phy2MacBatchApi=1
+ --successiveNoApi=15
+ --wls_dev_name=/dev/wls
+ --mac_ip_addr=127.0.0.1
+ --phy_ip_addr=127.0.0.1
+ --mac_udp_port=5234
+ --phy_udp_port=5238
+ --dlIqLog=0
+ --ulIqLog=0
+ --iqLogDumpToFile=0
+ --phyMlog=1
+ --phyStats=1
+ --powerSaveEnable=0
+ --radioEnable=1
+ --dpdkMemorySize=1024
+ --dpdkIrqMode=0
+ --xRANMode=1
+ --xRANEthPort=2
+ --radioCfg0PCIeEthDev=0000:18:00.0
+ --radioCfg0DpdkRx=16
+ --radioCfg0DpdkTx=19
+ --radioCfg0TxAnt=4
+ --radioCfg0RxAnt=4
+ --radioCfg0RxAgc=0
+ --radioCfg0NumCell=1
+ --radioCfg0Cell0PhyId=0
+ --radioCfg1PCIeEthDev=0000:18:00.1
+ --radioCfg1DpdkRx=13
+ --radioCfg1DpdkTx=14
+ --radioCfg1TxAnt=4
+ --radioCfg1RxAnt=4
+ --radioCfg1RxAgc=0
+ --radioCfg1NumCell=1
+ --radioCfg1Cell0PhyId=1
+ --radioCfg2PCIeEthDev=0000:a6:00.0
+ --radioCfg2DpdkRx=27
+ --radioCfg2DpdkTx=28
+ --radioCfg2TxAnt=4
+ --radioCfg2RxAnt=4
+ --radioCfg2RxAgc=0
+ --radioCfg2NumCell=1
+ --radioCfg2Cell0PhyId=1
+ --radioCfg3PCIeEthDev=0000:a6:00.1
+ --radioCfg3DpdkRx=29
+ --radioCfg3DpdkTx=30
+ --radioCfg3TxAnt=4
+ --radioCfg3RxAnt=4
+ --radioCfg3RxAgc=0
+ --radioCfg3NumCell=1
+ --radioCfg3Cell0PhyId=1
+ --radioPort0=0
+ --radioPort1=1
+ --radioPort2=2
+ --radioPort3=3
+ --taFiltEnable=1
+ --ircEnable=0
+ --mmseDisable=0
+ --pucchFormat2DetectThreshold=0
+ --prachDetectThreshold=20
+ --TimerModeFreqDomain=0
+ --MlogSubframes=256
+ --MlogCores=40
+ --MlogSize=10000
+ --apiThread=2, 96, 0
+ --sctpThread=17, 95, 0
+ --udpThread=17, 97, 0
+ --prachThread=7, 95, 0
+ --fftMainThread=1, 98, 0
+ --fftProc0Thread=1, 98, 0
+ --fftProc1Thread=1, 98, 0
+ --fftProc2Thread=1, 98, 0
+ --fftProc3Thread=1, 98, 0
+ --ifftMainThread=1, 97, 0
+ --ifftProc0Thread=1, 97, 0
+ --ifftProc1Thread=1, 97, 0
+ --ifftProc2Thread=1, 97, 0
+ --ifftProc3Thread=1, 97, 0
+ --dlMainThread=3, 96, 0
+ --dlProc0Thread=4, 95, 0
+ --dlProc1Thread=5, 95, 0
+ --dlProc2Thread=6, 95, 0
+ --dlProc3Thread=15, 95, 0
+ --dlProc4Thread=7, 95, 0
+ --dlProc5Thread=7, 95, 0
+ --dlProc6Thread=7, 95, 0
+ --dlSymbolThread=7, 95, 0
+ --ulMainThread=7, 96, 0
+ --ulProc0Thread=8, 95, 0
+ --ulProc1Thread=9, 95, 0
+ --ulProc2Thread=10, 95, 0
+ --ulProc3Thread=11, 95, 0
+ --ulProc4Thread=18, 95, 0
+ --ulProc5Thread=38, 95, 0
+ --ulProc6Thread=39, 95, 0
+ --ulSymbolThread=12, 95, 0
+ --wlsRxThread=1, 97, 0
+ --wlsWorkerThread=2, 97, 0
+ --systemThread=0, 0, 0
+ --timerThread=1, 96, 0
+ --radioDpdkMaster=0, 99, 0
+ --singleCore=0
+ --BbuPoolConfigEnable=0
+ --BbuPoolSleepEnable=1
+ --BbuPoolThreadDefault=252, 94, 0
+ --BbuCoresCell1Ant2=12
+ --BbuCoresCell2Ant2=28
+ --BbuCoresCell3Ant2=60
+ --BbuCoresCell4Ant2=124
+ --BbuCoresCell5Ant2=508
+ --BbuCoresCell6Ant2=1020
+ --BbuCoresCell7Ant2=4092
+ --BbuCoresCell8Ant2=8188
+ --BbuCoresCell1Ant4=28
+ --BbuCoresCell2Ant4=60
+ --BbuCoresCell3Ant4=252
+ --BbuCoresCell4Ant4=508
+ --BbuCoresCell5Ant4=2044
+ --BbuCoresCell6Ant4=4092
+ --BbuCoresCell7Ant4=8188
+ --BbuCoresCell8Ant4=16380
+ --wckTeIrqNum=135
+ --wckTeIrqCoreBind=2
+
+
+PHY APP CTRL parsing:
+--------------------
+mac_ip_addr=127.0.0.1, phy_ip_addr=127.0.0.1, mac_udp_port=5234, phy_udp_port=5238.
+ Initialize Radio Interface with ITRI xRAN library
+cline_set_thread_info: apiThread 2 96 1
+cline_set_thread_info: prachThread 7 95 1
+cline_set_thread_info: fftMainThread 1 98 1
+cline_set_thread_info: ifftMainThread 1 97 1
+cline_set_thread_info: dlMainThread 3 96 1
+cline_set_thread_info: dlProc0Thread 4 95 1
+cline_set_thread_info: dlProc1Thread 5 95 1
+cline_set_thread_info: dlProc2Thread 6 95 1
+cline_set_thread_info: dlProc3Thread 15 95 1
+cline_set_thread_info: dlProc4Thread 7 95 1
+cline_set_thread_info: dlProc5Thread 7 95 1
+cline_set_thread_info: dlProc6Thread 7 95 1
+cline_set_thread_info: dlSymbolThread 7 95 1
+cline_set_thread_info: ulSymbolThread 12 95 1
+cline_set_thread_info: ulMainThread 7 96 1
+cline_set_thread_info: ulProc0Thread 8 95 1
+cline_set_thread_info: ulProc1Thread 9 95 1
+cline_set_thread_info: ulProc2Thread 10 95 1
+cline_set_thread_info: ulProc3Thread 11 95 1
+cline_set_thread_info: ulProc4Thread 18 95 1
+cline_set_thread_info: ulProc5Thread 38 95 1
+cline_set_thread_info: ulProc6Thread 39 95 1
+cline_set_thread_info: sctpThread 17 95 1
+cline_set_thread_info: udpThread 17 97 1
+cline_set_thread_info: wlsRxThread 1 97 1
+cline_set_thread_info: wlsWorkerThread 2 97 1
+cline_set_thread_info: systemThread 0 0 1
+cline_set_thread_info: timerThread 1 96 1
+cline_set_thread_info: radioDpdkMaster 0 99 1
+cline_set_thread_info: BbuPoolThreadDefault 252 94 1
+PhyCfg File completely read: 0
+AppInRam: Start: pid=5819
+Initializationinsert as single first cmd (help)
+insert as last cmd (stopphy)
+CMD (physhutdown) to be inserted before CMD (stopphy)
+insert in the middle cmd (physhutdown)
+CMD (exit) to be inserted before CMD (help)
+insert as first menu element cmd (exit)
+insert as last cmd (version)
+CMD (clock) to be inserted before CMD (exit)
+insert as first menu element cmd (clock)
+CMD (nrphytest) to be inserted before CMD (physhutdown)
+insert in the middle cmd (nrphytest)
+System clock (rdtsc) resolution 2394379221 [Hz]
+Ticks per us 2394
+MLogOpen: filename(l1mlog.bin) mlogSubframes (256), mlogCores(40), mlogSize(10000) mlog_mask (-1)
+MLogTimerInit
+        System clock (rdtsc) resolution 2394379043 [Hz]
+        Ticks per us 2394
+    mlogSubframes (256), mlogCores(40), mlogSize(10000)
+ MLOG not opened!!!
+MLog Storage: 0x7ffff0f30010 -> 0x7ffff70da740
+MLogInitializeMlogBuffer
+MLogFreqReg: 2394. Storing: 2394
+Mlog Open successful
+----------------------------------------
+MLog Info: virt=0x00007ffff0f30010 size=102410032
+----------------------------------------
+di_radio_initdi_radio_cfg_setup nCC 2 radioItf 2
+DPDK cores mask  0x96001
+DPDK memory size 1024 radInit->nCC 2
+EAL: Detected 40 lcore(s)
+EAL: Probing VFIO support...
+[New Thread 0x7ffff025d700 (LWP 5823)]
+[New Thread 0x7fffefa5c700 (LWP 5824)]
+[New Thread 0x7fffef25b700 (LWP 5825)]
+[New Thread 0x7fffeea5a700 (LWP 5826)]
+[New Thread 0x7fffee259700 (LWP 5827)]
+EAL: PCI device 0000:03:00.0 on NUMA socket 0
+EAL:   probe driver: 8086:1533 net_e1000_igb
+EAL: PCI device 0000:04:00.0 on NUMA socket 0
+EAL:   probe driver: 8086:1533 net_e1000_igb
+EAL: PCI device 0000:18:00.0 on NUMA socket 0
+EAL:   probe driver: 8086:1572 net_i40e
+PMD: eth_i40e_dev_init(): FW 6.0 API 1.7 NVM 06.00.01 eetrack 80003718
+EAL: PCI device 0000:18:00.1 on NUMA socket 0
+EAL:   probe driver: 8086:1572 net_i40e
+PMD: eth_i40e_dev_init(): FW 6.0 API 1.7 NVM 06.00.01 eetrack 80003718
+EAL: PCI device 0000:18:00.2 on NUMA socket 0
+EAL:   probe driver: 8086:1572 net_i40e
+EAL: PCI device 0000:18:00.3 on NUMA socket 0
+EAL:   probe driver: 8086:1572 net_i40e
+EAL: PCI device 0000:19:00.0 on NUMA socket 0
+EAL:   probe driver: 8086:158b net_i40e
+EAL: PCI device 0000:19:00.1 on NUMA socket 0
+EAL:   probe driver: 8086:158b net_i40e
+EAL: PCI device 0000:86:00.0 on NUMA socket 1
+EAL:   probe driver: 8086:1572 net_i40e
+EAL: PCI device 0000:86:00.1 on NUMA socket 1
+EAL:   probe driver: 8086:1572 net_i40e
+EAL: PCI device 0000:86:00.2 on NUMA socket 1
+EAL:   probe driver: 8086:1572 net_i40e
+EAL: PCI device 0000:86:00.3 on NUMA socket 1
+EAL:   probe driver: 8086:1572 net_i40e
+EAL: PCI device 0000:87:00.0 on NUMA socket 1
+EAL:   probe driver: 8086:158b net_i40e
+EAL: PCI device 0000:87:00.1 on NUMA socket 1
+EAL:   probe driver: 8086:158b net_i40e
+DPDK cores 5
+rte_eth_dev_count 2
+Port 0 init
+Port 0 MAC: 00 0d 48 51 e4 b6
+Que address = 213e1de0
+Que address = 2147aa90
+Que address = 2147d4b0
+Port 1 init
+Port 1 MAC: 00 0d 48 51 e4 b7
+Que address = 2147fed0
+Que address = 214828f0
+Que address = 21485310
+lauch dpdkTxRxThread @ core 19
+lauch dpdkRxProcThread @ core 16
+lauch dpdkTxRxThread @ core 14
+lauch dpdkRxProcThread @ core 13
+set sys affinity:     CPU 0
+[New Thread 0x7fffeda58700 (LWP 5828)]
+set sys affinity:     CPU 3
+5gnr_bs_dl_main_thread: [PID:   5828] binding on [CPU  3] [PRIO: 96] [POLICY:  1]
+[New Thread 0x7fffed257700 (LWP 5829)]
+set sys affinity:     CPU 4
+5gnr_bs_dl_proc_thread[0]: [PID:   5829] binding on [CPU  4] [PRIO: 96] [POLICY:  1]
+[New Thread 0x7fffeca56700 (LWP 5830)]
+set sys affinity:     CPU 5
+5gnr_bs_dl_proc_thread[1]: [PID:   5830] binding on [CPU  5] [PRIO: 96] [POLICY:  1]
+[New Thread 0x7fffec255700 (LWP 5831)]
+set sys affinity:     CPU 6
+5gnr_bs_dl_proc_thread[2]: [PID:   5831] binding on [CPU  6] [PRIO: 96] [POLICY:  1]
+[New Thread 0x7fffeba54700 (LWP 5832)]
+set sys affinity:     CPU 15
+5gnr_bs_dl_proc_thread[3]: [PID:   5832] binding on [CPU 15] [PRIO: 96] [POLICY:  1]
+[New Thread 0x7fffeb253700 (LWP 5833)]
+set sys affinity:     CPU 7
+5gnr_bs_dl_proc_thread[4]: [PID:   5833] binding on [CPU  7] [PRIO: 96] [POLICY:  1]
+[New Thread 0x7fffeaa52700 (LWP 5834)]
+set sys affinity:     CPU 7
+5gnr_bs_dl_proc_thread[5]: [PID:   5834] binding on [CPU  7] [PRIO: 96] [POLICY:  1]
+[New Thread 0x7fffea251700 (LWP 5835)]
+set sys affinity:     CPU 7
+5gnr_bs_dl_proc_thread[6]: [PID:   5835] binding on [CPU  7] [PRIO: 96] [POLICY:  1]
+[New Thread 0x7fffe9a50700 (LWP 5836)]
+set sys affinity:     CPU 7
+5gnr_bs_ul_main_thread: [PID:   5836] binding on [CPU  7] [PRIO: 96] [POLICY:  1]
+[New Thread 0x7fffe924f700 (LWP 5837)]
+set sys affinity:     CPU 8
+5gnr_bs_ul_proc_thread[0]: [PID:   5837] binding on [CPU  8] [PRIO: 96] [POLICY:  1]
+[New Thread 0x7fffe8a4e700 (LWP 5838)]
+set sys affinity:     CPU 9
+5gnr_bs_ul_proc_thread[1]: [PID:   5838] binding on [CPU  9] [PRIO: 96] [POLICY:  1]
+[New Thread 0x7fffe824d700 (LWP 5839)]
+set sys affinity:     CPU 10
+5gnr_bs_ul_proc_thread[2]: [PID:   5839] binding on [CPU 10] [PRIO: 96] [POLICY:  1]
+[New Thread 0x7fffe7a4c700 (LWP 5840)]
+set sys affinity:     CPU 11
+5gnr_bs_ul_proc_thread[3]: [PID:   5840] binding on [CPU 11] [PRIO: 96] [POLICY:  1]
+[New Thread 0x7fffe724b700 (LWP 5841)]
+set sys affinity:     CPU 18
+5gnr_bs_ul_proc_thread[4]: [PID:   5841] binding on [CPU 18] [PRIO: 96] [POLICY:  1]
+[New Thread 0x7fffe6a4a700 (LWP 5842)]
+set sys affinity:     CPU 38
+5gnr_bs_ul_proc_thread[5]: [PID:   5842] binding on [CPU 38] [PRIO: 96] [POLICY:  1]
+[New Thread 0x7fffe6249700 (LWP 5843)]
+set sys affinity:     CPU 39
+5gnr_bs_ul_proc_thread[6]: [PID:   5843] binding on [CPU 39] [PRIO: 96] [POLICY:  1]
+[New Thread 0x7fffe5a48700 (LWP 5844)]
+set sys affinity:     CPU 7
+5gnr_bs_dl_symbol_thread: [PID:   5844] binding on [CPU  7] [PRIO: 95] [POLICY:  1]
+[New Thread 0x7fffe5247700 (LWP 5845)]
+set sys affinity:     CPU 12
+5gnr_bs_ul_symbol_thread: [PID:   5845] binding on [CPU 12] [PRIO: 95] [POLICY:  1]
+[New Thread 0x7fffe4a46700 (LWP 5846)]
+set sys affinity:     CPU 2
+5gnr_bs_api_main_thread: [PID:   5846] binding on [CPU  2] [PRIO: 96] [POLICY:  1]
+PhyApi_Init start
+TXCtrl_Init complete
+RXCtrl_Init complete
+COMMON_SHM_Init complete
+PhyApi_Init complete
+
+
+===================================
+ PHY VERSION
+===================================
+$Version: NR_PHY-S_V.3.0 $ (x86)
+IMG-date: Aug  5 2022
+IMG-time: 13:22:41
+===================================
+ DEPENDENCIES VERSIONS
+===================================
+[New Thread 0x7fffdffff700 (LWP 5847)]
+[_5g_bs_phy_udp_thread] start.
+[_5g_bs_phy_udp_thread] start.
+5g_bs_phy_udp_thread:       [PID:   5847] binding on [CPU  0] [PRIO: 97] [POLICY:  1]
+phy_udp_port is the same.
+[_5g_bs_phy_udp_thread]:phy_ip_addr=127.0.0.1, phy_udp_port=5238.
+mac_udp_port is the same.
+[_5g_bs_phy_udp_thread]:mac_ip_addr=127.0.0.1, mac_udp_port=5234.
+_5g_bs_phy_udp_thread running
+PHY>welcome to application console
+
+nPhyCellId33
+dlsch_shm_init() start!!!!.
+SHM-SUCCESS shmId :1507340 shm_ptr:0x7fffaf7fe000 for cell 0
+dlsch_shm_init() end!!!!.
+[gNB_PhyApi] receive event (GNB_PHYAPI_LMAC_RST_EVT)
+nFAPI: PhyId = 0
+[gNB Tx] nFAPI reset procedure done!
+[gNB Rx] nFAPI reset procedure done!
+[gNB_PhyApi] sent reset down
+[gNB_PhyApi] send event (GNB_LMAC_PHYAPI_RST_DONE_EVT) to qoutgNBPhyApi2Lmac
+[_5gnr_bs_api_main_thread]: PHYAPI_gNB_PhyApi_RstDone!!!
+SCS = 2 SCS_30KHz = 1 
+3276 
+u16NumberOfOFDMSymbolPerSlot = 14 
+D D S U U U D S U U D D S U U U D S U U 
+gstSysConfigReq.RFConfig.u16TxAntennaPorts                       = 4 
+gstSysConfigReq.RFConfig.u16RxAntennaPorts                       = 4 
+gstSysConfigReq.nNumOfTDDPattern                                 = 2 
+gstSysConfigReq.nTddPeriod_idx1                                  = 8 
+gstSysConfigReq.nNrOfDlSlots_idx1                                = 2 
+gstSysConfigReq.DlSymNumInSpeSlot_idx1                           = 11 
+gstSysConfigReq.nNrOfUlSlots_idx1                                = 3 
+gstSysConfigReq.UlSymNumInSpeSlot_idx1                           = 2 
+gstSysConfigReq.nTddPeriod_idx2                                  = 4 
+gstSysConfigReq.nNrOfDlSlots_idx2                                = 1 
+gstSysConfigReq.DlSymNumInSpeSlot_idx2                           = 10 
+gstSysConfigReq.nNrOfUlSlots_idx2                                = 2 
+gstSysConfigReq.UlSymNumInSpeSlot_idx2                           = 0 
+gstSysConfigReq.u8scSpacing                                      = 1 
+gu32nSSBAbsFre                                                   = 4873440 
+gu32nDLAbsFrePointA                                              = 4800720 
+gu32nULAbsFrePointA                                              = 4800720 
+gstSysConfigReq.u8ChannelBandwidth                               = 100 
+gstSysConfigReq.u16FftSize                                       = 4096 
+gstSysConfigReq.u8DuplexingMode                                  = 1 
+gstSysConfigReq.SCHConfig.u16PhysicalCellID                      = 33 
+gstSysConfigReq.SCHConfig.u32SSBPwr                              = 40000 
+gstSysConfigReq.SCHConfig.u8SSBconfig                            = 2 
+gstSysConfigReq.SCHConfig.u8SSBPeriod                            = 2 
+gstSysConfigReq.SCHConfig.u16ReOffset                            = 0 
+gstSysConfigReq.SCHConfig.u16RbStart                             = 192 
+gstSysConfigReq.SCHConfig.u32SSBMask[0]                          = 1073741824 
+gstSysConfigReq.SCHConfig.u32SSBMask[1]                          = 0 
+gstSysConfigReq.SCHConfig.u8MIB[0]                               = 1 
+gstSysConfigReq.SCHConfig.u8MIB[1]                               = 0 
+gstSysConfigReq.SCHConfig.u8MIB[2]                               = 132 
+gstSysConfigReq.PRACHConfig.u8ConfigurationIndex                 = 78 
+gstSysConfigReq.PRACHConfig.u8PrachSubcSpacing                   = 1 
+gstSysConfigReq.PRACHConfig.u16RootSequenceIndex                 = 4 
+gstSysConfigReq.PRACHConfig.u8ZeroCorrleationZoneConfiguration   = 14 
+gstSysConfigReq.PRACHConfig.u8HighSpeedFlag                      = 0 
+gstSysConfigReq.PRACHConfig.u8OccasionFDM                        = 1 
+gstSysConfigReq.PRACHConfig.u16FrequencyOffset                   = 22 
+gstSysConfigReq.PRACHConfig.u8PrachSsbRach                       = 3 
+[gNB_PhyApi] receive event (GNB_PHYAPI_LMAC_CONFIG_REQ_EVT)
+SCH_CONFIG_Derive.u8scSpacing = 1 
+SystemSCS = 1 
+SystemRBnum = 273 
+SCH_CONFIG_Derive.pPssSymIdxIn5ms[0]=2SCH_CONFIG_Derive.pPssSymIdxIn5ms[1]=8SCH_CONFIG_Derive.pPssSymIdxIn5ms[2]=16SCH_CONFIG_Derive.pPssSymIdxIn5ms[3]=22SCH_CONFIG_Derive.pPssSymIdxIn5ms[4]=30SCH_CONFIG_Derive.pPssSymIdxIn5ms[5]=36SCH_CONFIG_Derive.pPssSymIdxIn5ms[6]=44SCH_CONFIG_Derive.pPssSymIdxIn5ms[7]=50SCH_CONFIG_Derive.MaxBlockNumPerHalfFrm = 8 
+SCHConfig->RbStart = 192 
+SCHConfig->ReOffset = 0 
+====================================== HARQ buffer initialization done!!
+0 1.0000000000
+1 16.0000000000
+2 256.0000000000
+idx=11 StartSymIdx=7 u16FrequencyOffset=22
+Rach Presented Slot @cfg 78 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+UL f32CentralFreq=4849860000.00000000000000000000 fsc=30000.00000000000000000000 fs=122880000.00000000000000000000
+[gNB Rx] nFAPI initial procedure done!
+
+###################################################
+#     CHARACTER DEVICE /dev/xdma0_user OPENED.    #
+#     MEMORY MAPPED AT ADDRESS 0x7ffff7fef000.    #
+###################################################
+
+DL f32CentralFreq=4849860000.00000000000000000000 fsc=30000.00000000000000000000
+[gNB Tx] nFAPI initial procedure done!
+[_5g_bs_phy_udp_send_config_resp]: Sent CONFIG_RSP.
+[gNB PhyApi] send event (GNB_LMAC_PHYAPI_INIT_DONE_EVT) to qoutgNBPhyApi2Lmac
+[_5gnr_bs_api_main_thread]: PHYAPI_gNB_PhyApi_InitDone!!!
+[_5g_bs_phy_udp_event_handler]: Received START_REQ: phyId 0 msgId 268 length 8
+nFAPI [_5g_bs_phy_udp_event_handler]: Receive START_REQ gU8StopSemWaitEvent=0.
+[_5g_bs_phy_udp_send_start_resp]: Sent START_RSP.
+[gNB_PhyApi] receive event (GNB_PHYAPI_LMAC_START_REQ_EVT)
+di_open ,numPorts=2
+.[phydi_start] pPhyDiCtx->xRAN_offload = 0; pPhyDiCtx->PhyStartMode = 0
+xRAN Radio mode
+PHYDI-START[0]: Mode: 0, Count: 4294967295, Period: 0
+74 85 80 0a 00 61 00 11 a8 00 
+
+c : Check CRC result
+s : Check SNR quality
+u : Check UCI result
+P : PMI index + 1
+p : PMI index - 1
+TA=8 0
+[RACH_IND] SFN=609 slot=19 : Num 1 Pream 2 Ind: 609 19 Cur: 610 2
+42 00 08 77 a0 00 4e 20 00 00 
+====================================================== sfn= 610 slot 15 Rnti=20000 SymStart=0 SymNum=11 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=8 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=0 BitSize=176 posA=0 HARQID=0 RV=0 NDI=0
+!!!!!!!!!!!!!!!!!!!!!!!! NumCBSegm=1
+TZ 1.sfn=610 slot=15 PUSCH=20000 SNR=56, OriSNR=158, TA=31 23, EPRE=11.4247817993
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20000 for SFN 610 slot 15 15
+TA=8 0
+[RACH_IND] SFN=645 slot=19 : Num 1 Pream 3 Ind: 645 19 Cur: 646 2
+43 00 08 77 a0 00 4e 21 00 00 
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20001 for SFN 646 slot 15 15
+TA=8 0
+[RACH_IND] SFN=647 slot=19 : Num 1 Pream 1 Ind: 647 19 Cur: 648 2
+41 00 08 77 a0 00 4e 22 00 00 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20002 for SFN 648 slot 15 15
+TA=8 0
+[RACH_IND] SFN=705 slot=19 : Num 1 Pream 3 Ind: 705 19 Cur: 706 2
+43 00 08 77 a0 00 4e 23 00 00 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 706 slot 15 15
+TA=12 0
+[RACH_IND] SFN=715 slot=19 : Num 1 Pream 1 Ind: 715 19 Cur: 716 2
+41 00 08 77 a0 00 4e 24 00 00 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 716 slot 15 15
+TA=8 0
+[RACH_IND] SFN=745 slot=19 : Num 1 Pream 3 Ind: 745 19 Cur: 746 2
+43 00 08 77 a0 00 4e 25 00 00 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 746 slot 15 15
+TA=8 0
+[RACH_IND] SFN=811 slot=19 : Num 1 Pream 2 Ind: 811 19 Cur: 812 2
+42 00 08 77 a0 00 4e 26 00 00 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20006 for SFN 812 slot 15 15
+dpdk received FrameIdx = 1024, tickCount=16329 ErrCount=0 TenSecCount=0!!
+DL CFG NUM=8175, TX REQ NUM=935, HI REQ NUM=399, UL CFG NUM=9808
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+TA=8 0
+[RACH_IND] SFN=131 slot=19 : Num 1 Pream 2 Ind: 131 19 Cur: 132 2
+42 00 08 77 a0 00 4e 27 00 00 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20007 for SFN 132 slot 15 15
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=1!!
+DL CFG NUM=10240, TX REQ NUM=1157, HI REQ NUM=561, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=2!!
+DL CFG NUM=10240, TX REQ NUM=1073, HI REQ NUM=241, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=3!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=11 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=4!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=3 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=5!!
+DL CFG NUM=10240, TX REQ NUM=1080, HI REQ NUM=78, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=4 TxReqNum=0 Dci0Num=6
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=6!!
+DL CFG NUM=10240, TX REQ NUM=1071, HI REQ NUM=146, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=4 TxReqNum=0 Dci0Num=9
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=7!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=8!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=11 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=9!!
+DL CFG NUM=10240, TX REQ NUM=1077, HI REQ NUM=68, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=10!!
+DL CFG NUM=10240, TX REQ NUM=1045, HI REQ NUM=209, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=4 TxReqNum=0 Dci0Num=4
+
+TA=8 0
+[RACH_IND] SFN=723 slot=19 : Num 1 Pream 0 Ind: 723 19 Cur: 724 2
+40 00 08 77 a0 00 4e 28 00 00 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20008 for SFN 724 slot 15 15
+TA=8 0
+[RACH_IND] SFN=759 slot=19 : Num 1 Pream 3 Ind: 759 19 Cur: 760 2
+43 00 08 77 a0 00 4e 29 00 1a 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20009 for SFN 760 slot 15 15
+====================================================== sfn= 843 slot 3 Rnti=20009 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=1 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=408 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=843 slot=3 PUSCH=20009 SNR=57, OriSNR=164, TA=31 19, EPRE=12.0548067093
+[ULDCI FAIL]: Num 2000, No signal det 46
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=11!!
+DL CFG NUM=10240, TX REQ NUM=1042, HI REQ NUM=561, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=4 TxReqNum=0 Dci0Num=6
+
+TA=8 0
+[RACH_IND] SFN=19 slot=19 : Num 1 Pream 3 Ind: 19 19 Cur: 20 2
+43 00 08 77 a0 00 4e 2a 00 00 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20010 for SFN 20 slot 15 15
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=12!!
+DL CFG NUM=10240, TX REQ NUM=1039, HI REQ NUM=58, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=12 TxReqNum=0 Dci0Num=0
+
+TA=8 0
+[RACH_IND] SFN=711 slot=19 : Num 1 Pream 3 Ind: 711 19 Cur: 712 2
+43 00 08 77 a0 00 4e 2b 00 1a 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20011 for SFN 712 slot 15 15
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=13!!
+DL CFG NUM=10240, TX REQ NUM=1087, HI REQ NUM=269, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=4 TxReqNum=0 Dci0Num=18
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=14!!
+DL CFG NUM=10237, TX REQ NUM=1033, HI REQ NUM=9, UL CFG NUM=12287
+[Cfg Delay] DlcfgNum=5 TxReqNum=0 Dci0Num=0
+
+TA=8 0
+[RACH_IND] SFN=185 slot=19 : Num 1 Pream 3 Ind: 185 19 Cur: 186 2
+43 00 08 77 a0 00 4e 2c 45 c0 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20012 for SFN 186 slot 15 15
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=15!!
+DL CFG NUM=10243, TX REQ NUM=1035, HI REQ NUM=23, UL CFG NUM=12289
+[Cfg Delay] DlcfgNum=1 TxReqNum=0 Dci0Num=3
+
+TA=8 0
+[RACH_IND] SFN=705 slot=19 : Num 1 Pream 2 Ind: 705 19 Cur: 706 2
+42 00 08 77 a0 00 4e 2d 00 00 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20013 for SFN 706 slot 15 15
+TA=8 0
+[RACH_IND] SFN=767 slot=19 : Num 1 Pream 3 Ind: 767 19 Cur: 768 2
+43 00 08 77 a0 00 4e 2e 00 00 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20014 for SFN 768 slot 15 15
+TA=8 0
+[RACH_IND] SFN=773 slot=19 : Num 1 Pream 0 Ind: 773 19 Cur: 774 2
+40 00 08 77 a0 00 4e 2f 00 00 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20015 for SFN 774 slot 15 15
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=16!!
+DL CFG NUM=10235, TX REQ NUM=1039, HI REQ NUM=43, UL CFG NUM=12284
+[Cfg Delay] DlcfgNum=17 TxReqNum=0 Dci0Num=4
+
+====================================================== sfn= 920 slot 14 Rnti=20002 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=920 slot=14 PUSCH=20002 SNR=32, OriSNR=128, TA=31 -247, EPRE=0.0021779935
+[ULDCI FAIL]: Num 2000, No signal det 194
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=17!!
+DL CFG NUM=10245, TX REQ NUM=4366, HI REQ NUM=2119, UL CFG NUM=12292
+[Cfg Delay] DlcfgNum=21 TxReqNum=0 Dci0Num=87
+
+TZ3 [CRC_IND] RNTI=20002  SFN=83 slot=8 : Num 2000 1754 CrcCorrect 1014
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20002 for SFN 83 slot 18 18
+====================================================== sfn= 261 slot 19 Rnti=20000 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=34 RbL=239 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=13 BitSize=55304 posA=0 HARQID=2 RV=0 NDI=1
+TZ 1.sfn=260 slot=19 PUSCH=20000 SNR=70, OriSNR=163, TA=31 25, EPRE=14.3981685638
+TA=8 0
+[RACH_IND] SFN=261 slot=19 : Num 1 Pream 1 Ind: 261 19 Cur: 262 2
+41 00 08 77 a0 00 4e 30 44 d5 
+[ULDCI FAIL]: Num 2000, No signal det 244
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20016 for SFN 262 slot 15 15
+====================================================== sfn= 555 slot 5 Rnti=20002 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=268 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=19 BitSize=98376 posA=0 HARQID=1 RV=0 NDI=0
+TZ 1.sfn=555 slot=5 PUSCH=20002 SNR=76, OriSNR=172, TA=31 14, EPRE=65.6097717285
+[ULDCI FAIL]: Num 2000, No signal det 275
+TZ3 [CRC_IND] RNTI=20000  SFN=718 slot=8 : Num 2000 1763 CrcCorrect 987
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20000 for SFN 718 slot 9 9
+====================================================== sfn= 988 slot 13 Rnti=20000 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=1 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=408 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=988 slot=13 PUSCH=20000 SNR=56, OriSNR=167, TA=31 5, EPRE=6.5948476791
+[ULDCI FAIL]: Num 2000, No signal det 17
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=18!!
+DL CFG NUM=10240, TX REQ NUM=6557, HI REQ NUM=5905, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=14 TxReqNum=0 Dci0Num=69
+
+TZ3 [CRC_IND] RNTI=20000  SFN=234 slot=4 : Num 2000 2000 CrcCorrect 1188
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20000 for SFN 234 slot 5 5
+TA=8 0
+[RACH_IND] SFN=673 slot=19 : Num 1 Pream 0 Ind: 673 19 Cur: 674 2
+40 00 08 77 a0 00 4e 31 e9 70 
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20017 for SFN 674 slot 15 15
+TA=8 0
+[RACH_IND] SFN=675 slot=19 : Num 1 Pream 2 Ind: 675 19 Cur: 676 2
+42 00 08 77 a0 00 4e 32 e9 70 
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20018 for SFN 676 slot 15 15
+TA=8 0
+[RACH_IND] SFN=677 slot=19 : Num 1 Pream 3 Ind: 677 19 Cur: 678 2
+43 00 08 77 a0 00 4e 33 e9 70 
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20019 for SFN 678 slot 15 15
+TA=8 0
+[RACH_IND] SFN=679 slot=19 : Num 1 Pream 2 Ind: 679 19 Cur: 680 2
+42 00 08 77 a0 00 4e 34 e9 70 
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20020 for SFN 680 slot 15 15
+TA=8 0
+[RACH_IND] SFN=681 slot=19 : Num 1 Pream 0 Ind: 681 19 Cur: 682 2
+40 00 08 77 a0 00 4e 35 e9 70 
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20021 for SFN 682 slot 15 15
+TA=8 0
+[RACH_IND] SFN=683 slot=19 : Num 1 Pream 1 Ind: 683 19 Cur: 684 2
+41 00 08 77 a0 00 4e 36 e9 70 
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20022 for SFN 684 slot 15 15
+TA=8 0
+[RACH_IND] SFN=685 slot=19 : Num 1 Pream 3 Ind: 685 19 Cur: 686 2
+43 00 08 77 a0 00 4e 37 35 45 
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20023 for SFN 686 slot 15 15
+TA=8 0
+[RACH_IND] SFN=687 slot=19 : Num 1 Pream 1 Ind: 687 19 Cur: 688 2
+41 00 08 77 a0 00 4e 38 e9 70 
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20024 for SFN 688 slot 15 15
+TA=8 0
+[RACH_IND] SFN=689 slot=19 : Num 1 Pream 1 Ind: 689 19 Cur: 690 2
+41 00 08 77 a0 00 4e 39 e9 70 
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20025 for SFN 690 slot 15 15
+TA=8 0
+[RACH_IND] SFN=691 slot=19 : Num 1 Pream 0 Ind: 691 19 Cur: 692 2
+40 00 08 77 a0 00 4e 3a e9 70 
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20026 for SFN 692 slot 15 15
+TA=8 0
+[RACH_IND] SFN=693 slot=19 : Num 1 Pream 1 Ind: 693 19 Cur: 694 2
+41 00 08 77 a0 00 4e 3b ad 45 
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20027 for SFN 694 slot 15 15
+TA=8 0
+[RACH_IND] SFN=695 slot=19 : Num 1 Pream 0 Ind: 695 19 Cur: 696 2
+40 00 08 77 a0 00 4e 3c e9 70 
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20028 for SFN 696 slot 15 15
+TA=8 0
+[RACH_IND] SFN=697 slot=19 : Num 1 Pream 2 Ind: 697 19 Cur: 698 2
+42 00 08 77 a0 00 4e 3d e9 70 
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20029 for SFN 698 slot 15 15
+TA=12 0
+[RACH_IND] SFN=713 slot=19 : Num 1 Pream 1 Ind: 713 19 Cur: 714 2
+41 00 08 77 a0 00 4e 3e e9 70 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 714 slot 15 15
+TA=8 0
+[RACH_IND] SFN=757 slot=19 : Num 1 Pream 3 Ind: 757 19 Cur: 758 2
+43 00 08 77 a0 00 4e 3f e9 70 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20031 for SFN 758 slot 15 15
+====================================================== sfn= 819 slot 14 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=0
+TZ 1.sfn=819 slot=14 PUSCH=20030 SNR=70, OriSNR=172, TA=31 13, EPRE=52.9486770630
+[ULDCI FAIL]: Num 2000, No signal det 13
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=19!!
+DL CFG NUM=10240, TX REQ NUM=6580, HI REQ NUM=2490, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+TZ3 [CRC_IND] RNTI=20030  SFN=289 slot=4 : Num 2000 2000 CrcCorrect 1998
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 289 slot 13 13
+====================================================== sfn= 398 slot 8 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=0
+TZ 1.sfn=398 slot=8 PUSCH=20030 SNR=72, OriSNR=174, TA=31 13, EPRE=54.8326911926
+[ULDCI FAIL]: Num 2000, No signal det 1
+====================================================== sfn= 919 slot 13 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=919 slot=13 PUSCH=20030 SNR=61, OriSNR=174, TA=31 13, EPRE=35.7226676941
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20030  SFN=959 slot=13 : Num 2000 2000 CrcCorrect 2000
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 960 slot 4 4
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=20!!
+DL CFG NUM=10240, TX REQ NUM=6478, HI REQ NUM=4055, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+====================================================== sfn= 157 slot 3 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=17 BitSize=83976 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=157 slot=3 PUSCH=20030 SNR=61, OriSNR=168, TA=31 18, EPRE=28.6046218872
+[ULDCI FAIL]: Num 2000, No signal det 66
+====================================================== sfn= 374 slot 18 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=1 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=17 BitSize=304 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=374 slot=18 PUSCH=20005 SNR=48, OriSNR=166, TA=31 13, EPRE=9.9027385712
+[ULDCI FAIL]: Num 2000, No signal det 195
+TZ3 [CRC_IND] RNTI=20005  SFN=509 slot=18 : Num 2000 1859 CrcCorrect 1344
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 510 slot 8 8
+====================================================== sfn= 591 slot 13 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=0
+TZ 1.sfn=591 slot=13 PUSCH=20004 SNR=54, OriSNR=166, TA=31 21, EPRE=5.7279453278
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20003  SFN=658 slot=18 : Num 2000 1925 CrcCorrect 1920
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 659 slot 5 5
+====================================================== sfn= 805 slot 15 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=805 slot=15 PUSCH=20030 SNR=69, OriSNR=165, TA=31 22, EPRE=110.2751770020
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20030  SFN=881 slot=3 : Num 2000 1933 CrcCorrect 1937
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 881 slot 13 13
+====================================================== sfn= 1021 slot 15 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=1021 slot=15 PUSCH=20030 SNR=72, OriSNR=165, TA=31 22, EPRE=42.2594604492
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=21!!
+DL CFG NUM=10240, TX REQ NUM=5400, HI REQ NUM=9485, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=3 TxReqNum=0 Dci0Num=16
+
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20005  SFN=79 slot=5 : Num 2000 1997 CrcCorrect 1430
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 79 slot 8 8
+TZ3 [CRC_IND] RNTI=20004  SFN=90 slot=15 : Num 2000 1945 CrcCorrect 1946
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 90 slot 19 19
+====================================================== sfn= 215 slot 4 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=2 RV=0 NDI=1
+TZ 1.sfn=215 slot=4 PUSCH=20030 SNR=60, OriSNR=172, TA=31 14, EPRE=41.3079071045
+[ULDCI FAIL]: Num 2000, No signal det 0
+====================================================== sfn= 430 slot 15 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=2 RV=0 NDI=0
+TZ 1.sfn=430 slot=15 PUSCH=20004 SNR=68, OriSNR=168, TA=31 16, EPRE=6.4516897202
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20003  SFN=639 slot=19 : Num 2000 2000 CrcCorrect 1984
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 640 slot 4 4
+====================================================== sfn= 642 slot 9 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=642 slot=9 PUSCH=20004 SNR=67, OriSNR=167, TA=31 17, EPRE=5.4761953354
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20005  SFN=689 slot=13 : Num 2000 1999 CrcCorrect 1450
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20005 for SFN 689 slot 18 18
+TA=8 0
+[RACH_IND] SFN=763 slot=19 : Num 1 Pream 1 Ind: 763 19 Cur: 764 2
+41 00 08 77 a0 00 4e 40 c8 45 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20032 for SFN 764 slot 15 15
+TZ3 [CRC_IND] RNTI=20030  SFN=846 slot=8 : Num 2000 2000 CrcCorrect 2000
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 846 slot 19 19
+====================================================== sfn= 860 slot 15 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=860 slot=15 PUSCH=20030 SNR=74, OriSNR=173, TA=31 9, EPRE=66.6126632690
+[ULDCI FAIL]: Num 2000, No signal det 5
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=22!!
+DL CFG NUM=10240, TX REQ NUM=5306, HI REQ NUM=9505, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+====================================================== sfn= 50 slot 4 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=17 BitSize=83976 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=50 slot=4 PUSCH=20005 SNR=66, OriSNR=153, TA=31 17, EPRE=1.9710812569
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20004  SFN=139 slot=4 : Num 2000 2000 CrcCorrect 1998
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 139 slot 9 9
+====================================================== sfn= 263 slot 13 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=263 slot=13 PUSCH=20030 SNR=69, OriSNR=169, TA=31 17, EPRE=43.9008636475
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20005  SFN=278 slot=15 : Num 2000 1999 CrcCorrect 1421
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 279 slot 3 3
+====================================================== sfn= 476 slot 14 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=1 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=408 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=476 slot=14 PUSCH=20004 SNR=54, OriSNR=174, TA=31 17, EPRE=3.8040151596
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20003  SFN=621 slot=9 : Num 2000 2000 CrcCorrect 1994
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 621 slot 15 15
+====================================================== sfn= 694 slot 3 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=17 BitSize=83976 posA=0 HARQID=1 RV=0 NDI=0
+TZ 1.sfn=694 slot=3 PUSCH=20005 SNR=68, OriSNR=150, TA=31 20, EPRE=1.5955716372
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20030  SFN=803 slot=19 : Num 2000 2000 CrcCorrect 1999
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 804 slot 4 4
+TZ3 [CRC_IND] RNTI=20005  SFN=877 slot=8 : Num 2000 1998 CrcCorrect 1418
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20005 for SFN 877 slot 19 19
+====================================================== sfn= 908 slot 15 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=908 slot=15 PUSCH=20004 SNR=68, OriSNR=163, TA=31 26, EPRE=7.4794096947
+[ULDCI FAIL]: Num 2000, No signal det 0
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=23!!
+DL CFG NUM=10240, TX REQ NUM=5327, HI REQ NUM=9543, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+====================================================== sfn= 99 slot 4 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=99 slot=4 PUSCH=20004 SNR=55, OriSNR=171, TA=31 10, EPRE=6.2398142815
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20004  SFN=156 slot=14 : Num 2000 2000 CrcCorrect 1998
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 157 slot 5 5
+====================================================== sfn= 314 slot 8 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=314 slot=8 PUSCH=20030 SNR=66, OriSNR=168, TA=31 20, EPRE=107.7063446045
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20005  SFN=442 slot=8 : Num 2000 1972 CrcCorrect 1428
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 442 slot 15 15
+====================================================== sfn= 528 slot 13 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=528 slot=13 PUSCH=20004 SNR=52, OriSNR=168, TA=31 13, EPRE=3.1281814575
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20003  SFN=622 slot=5 : Num 2000 2000 CrcCorrect 1970
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 622 slot 13 13
+====================================================== sfn= 744 slot 19 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=34 RbL=239 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=96264 posA=0 HARQID=2 RV=0 NDI=0
+TZ 1.sfn=743 slot=19 PUSCH=20003 SNR=63, OriSNR=161, TA=31 19, EPRE=3.5722513199
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20030  SFN=793 slot=14 : Num 2000 2000 CrcCorrect 2000
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 794 slot 3 3
+====================================================== sfn= 953 slot 3 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=1 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=408 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=953 slot=3 PUSCH=20030 SNR=60, OriSNR=168, TA=31 1, EPRE=42.1972579956
+[ULDCI FAIL]: Num 2000, No signal det 1
+TZ3 [CRC_IND] RNTI=20005  SFN=1015 slot=8 : Num 2000 1950 CrcCorrect 1434
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 1015 slot 9 9
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=24!!
+DL CFG NUM=10240, TX REQ NUM=5319, HI REQ NUM=9601, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+====================================================== sfn= 139 slot 14 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=139 slot=14 PUSCH=20030 SNR=66, OriSNR=167, TA=31 22, EPRE=55.1324081421
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20004  SFN=166 slot=15 : Num 2000 2000 CrcCorrect 1998
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 167 slot 4 4
+====================================================== sfn= 349 slot 18 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=268 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=19 BitSize=98376 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=349 slot=18 PUSCH=20003 SNR=65, OriSNR=162, TA=31 21, EPRE=2.0714724064
+[ULDCI FAIL]: Num 2000, No signal det 0
+====================================================== sfn= 562 slot 18 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=1 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=13 BitSize=224 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=562 slot=18 PUSCH=20005 SNR=48, OriSNR=158, TA=31 24, EPRE=10.9338369370
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20003  SFN=571 slot=15 : Num 2000 2000 CrcCorrect 1990
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 572 slot 4 4
+TZ3 [CRC_IND] RNTI=20005  SFN=573 slot=9 : Num 2000 1934 CrcCorrect 1463
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20005 for SFN 573 slot 18 18
+====================================================== sfn= 774 slot 3 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=0
+TZ 1.sfn=774 slot=3 PUSCH=20003 SNR=55, OriSNR=167, TA=31 11, EPRE=1.6467415094
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20030  SFN=777 slot=14 : Num 2000 2000 CrcCorrect 2000
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 778 slot 4 4
+====================================================== sfn= 991 slot 3 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=991 slot=3 PUSCH=20030 SNR=61, OriSNR=167, TA=31 19, EPRE=36.4926109314
+[ULDCI FAIL]: Num 2000, No signal det 1
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=25!!
+DL CFG NUM=10240, TX REQ NUM=5344, HI REQ NUM=9630, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+TZ3 [CRC_IND] RNTI=20005  SFN=142 slot=4 : Num 2000 1987 CrcCorrect 1434
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 142 slot 8 8
+====================================================== sfn= 189 slot 14 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=2 RV=0 NDI=1
+TZ 1.sfn=189 slot=14 PUSCH=20004 SNR=65, OriSNR=169, TA=31 13, EPRE=3.9217081070
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20004  SFN=202 slot=18 : Num 2000 2000 CrcCorrect 1998
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 203 slot 4 4
+====================================================== sfn= 407 slot 5 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=407 slot=5 PUSCH=20004 SNR=67, OriSNR=173, TA=31 7, EPRE=5.8997263908
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20003  SFN=587 slot=13 : Num 2000 2000 CrcCorrect 1969
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 587 slot 18 18
+====================================================== sfn= 625 slot 15 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=0
+TZ 1.sfn=625 slot=15 PUSCH=20030 SNR=64, OriSNR=159, TA=31 24, EPRE=19.4348278046
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20030  SFN=750 slot=4 : Num 2000 2000 CrcCorrect 2000
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 750 slot 9 9
+TZ3 [CRC_IND] RNTI=20005  SFN=789 slot=9 : Num 2000 2000 CrcCorrect 1371
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 789 slot 13 13
+====================================================== sfn= 846 slot 13 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=846 slot=13 PUSCH=20030 SNR=51, OriSNR=165, TA=31 24, EPRE=39.2776565552
+[ULDCI FAIL]: Num 2000, No signal det 0
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=26!!
+DL CFG NUM=10239, TX REQ NUM=5376, HI REQ NUM=9328, UL CFG NUM=12287
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+====================================================== sfn= 40 slot 3 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=40 slot=3 PUSCH=20005 SNR=65, OriSNR=158, TA=31 18, EPRE=2.3250896931
+[ULDCI FAIL]: Num 2000, No signal det 8
+TA=8 0
+[RACH_IND] SFN=77 slot=19 : Num 1 Pream 3 Ind: 77 19 Cur: 78 2
+43 00 08 77 a0 00 4e 41 41 8c 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20033 for SFN 78 slot 15 15
+TZ3 [CRC_IND] RNTI=20004  SFN=202 slot=15 : Num 2000 1996 CrcCorrect 1978
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 202 slot 19 19
+====================================================== sfn= 255 slot 19 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=34 RbL=239 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=17 BitSize=73776 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=254 slot=19 PUSCH=20005 SNR=71, OriSNR=168, TA=31 17, EPRE=33.5260734558
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20005  SFN=388 slot=19 : Num 2000 1996 CrcCorrect 1393
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 389 slot 8 8
+====================================================== sfn= 470 slot 14 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=1 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=408 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=470 slot=14 PUSCH=20004 SNR=52, OriSNR=172, TA=31 21, EPRE=3.1690669060
+[ULDCI FAIL]: Num 2000, No signal det 1
+TZ3 [CRC_IND] RNTI=20003  SFN=573 slot=18 : Num 2000 2000 CrcCorrect 1991
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 574 slot 13 13
+====================================================== sfn= 687 slot 14 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=687 slot=14 PUSCH=20004 SNR=53, OriSNR=168, TA=31 16, EPRE=6.0365476608
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20030  SFN=713 slot=4 : Num 2000 1998 CrcCorrect 1995
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 713 slot 13 13
+====================================================== sfn= 900 slot 5 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=17 BitSize=83976 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=900 slot=5 PUSCH=20003 SNR=59, OriSNR=156, TA=31 20, EPRE=1.6698848009
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20005  SFN=1013 slot=19 : Num 2000 1996 CrcCorrect 1404
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 1014 slot 3 3
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=27!!
+DL CFG NUM=10241, TX REQ NUM=5361, HI REQ NUM=9556, UL CFG NUM=12289
+[Cfg Delay] DlcfgNum=1 TxReqNum=0 Dci0Num=1
+
+====================================================== sfn= 88 slot 8 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=4 RbL=237 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=17 BitSize=73776 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=88 slot=8 PUSCH=20005 SNR=57, OriSNR=154, TA=31 25, EPRE=2.3385915756
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20007  SFN=145 slot=3 : Num 2000 1908 CrcCorrect 1900
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20007 for SFN 149 slot 3 3
+TZ3 [CRC_IND] RNTI=20004  SFN=214 slot=5 : Num 2000 2000 CrcCorrect 1989
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 214 slot 14 14
+====================================================== sfn= 304 slot 14 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=17 BitSize=83976 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=304 slot=14 PUSCH=20005 SNR=68, OriSNR=155, TA=31 19, EPRE=2.3140068054
+[ULDCI FAIL]: Num 2000, No signal det 0
+====================================================== sfn= 519 slot 14 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=519 slot=14 PUSCH=20003 SNR=60, OriSNR=166, TA=31 8, EPRE=1.5567507744
+TZ3 [CRC_IND] RNTI=20003  SFN=519 slot=14 : Num 2000 2000 CrcCorrect 1990
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 519 slot 19 19
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20005  SFN=588 slot=15 : Num 2000 2000 CrcCorrect 1414
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20005 for SFN 588 slot 19 19
+TZ3 [CRC_IND] RNTI=20030  SFN=677 slot=3 : Num 2000 2000 CrcCorrect 2000
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 677 slot 13 13
+====================================================== sfn= 730 slot 14 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=17 BitSize=83976 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=730 slot=14 PUSCH=20005 SNR=64, OriSNR=156, TA=31 14, EPRE=1.6040021181
+[ULDCI FAIL]: Num 2000, No signal det 0
+====================================================== sfn= 944 slot 14 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=944 slot=14 PUSCH=20004 SNR=56, OriSNR=169, TA=31 13, EPRE=6.7856922150
+[ULDCI FAIL]: Num 2000, No signal det 0
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=28!!
+DL CFG NUM=10240, TX REQ NUM=5316, HI REQ NUM=9554, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+====================================================== sfn= 136 slot 8 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=4 RbL=234 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=19 BitSize=86040 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=136 slot=8 PUSCH=20005 SNR=58, OriSNR=159, TA=31 18, EPRE=1.5773259401
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20005  SFN=198 slot=19 : Num 2000 2000 CrcCorrect 1405
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 199 slot 3 3
+TZ3 [CRC_IND] RNTI=20004  SFN=203 slot=9 : Num 2000 2000 CrcCorrect 1991
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 203 slot 13 13
+====================================================== sfn= 353 slot 9 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=237 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=17 BitSize=73776 posA=0 HARQID=1 RV=0 NDI=0
+TZ 1.sfn=353 slot=9 PUSCH=20005 SNR=58, OriSNR=157, TA=31 21, EPRE=1.6034723520
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20003  SFN=466 slot=13 : Num 2000 2000 CrcCorrect 1978
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 466 slot 15 15
+====================================================== sfn= 571 slot 3 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=268 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=19 BitSize=98376 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=571 slot=3 PUSCH=20003 SNR=59, OriSNR=161, TA=31 15, EPRE=2.1819732189
+[ULDCI FAIL]: Num 2000, No signal det 1
+TZ3 [CRC_IND] RNTI=20030  SFN=647 slot=13 : Num 2000 2000 CrcCorrect 1998
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 647 slot 18 18
+====================================================== sfn= 786 slot 3 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=786 slot=3 PUSCH=20005 SNR=67, OriSNR=163, TA=31 7, EPRE=1.9578605890
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20005  SFN=833 slot=19 : Num 2000 1999 CrcCorrect 1380
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 834 slot 8 8
+====================================================== sfn= 1009 slot 19 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=34 RbL=239 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=19 BitSize=86040 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=1008 slot=19 PUSCH=20005 SNR=70, OriSNR=165, TA=31 23, EPRE=40.1235389709
+[ULDCI FAIL]: Num 2000, No signal det 0
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=29!!
+DL CFG NUM=10240, TX REQ NUM=5323, HI REQ NUM=9407, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+====================================================== sfn= 199 slot 18 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=199 slot=18 PUSCH=20005 SNR=72, OriSNR=172, TA=31 12, EPRE=21.9320430756
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20004  SFN=217 slot=13 : Num 2000 1999 CrcCorrect 1996
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 218 slot 13 13
+TZ3 [CRC_IND] RNTI=20003  SFN=375 slot=4 : Num 2000 2000 CrcCorrect 1995
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 375 slot 14 14
+====================================================== sfn= 418 slot 14 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=418 slot=14 PUSCH=20004 SNR=68, OriSNR=167, TA=31 20, EPRE=7.2218141556
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20005  SFN=473 slot=18 : Num 2000 2000 CrcCorrect 1350
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20005 for SFN 473 slot 19 19
+TZ3 [CRC_IND] RNTI=20030  SFN=609 slot=14 : Num 2000 2000 CrcCorrect 1999
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 610 slot 3 3
+====================================================== sfn= 639 slot 19 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=34 RbL=239 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=19 BitSize=86040 posA=0 HARQID=2 RV=0 NDI=0
+TZ 1.sfn=638 slot=19 PUSCH=20003 SNR=62, OriSNR=161, TA=31 7, EPRE=4.0883550644
+[ULDCI FAIL]: Num 2000, No signal det 0
+====================================================== sfn= 856 slot 19 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=34 RbL=239 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=19 BitSize=86040 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=855 slot=19 PUSCH=20005 SNR=68, OriSNR=166, TA=31 18, EPRE=48.7505264282
+[ULDCI FAIL]: Num 2000, No signal det 0
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=30!!
+DL CFG NUM=10240, TX REQ NUM=5271, HI REQ NUM=9393, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+====================================================== sfn= 52 slot 8 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=4 RbL=234 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=19 BitSize=86040 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=52 slot=8 PUSCH=20005 SNR=68, OriSNR=160, TA=31 22, EPRE=1.6916207075
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20005  SFN=103 slot=19 : Num 2000 2000 CrcCorrect 1350
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 104 slot 4 4
+TZ3 [CRC_IND] RNTI=20004  SFN=226 slot=13 : Num 2000 2000 CrcCorrect 1994
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 227 slot 3 3
+====================================================== sfn= 270 slot 19 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=34 RbL=239 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=15 BitSize=69672 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=269 slot=19 PUSCH=20005 SNR=63, OriSNR=160, TA=31 20, EPRE=41.1026382446
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20003  SFN=321 slot=13 : Num 2000 2000 CrcCorrect 1993
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 321 slot 18 18
+====================================================== sfn= 480 slot 4 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=0
+TZ 1.sfn=480 slot=4 PUSCH=20004 SNR=49, OriSNR=175, TA=31 14, EPRE=18.7464485168
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20030  SFN=550 slot=9 : Num 2000 1997 CrcCorrect 1961
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 550 slot 18 18
+====================================================== sfn= 681 slot 8 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=681 slot=8 PUSCH=20004 SNR=53, OriSNR=164, TA=31 15, EPRE=2.4458692074
+TZ3 [CRC_IND] RNTI=20005  SFN=684 slot=15 : Num 2000 1988 CrcCorrect 1493
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 685 slot 4 4
+====================================================== sfn= 882 slot 18 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=268 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=9 BitSize=43032 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=882 slot=18 PUSCH=20005 SNR=52, OriSNR=147, TA=31 20, EPRE=3.0123062134
+[ULDCI FAIL]: Num 2000, No signal det 0
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=31!!
+DL CFG NUM=10240, TX REQ NUM=5286, HI REQ NUM=9860, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+====================================================== sfn= 60 slot 18 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=268 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=19 BitSize=98376 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=60 slot=18 PUSCH=20004 SNR=52, OriSNR=160, TA=31 20, EPRE=1.9556514025
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20005  SFN=145 slot=9 : Num 2000 1985 CrcCorrect 1546
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 145 slot 14 14
+TZ3 [CRC_IND] RNTI=20004  SFN=255 slot=4 : Num 2000 2000 CrcCorrect 1992
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 255 slot 14 14
+====================================================== sfn= 260 slot 18 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=267 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=10 BitSize=43032 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=260 slot=18 PUSCH=20005 SNR=52, OriSNR=147, TA=31 15, EPRE=4.0661034584
+[ULDCI FAIL]: Num 2000, No signal det 0
+TZ3 [CRC_IND] RNTI=20003  SFN=369 slot=14 : Num 2000 1997 CrcCorrect 1985
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 369 slot 18 18
+TA=4 0
+[RACH_IND] SFN=410 slot=19 : Num 1 Pream 2 Ind: 410 19 Cur: 411 2
+42 00 08 77 a0 00 4e 42 89 45 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20034 for SFN 411 slot 15 15
+====================================================== sfn= 463 slot 5 Rnti=20007 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=1 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=10 BitSize=152 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=463 slot=5 PUSCH=20007 SNR=36, OriSNR=142, TA=31 13, EPRE=2.7175440788
+[ULDCI FAIL]: Num 2000, No signal det 21
+TZ3 [CRC_IND] RNTI=20030  SFN=509 slot=3 : Num 2000 1997 CrcCorrect 1864
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 509 slot 13 13
+TZ3 [CRC_IND] RNTI=20005  SFN=654 slot=8 : Num 2000 1950 CrcCorrect 1527
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 654 slot 15 15
+====================================================== sfn= 663 slot 9 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=239 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=13 BitSize=55304 posA=0 HARQID=1 RV=0 NDI=0
+TZ 1.sfn=663 slot=9 PUSCH=20005 SNR=48, OriSNR=141, TA=31 18, EPRE=7.0317411423
+[ULDCI FAIL]: Num 2000, No signal det 81
+====================================================== sfn= 871 slot 3 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=267 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=10 BitSize=43032 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=871 slot=3 PUSCH=20005 SNR=53, OriSNR=142, TA=31 17, EPRE=7.5773663521
+[ULDCI FAIL]: Num 2000, No signal det 207
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=32!!
+DL CFG NUM=10240, TX REQ NUM=5314, HI REQ NUM=10139, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=1
+
+====================================================== sfn= 48 slot 9 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=48 slot=9 PUSCH=20003 SNR=65, OriSNR=165, TA=31 13, EPRE=6.0726523399
+[ULDCI FAIL]: Num 2000, No signal det 405
+TZ3 [CRC_IND] RNTI=20004  SFN=188 slot=9 : Num 2000 1906 CrcCorrect 1734
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 188 slot 19 19
+====================================================== sfn= 248 slot 9 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=267 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=15 BitSize=77896 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=248 slot=9 PUSCH=20005 SNR=54, OriSNR=151, TA=31 22, EPRE=6.0045943260
+[ULDCI FAIL]: Num 2000, No signal det 400
+TZ3 [CRC_IND] RNTI=20005  SFN=257 slot=14 : Num 2000 1593 CrcCorrect 1332
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20005 for SFN 257 slot 18 18
+TZ3 [CRC_IND] RNTI=20003  SFN=318 slot=14 : Num 2000 1982 CrcCorrect 1703
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 319 slot 15 15
+TZ3 [CRC_IND] RNTI=20030  SFN=386 slot=14 : Num 2000 1983 CrcCorrect 1623
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20030 for SFN 386 slot 18 18
+====================================================== sfn= 448 slot 14 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=1 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=408 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=448 slot=14 PUSCH=20003 SNR=51, OriSNR=161, TA=31 19, EPRE=6.3929738998
+[ULDCI FAIL]: Num 2000, No signal det 400
+====================================================== sfn= 648 slot 18 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=648 slot=18 PUSCH=20030 SNR=69, OriSNR=128, TA=31 -163, EPRE=0.0023556233
+[ULDCI FAIL]: Num 2000, No signal det 401
+====================================================== sfn= 849 slot 19 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=34 RbL=239 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=19 BitSize=86040 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=848 slot=19 PUSCH=20004 SNR=68, OriSNR=167, TA=31 16, EPRE=6.5091814995
+[ULDCI FAIL]: Num 2000, No signal det 400
+TZ3 [CRC_IND] RNTI=20005  SFN=899 slot=14 : Num 2000 1529 CrcCorrect 1340
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 900 slot 4 4
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=33!!
+DL CFG NUM=10240, TX REQ NUM=5269, HI REQ NUM=10234, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+====================================================== sfn= 25 slot 3 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=25 slot=3 PUSCH=20030 SNR=64, OriSNR=167, TA=31 19, EPRE=16.1272983551
+[ULDCI FAIL]: Num 2000, No signal det 400
+TZ3 [CRC_IND] RNTI=20004  SFN=84 slot=3 : Num 2000 1969 CrcCorrect 1588
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 84 slot 13 13
+TZ3 [CRC_IND] RNTI=20030  SFN=220 slot=19 : Num 2000 1988 CrcCorrect 1580
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 221 slot 5 5
+TZ3 [CRC_IND] RNTI=20003  SFN=221 slot=13 : Num 2000 1993 CrcCorrect 1563
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20003 for SFN 221 slot 18 18
+====================================================== sfn= 225 slot 8 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=261 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=13 BitSize=60456 posA=0 HARQID=3 RV=0 NDI=1
+TZ 1.sfn=225 slot=8 PUSCH=20005 SNR=33, OriSNR=128, TA=31 82, EPRE=0.0020802894
+[ULDCI FAIL]: Num 2000, No signal det 403
+====================================================== sfn= 425 slot 15 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=267 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=10 BitSize=43032 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=425 slot=15 PUSCH=20005 SNR=50, OriSNR=144, TA=31 12, EPRE=7.7661967278
+[ULDCI FAIL]: Num 2000, No signal det 403
+TZ3 [CRC_IND] RNTI=20005  SFN=497 slot=15 : Num 2000 1479 CrcCorrect 1323
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20005 for SFN 497 slot 18 18
+====================================================== sfn= 625 slot 15 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=625 slot=15 PUSCH=20003 SNR=66, OriSNR=161, TA=31 23, EPRE=5.3840994835
+[ULDCI FAIL]: Num 2000, No signal det 400
+====================================================== sfn= 825 slot 15 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=825 slot=15 PUSCH=20003 SNR=32, OriSNR=128, TA=31 196, EPRE=0.0030820847
+[ULDCI FAIL]: Num 2000, No signal det 409
+TZ3 [CRC_IND] RNTI=20004  SFN=988 slot=5 : Num 2000 1925 CrcCorrect 1575
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 988 slot 13 13
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=34!!
+DL CFG NUM=10240, TX REQ NUM=5306, HI REQ NUM=10230, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=9 TxReqNum=0 Dci0Num=17
+
+====================================================== sfn= 4 slot 5 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=0
+TZ 1.sfn=4 slot=5 PUSCH=20004 SNR=58, OriSNR=156, TA=31 21, EPRE=1.7230497599
+[ULDCI FAIL]: Num 2000, No signal det 420
+TZ3 [CRC_IND] RNTI=20030  SFN=88 slot=13 : Num 2000 1980 CrcCorrect 1648
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 89 slot 3 3
+TZ3 [CRC_IND] RNTI=20005  SFN=100 slot=3 : Num 2000 1474 CrcCorrect 1320
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 100 slot 4 4
+TZ3 [CRC_IND] RNTI=20003  SFN=125 slot=5 : Num 2000 1948 CrcCorrect 1590
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 125 slot 19 19
+====================================================== sfn= 204 slot 5 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=204 slot=5 PUSCH=20030 SNR=68, OriSNR=171, TA=31 14, EPRE=13.3487691879
+[ULDCI FAIL]: Num 2000, No signal det 400
+====================================================== sfn= 404 slot 9 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=404 slot=9 PUSCH=20004 SNR=66, OriSNR=167, TA=31 17, EPRE=8.1936292648
+[ULDCI FAIL]: Num 2000, No signal det 402
+TA=8 0
+[RACH_IND] SFN=470 slot=19 : Num 1 Pream 2 Ind: 470 19 Cur: 471 2
+42 00 08 77 a0 00 4e 43 11 45 
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20035 for SFN 471 slot 15 15
+====================================================== sfn= 609 slot 18 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=17 BitSize=83976 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=609 slot=18 PUSCH=20004 SNR=73, OriSNR=128, TA=31 278, EPRE=0.0018663802
+[ULDCI FAIL]: Num 2000, No signal det 410
+TZ3 [CRC_IND] RNTI=20005  SFN=729 slot=15 : Num 2000 1472 CrcCorrect 1275
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20005 for SFN 729 slot 18 18
+====================================================== sfn= 809 slot 18 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=809 slot=18 PUSCH=20003 SNR=52, OriSNR=128, TA=31 303, EPRE=0.0019821485
+[ULDCI FAIL]: Num 2000, No signal det 400
+TZ3 [CRC_IND] RNTI=20004  SFN=892 slot=3 : Num 2000 1932 CrcCorrect 1575
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 892 slot 4 4
+TZ3 [CRC_IND] RNTI=20030  SFN=948 slot=4 : Num 2000 1972 CrcCorrect 1593
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20030 for SFN 948 slot 8 8
+====================================================== sfn= 1020 slot 3 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=1020 slot=3 PUSCH=20030 SNR=66, OriSNR=160, TA=31 25, EPRE=10.8945178986
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=35!!
+DL CFG NUM=10240, TX REQ NUM=5282, HI REQ NUM=10075, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+[ULDCI FAIL]: Num 2000, No signal det 422
+TZ3 [CRC_IND] RNTI=20003  SFN=62 slot=3 : Num 2000 1960 CrcCorrect 1535
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20003 for SFN 62 slot 14 14
+====================================================== sfn= 198 slot 18 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=268 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=9 BitSize=43032 posA=0 HARQID=2 RV=0 NDI=0
+TZ 1.sfn=198 slot=18 PUSCH=20005 SNR=30, OriSNR=128, TA=31 -75, EPRE=0.0021330833
+[ULDCI FAIL]: Num 2000, No signal det 404
+TZ3 [CRC_IND] RNTI=20005  SFN=340 slot=19 : Num 2000 1581 CrcCorrect 1011
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20005 for SFN 341 slot 9 9
+====================================================== sfn= 405 slot 3 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=268 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=9 BitSize=43032 posA=0 HARQID=2 RV=0 NDI=1
+TZ 1.sfn=405 slot=3 PUSCH=20005 SNR=36, OriSNR=134, TA=31 9, EPRE=3.4691326618
+[ULDCI FAIL]: Num 2000, No signal det 413
+====================================================== sfn= 616 slot 3 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=616 slot=3 PUSCH=20004 SNR=44, OriSNR=163, TA=31 20, EPRE=8.7993688583
+[ULDCI FAIL]: Num 2000, No signal det 422
+TZ3 [CRC_IND] RNTI=20004  SFN=786 slot=14 : Num 2000 1957 CrcCorrect 1478
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 787 slot 4 4
+====================================================== sfn= 828 slot 3 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=828 slot=3 PUSCH=20003 SNR=63, OriSNR=162, TA=31 22, EPRE=3.9069726467
+[ULDCI FAIL]: Num 2000, No signal det 424
+TZ3 [CRC_IND] RNTI=20030  SFN=890 slot=14 : Num 2000 1968 CrcCorrect 1643
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20030 for SFN 890 slot 18 18
+TZ3 [CRC_IND] RNTI=20005  SFN=1012 slot=18 : Num 2000 1473 CrcCorrect 1149
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 1013 slot 5 5
+TZ3 [CRC_IND] RNTI=20003  SFN=1022 slot=13 : Num 2000 1914 CrcCorrect 1553
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 1022 slot 14 14
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=36!!
+DL CFG NUM=10240, TX REQ NUM=5256, HI REQ NUM=9791, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+====================================================== sfn= 18 slot 13 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=4 RbL=260 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=104496 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=18 slot=13 PUSCH=20030 SNR=70, OriSNR=164, TA=31 15, EPRE=13.7215442657
+[ULDCI FAIL]: Num 2000, No signal det 432
+====================================================== sfn= 236 slot 13 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=4 RbL=260 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=104496 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=236 slot=13 PUSCH=20030 SNR=53, OriSNR=166, TA=31 17, EPRE=10.4782104492
+[ULDCI FAIL]: Num 2000, No signal det 432
+====================================================== sfn= 437 slot 8 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=261 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=13 BitSize=60456 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=437 slot=8 PUSCH=20005 SNR=30, OriSNR=128, TA=31 137, EPRE=0.0023263372
+[ULDCI FAIL]: Num 2000, No signal det 401
+====================================================== sfn= 637 slot 15 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=637 slot=15 PUSCH=20003 SNR=68, OriSNR=168, TA=31 12, EPRE=6.6500558853
+[ULDCI FAIL]: Num 2000, No signal det 401
+TZ3 [CRC_IND] RNTI=20005  SFN=675 slot=18 : Num 2000 1466 CrcCorrect 1249
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 676 slot 5 5
+TZ3 [CRC_IND] RNTI=20004  SFN=704 slot=8 : Num 2000 1958 CrcCorrect 1545
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 704 slot 14 14
+TZ3 [CRC_IND] RNTI=20030  SFN=752 slot=18 : Num 2000 1978 CrcCorrect 1555
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 752 slot 19 19
+====================================================== sfn= 838 slot 19 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=34 RbL=239 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=96264 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=837 slot=19 PUSCH=20003 SNR=71, OriSNR=170, TA=31 12, EPRE=16.9130458832
+[ULDCI FAIL]: Num 2000, No signal det 400
+TZ3 [CRC_IND] RNTI=20003  SFN=928 slot=18 : Num 2000 1950 CrcCorrect 1577
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 929 slot 13 13
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=37!!
+DL CFG NUM=10240, TX REQ NUM=5232, HI REQ NUM=10036, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+====================================================== sfn= 14 slot 19 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=34 RbL=239 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=13 BitSize=55304 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=13 slot=19 PUSCH=20005 SNR=60, OriSNR=156, TA=31 16, EPRE=22.7835769653
+[ULDCI FAIL]: Num 2000, No signal det 402
+====================================================== sfn= 214 slot 3 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=4 RbL=267 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=15 BitSize=77896 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=214 slot=3 PUSCH=20005 SNR=52, OriSNR=147, TA=31 27, EPRE=3.1432778835
+[ULDCI FAIL]: Num 2000, No signal det 401
+TZ3 [CRC_IND] RNTI=20005  SFN=268 slot=5 : Num 2000 1492 CrcCorrect 1338
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 268 slot 13 13
+====================================================== sfn= 414 slot 3 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=4 RbL=267 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=15 BitSize=77896 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=414 slot=3 PUSCH=20005 SNR=54, OriSNR=152, TA=31 13, EPRE=5.9381937981
+[ULDCI FAIL]: Num 2000, No signal det 399
+TZ3 [CRC_IND] RNTI=20004  SFN=586 slot=13 : Num 2000 1956 CrcCorrect 1538
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 586 slot 15 15
+TZ3 [CRC_IND] RNTI=20030  SFN=602 slot=9 : Num 2000 1979 CrcCorrect 1643
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 603 slot 4 4
+====================================================== sfn= 614 slot 3 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=614 slot=3 PUSCH=20003 SNR=67, OriSNR=162, TA=31 20, EPRE=3.9138033390
+[ULDCI FAIL]: Num 2000, No signal det 400
+====================================================== sfn= 815 slot 14 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=815 slot=14 PUSCH=20003 SNR=74, OriSNR=163, TA=31 21, EPRE=4.7105813026
+[ULDCI FAIL]: Num 2000, No signal det 403
+TZ3 [CRC_IND] RNTI=20003  SFN=871 slot=8 : Num 2000 1986 CrcCorrect 1636
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20003 for SFN 872 slot 3 3
+TZ3 [CRC_IND] RNTI=20005  SFN=887 slot=9 : Num 2000 1489 CrcCorrect 1343
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 887 slot 14 14
+====================================================== sfn= 1015 slot 18 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=267 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=15 BitSize=77896 posA=0 HARQID=2 RV=0 NDI=0
+TZ 1.sfn=1015 slot=18 PUSCH=20005 SNR=29, OriSNR=128, TA=31 -72, EPRE=0.0023234845
+[ULDCI FAIL]: Num 2000, No signal det 402
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=38!!
+DL CFG NUM=10240, TX REQ NUM=5237, HI REQ NUM=10234, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+====================================================== sfn= 191 slot 18 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=191 slot=18 PUSCH=20004 SNR=69, OriSNR=128, TA=31 -174, EPRE=0.0034815471
+[ULDCI FAIL]: Num 2000, No signal det 400
+====================================================== sfn= 392 slot 19 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=34 RbL=239 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=13 BitSize=55304 posA=0 HARQID=2 RV=0 NDI=1
+TZ 1.sfn=391 slot=19 PUSCH=20005 SNR=59, OriSNR=157, TA=31 20, EPRE=17.0933456421
+[ULDCI FAIL]: Num 2000, No signal det 400
+TZ3 [CRC_IND] RNTI=20030  SFN=434 slot=13 : Num 2000 1982 CrcCorrect 1616
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 434 slot 15 15
+TZ3 [CRC_IND] RNTI=20004  SFN=472 slot=13 : Num 2000 1948 CrcCorrect 1536
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 472 slot 19 19
+TZ3 [CRC_IND] RNTI=20005  SFN=507 slot=13 : Num 2000 1538 CrcCorrect 1369
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20005 for SFN 507 slot 18 18
+====================================================== sfn= 592 slot 19 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=34 RbL=239 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=96264 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=591 slot=19 PUSCH=20030 SNR=71, OriSNR=169, TA=31 17, EPRE=34.7093009949
+[ULDCI FAIL]: Num 2000, No signal det 400
+TZ3 [CRC_IND] RNTI=20003  SFN=771 slot=3 : Num 2000 1972 CrcCorrect 1561
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 771 slot 9 9
+====================================================== sfn= 792 slot 19 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=34 RbL=239 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=13 BitSize=55304 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=791 slot=19 PUSCH=20005 SNR=57, OriSNR=150, TA=31 21, EPRE=13.2797355652
+[ULDCI FAIL]: Num 2000, No signal det 400
+====================================================== sfn= 992 slot 4 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=992 slot=4 PUSCH=20030 SNR=67, OriSNR=167, TA=31 21, EPRE=12.2922830582
+[ULDCI FAIL]: Num 2000, No signal det 400
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=39!!
+DL CFG NUM=10240, TX REQ NUM=5241, HI REQ NUM=10236, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+TZ3 [CRC_IND] RNTI=20005  SFN=118 slot=3 : Num 2000 1511 CrcCorrect 1353
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 118 slot 5 5
+====================================================== sfn= 168 slot 5 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=168 slot=5 PUSCH=20003 SNR=68, OriSNR=165, TA=31 16, EPRE=7.3635134697
+[ULDCI FAIL]: Num 2000, No signal det 402
+TZ3 [CRC_IND] RNTI=20030  SFN=277 slot=4 : Num 2000 1973 CrcCorrect 1584
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 277 slot 5 5
+====================================================== sfn= 368 slot 5 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=368 slot=5 PUSCH=20004 SNR=60, OriSNR=161, TA=31 19, EPRE=1.0163581371
+TZ3 [CRC_IND] RNTI=20004  SFN=372 slot=14 : Num 2000 1967 CrcCorrect 1548
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 373 slot 5 5
+[ULDCI FAIL]: Num 2000, No signal det 400
+====================================================== sfn= 568 slot 5 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=568 slot=5 PUSCH=20004 SNR=64, OriSNR=164, TA=31 21, EPRE=2.5790505409
+[ULDCI FAIL]: Num 2000, No signal det 400
+TZ3 [CRC_IND] RNTI=20003  SFN=629 slot=18 : Num 2000 1967 CrcCorrect 1497
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20003 for SFN 630 slot 8 8
+====================================================== sfn= 768 slot 13 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=4 RbL=260 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=104496 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=768 slot=13 PUSCH=20003 SNR=62, OriSNR=165, TA=31 19, EPRE=7.0746212006
+[ULDCI FAIL]: Num 2000, No signal det 400
+TZ3 [CRC_IND] RNTI=20005  SFN=788 slot=9 : Num 2000 1493 CrcCorrect 1352
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20005 for SFN 788 slot 18 18
+====================================================== sfn= 968 slot 14 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=1 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=408 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=968 slot=14 PUSCH=20003 SNR=54, OriSNR=174, TA=31 24, EPRE=3.9807729721
+[ULDCI FAIL]: Num 2000, No signal det 401
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=40!!
+DL CFG NUM=10240, TX REQ NUM=5231, HI REQ NUM=10236, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+TZ3 [CRC_IND] RNTI=20030  SFN=115 slot=13 : Num 2000 1984 CrcCorrect 1607
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20030 for SFN 115 slot 18 18
+====================================================== sfn= 144 slot 14 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=144 slot=14 PUSCH=20030 SNR=67, OriSNR=171, TA=31 13, EPRE=10.1376895905
+[ULDCI FAIL]: Num 2000, No signal det 400
+TZ3 [CRC_IND] RNTI=20004  SFN=264 slot=14 : Num 2000 1941 CrcCorrect 1573
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20004 for SFN 265 slot 9 9
+====================================================== sfn= 344 slot 15 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=344 slot=15 PUSCH=20030 SNR=68, OriSNR=164, TA=31 16, EPRE=9.9231281281
+[ULDCI FAIL]: Num 2000, No signal det 401
+TZ3 [CRC_IND] RNTI=20005  SFN=385 slot=4 : Num 2000 1481 CrcCorrect 1333
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20005 for SFN 385 slot 18 18
+====================================================== sfn= 544 slot 15 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=544 slot=15 PUSCH=20004 SNR=65, OriSNR=170, TA=31 10, EPRE=3.4655220509
+[ULDCI FAIL]: Num 2000, No signal det 400
+TZ3 [CRC_IND] RNTI=20003  SFN=553 slot=13 : Num 2000 1979 CrcCorrect 1593
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 553 slot 14 14
+====================================================== sfn= 745 slot 19 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=34 RbL=239 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=13 BitSize=55304 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=744 slot=19 PUSCH=20005 SNR=52, OriSNR=141, TA=31 25, EPRE=14.2164773941
+[ULDCI FAIL]: Num 2000, No signal det 400
+====================================================== sfn= 945 slot 3 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=13 BitSize=62504 posA=0 HARQID=1 RV=0 NDI=1
+TZ 1.sfn=945 slot=3 PUSCH=20005 SNR=30, OriSNR=148, TA=31 22, EPRE=5.2441773415
+TZ3 [CRC_IND] RNTI=20030  SFN=946 slot=13 : Num 2000 1976 CrcCorrect 1560
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20030 for SFN 947 slot 3 3
+[ULDCI FAIL]: Num 2000, No signal det 400
+TZ3 [CRC_IND] RNTI=20005  SFN=1005 slot=8 : Num 2000 1483 CrcCorrect 1325
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 1005 slot 9 9
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=41!!
+DL CFG NUM=10240, TX REQ NUM=5229, HI REQ NUM=10236, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+====================================================== sfn= 121 slot 4 Rnti=20007 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=1 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=10 BitSize=152 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=121 slot=4 PUSCH=20007 SNR=30, OriSNR=133, TA=31 23, EPRE=2.8741755486
+[ULDCI FAIL]: Num 2000, No signal det 400
+TZ3 [CRC_IND] RNTI=20004  SFN=166 slot=3 : Num 2000 1972 CrcCorrect 1561
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20004 for SFN 166 slot 8 8
+====================================================== sfn= 321 slot 5 Rnti=20030 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=0 RbL=1 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=408 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=321 slot=5 PUSCH=20030 SNR=56, OriSNR=165, TA=31 28, EPRE=9.4770498276
+[ULDCI FAIL]: Num 2000, No signal det 401
+TZ3 [CRC_IND] RNTI=20003  SFN=502 slot=14 : Num 2000 1973 CrcCorrect 1636
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20003 for SFN 503 slot 9 9
+====================================================== sfn= 521 slot 13 Rnti=20005 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=259 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=15 BitSize=75792 posA=0 HARQID=0 RV=0 NDI=0
+TZ 1.sfn=521 slot=13 PUSCH=20005 SNR=55, OriSNR=152, TA=31 21, EPRE=3.8783438206
+[ULDCI FAIL]: Num 2000, No signal det 400
+TZ3 [CRC_IND] RNTI=20005  SFN=629 slot=13 : Num 2000 1516 CrcCorrect 1356
+TZ1 [CRC_IND]: Num 1 Crc 1 Rnti 20005 for SFN 629 slot 15 15
+TZ3 [CRC_IND] RNTI=20030  SFN=723 slot=9 : Num 2000 1967 CrcCorrect 1451
+TZ1 [CRC_IND]: Num 1 Crc 0 Rnti 20030 for SFN 723 slot 14 14
+====================================================== sfn= 725 slot 3 Rnti=20004 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=725 slot=3 PUSCH=20004 SNR=52, OriSNR=163, TA=31 19, EPRE=3.3483397961
+[ULDCI FAIL]: Num 2000, No signal det 413
+====================================================== sfn= 926 slot 9 Rnti=20003 SymStart=0 SymNum=13 MappingType=0 McsTbl=0 Duration=1
+====================================================== AntNum=4 RbS=3 RbL=270 LNum=1 AddDmrsNum=2 WoDataNum=2 Mod=20 BitSize=108552 posA=0 HARQID=0 RV=0 NDI=1
+TZ 1.sfn=926 slot=9 PUSCH=20003 SNR=67, OriSNR=164, TA=31 18, EPRE=5.3649735451
+[ULDCI FAIL]: Num 2000, No signal det 405
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=42!!
+DL CFG NUM=10240, TX REQ NUM=5294, HI REQ NUM=9892, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=1 TxReqNum=0 Dci0Num=5
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=43!!
+DL CFG NUM=10240, TX REQ NUM=6517, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=44!!
+DL CFG NUM=10240, TX REQ NUM=5796, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=45!!
+DL CFG NUM=10240, TX REQ NUM=1144, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=46!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=47!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=48!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=49!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=50!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=2 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=51!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=52!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=53!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=54!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=3 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=55!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=8 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=56!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=3 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=57!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=58!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=59!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=13 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=60!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=61!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=62!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=5 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=63!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=17 TxReqNum=0 Dci0Num=0
+
+dpdk received FrameIdx = 1024, tickCount=20480 ErrCount=0 TenSecCount=64!!
+DL CFG NUM=10240, TX REQ NUM=1024, HI REQ NUM=0, UL CFG NUM=12288
+[Cfg Delay] DlcfgNum=0 TxReqNum=0 Dci0Num=0
+
+

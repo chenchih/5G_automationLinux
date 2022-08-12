@@ -1,0 +1,7 @@
+$ sshpass -p "My_Server_Password" ssh ubuntu@18.118.208.79
+or
+sshpass -p mypassword ssh username@10.0.0.9 touch foo
+sshpass -ffilename_with_password_in_it ssh user@server uname -a
+
+
+SSHPASS='t@uyM59bQ' sshpass -e ssh -o StrictHostKeyChecking=no vivek@server42.cyberciti.biz
