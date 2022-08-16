@@ -5,3 +5,11 @@ sshpass -ffilename_with_password_in_it ssh user@server uname -a
 
 
 SSHPASS='t@uyM59bQ' sshpass -e ssh -o StrictHostKeyChecking=no vivek@server42.cyberciti.biz
+========
+1. Get last string: ex:TddConfigCommon.PatternType = TDD2, get TDD2 
+
+pattern=`grep -r "TddConfigCommon.PatternType" confChange.txt | awk '{printf $3}'`
+
+
+2. replace TDD2 to other value 
+sed -i "/TddConfigCommon.PatternType = /c\TddConfigCommon.PatternType = TDD2" confChange.txt
