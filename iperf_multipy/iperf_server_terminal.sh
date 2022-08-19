@@ -20,7 +20,7 @@ command="iperf3 -s -i1 -B 192.188.$ip_.22"
 #gnome-terminal --tab -- bash -c "sleep 1s; echo \"command: $command\"; $command $port; exec bash -i"
 
 gnome-terminal --tab -- bash -c "sleep 1s; echo \"command: $command\"; $command; exec bash -i"
-
+#gnome-terminal -e 'bash -c "/folder/script1 2>&1 | tee /tmp/script1.log"'
 #((port=port+1))
 ((ip_=ip_+11))
 done

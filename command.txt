@@ -13,3 +13,29 @@ pattern=`grep -r "TddConfigCommon.PatternType" confChange.txt | awk '{printf $3}
 
 2. replace TDD2 to other value 
 sed -i "/TddConfigCommon.PatternType = /c\TddConfigCommon.PatternType = TDD2" confChange.txt
+
+
+
+====
+run and dump into logfile in same time:
+#!/bin/bash
+(
+  iperf -c 127.0.0.1 -t 10 -i 1 >> iperf.log
+) 2>&1 | tee -a file.log
+
+=====
+iperf
+
+iperf -c localhost -i 1 -t 10 | grep -i --color Gbits/sec
+
+#display bw only
+iperf -c localhost -i 1 -t 10  | grep -Po '[0-9.]*(?= Gbits/sec)'
+===
+open multiply terminal 
+
+dump into logfile in same time
+gnome-terminal -- bash -c  "iperf -s 2>&1 | tee 123.log "
+#many comamnd
+#gnome-terminal --tab -- bash -c "sleep 1s; echo \"command: $command\"; $command; >> testLLog111.txt ;exec bash -i " 
+
+

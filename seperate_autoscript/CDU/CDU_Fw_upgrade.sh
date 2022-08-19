@@ -23,14 +23,5 @@ echo "========Exit:============="
 
 
 
-output:
-root@nrgnb:/home/nrgnb/Desktop/Untitled Folder# ./CDU_Fw_upgrade.sh 
-Please Enter your FW Name(xxx.img): aero_cdu_5.0.5-015.img 
-5.0.5-014.v2
--p Enter to start upgrade
-state= Running, firmware upgrade running
-install target sequence= 2
-state= Success, firmware upgrade success
-start system features.
-========Exit:=============
+
 

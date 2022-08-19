@@ -28,11 +28,15 @@ Under ubuntu server run the script `./menu_regression.sh`
 >> 'sed -i "/TddConfigCommon.PatternType = /c\TddConfigCommon.PatternType = TDD2" confChange.txt'
 
 ### SSH remote 
-#### sshpass (please install sshpass package)
+ssh connect inaxtie mode add 'bash -s'
+> ssh -T test@localhost 'bash -s' <<'EOF'
+
+####  sshpass (please install sshpass package)
 >　$ sshpass -p "My_Server_Password" ssh ubuntu@18.118.208.79
 or
 >  ssh and send command: `sshpass -p mypassword ssh username@10.0.0.9 touch foo`
 > sshpass -ffilename_with_password_in_it ssh user@server uname -a
+
 
 #### ssh with variable 
 
@@ -55,3 +59,25 @@ for A_VAR in $VARS; do
     #echo "Out: $A_VAR"
     newvar=$A_VAR
 ```
+
+#### Iperf command 
+
+- run iperf and export to a file
+```
+run and dump into logfile in same time:
+#!/bin/bash
+(
+  iperf -c 127.0.0.1 -t 10 -i 1 >> iperf.log
+) 2>&1 | tee -a file.log
+
+```
+- parse only Bandwith
+>iperf -c localhost -i 1 -t 10 | grep -i --color Gbits/sec
+> iperf -c localhost -i 1 -t 10  | grep -Po '[0-9.]*(?= Gbits/sec)'
+
+#### multiply termianl 
+- run terminal with export log file 
+> gnome-terminal -- bash -c  "iperf -s 2>&1 | tee 123.log "
+- run terminal tab with multiply command 
+> gnome-terminal --tab -- bash -c "sleep 1s; echo \"command: $command\"; $command; >> testLLog111.txt ;exec bash -i " 
+

@@ -8,3 +8,4 @@ sshpass -p "YOUR_PASSWORD" ssh -o StrictHostKeyChecking=no YOUR_USERNAME@SOME_SI
 # not ask finferprint
 ssh -o StrictHostKeyChecking=no  YOUR_USERNAME@SOME_SITE.COM
 
+gnome-terminal -e 'bash -c "/folder/script1 2>&1 | tee /tmp/script1.log"'
