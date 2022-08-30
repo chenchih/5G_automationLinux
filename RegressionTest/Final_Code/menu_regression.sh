@@ -16,10 +16,11 @@ function pinghost(){
 
 ping -c 1 -t 1 $host > /dev/null
 if [ $? -eq 0 ]; then
-    #echo "ping success";
+    echo "CDU Server OK";
     #ping client SIDE
     ping -c 1 -t 1 $CPEhost > /dev/null 
     if [ $? -eq 0 ]; then
+    echo "CPE Lan Client OK"
     #echo "ping success";
     : #do nothing
     else
@@ -56,7 +57,7 @@ configlocation='/home/test/Desktop/5GScript/confChange.txt'
 resultlocation='/home/test/Desktop/5GScript/'
 
 pattern=$(grep -r "TddConfigCommon.PatternType" $configlocation | awk '{printf $3}')
-echo "===========Login CDU Server============================="
+echo "===========Login CDU Server================="
 #echo "Your current Pattern is:"$pattern 
 if [ "$pattern" == "P1" ]; then 
 	echo "Pattern Already P1"
@@ -132,9 +133,11 @@ EOF
 }
 
 function checkhost(){
+echo -e "\n####Test1: Check Host ######"
 echo "####Test1: Check Host################ " >>$resultFile
 pinghost
 echo "ALl HOST PinG PASS" >>$resultFile
+
 }
 
 function cduresult_merge(){
@@ -194,21 +197,22 @@ mv $resultFile ./result/"$(date +"%Y-%m-%d %H:%M.%S")"
 function menu() {
 while :
 do
-echo "#########"Test v0.5"###############"
+echo " #########RegressionTest v0.5############### "
 echo "1  Pattern:TDD2 IPERF3"
 echo "2  Pattern: P1"
 echo "3  check current pattern"
 echo "4 test iperf"
 echo "q) Exit"
-echo "###########################"
+echo " ########################### "
 read -p "Please enter your Options: " option
 clear
 
 checkhost
+######################Pattern TDD2#############################
 if [ "$option" == "1" ]; then 
 echo -e "\n####Test2: Change Pattern#" 
+TDD2
 echo "####Test2: Change Pattern############" >> $resultFile
-
 #merge cdu result
 cduresult_merge
 echo "cdu ok" 
@@ -222,11 +226,15 @@ sleep 15
 echo "Run Iperf Client ok" >> $resultFile
 #read -p "please enter to continue ... "
 reportcollect
-
 killall iperf3 &>/dev/null
 read -p "please enter to continue ... "
 clear
 
+
+
+
+
+######################Pattern P1#############################
 elif [ "$option" == "2" ]; then
 echo -e "\n####Test2: Change Pattern############ " >> $resultFile
 P1
@@ -240,12 +248,7 @@ echo "Run Iperf Client ok" >> $resultFile
 reportcollect
 killall iperf3 &>/dev/null
 clear
-
-
-
-
-
-
+####################################################
 elif [ "$option" == "3" ]; then
 patternCheck
 read -p "please enter to continue ... "
@@ -262,9 +265,10 @@ exit
 clear 
 
 else
-echo -e "no options found, please enter to retry"
+echo -e " no options found, please enter to retry"
 #break
 fi
+
 done	
 
 }
