@@ -1,9 +1,12 @@
 #!/bin/bash
 # check fw
+
+sshhostname="nrgnb@192.188.4.21"
+
 echo "=========upload file to server SCP====================="
 
-echo -n "enter ip and host name(ex: nrgnb@192.188.4.21 ): "
-read sshhostname
+#echo -n "enter ip and host name(ex: nrgnb@192.188.4.21 ): "
+#read sshhostname
 
 
 echo -n "enter your local file name (source): "
