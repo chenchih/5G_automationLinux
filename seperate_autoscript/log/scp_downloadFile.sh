@@ -7,13 +7,14 @@
 sshhostname="nrgnb@192.188.4.21"
 loglocation="/var/gnb/log/collect/"
 #echo -n "enter your source location: "
-echo -n "enter your logfile name: "
-read sourcePath
+sourcePath=$1
+#echo -n "enter your logfile name: "
+#read sourcePath
 echo -n "enter your destination location: "
 read destinationPath
 
 #echo $sshhostname:$loglocation$sourcePath $destinationPath
-scp $sshhostname:$loglocation$sourcePath $destinationPath
+sshpass -p 'nr@Gnb' scp $sshhostname:$loglocation$sourcePath $destinationPath
 
 #scp $sshhostname:$sourcePath $destinationPath
 #scp nrgnb@192.188.4.21:/home/nrgnb/Desktop/chenchihFile/flow.pcapng .

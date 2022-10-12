@@ -1,8 +1,12 @@
 ## Version
 - v0.1 inital version 
-
+- v0.3 add iperf server and client setting
+- v0.4 merge iperf report  
 ## Description 
 This is an automation script to edit CDU server by SSH 
+This automation uses this language: `linux bash`, and `python3`
+> bash 90% due to the system is linux 
+> python 10% for reading and writting result file
 
 ### Step:
 1. SSH to CDU server ssh username@host 
@@ -60,6 +64,14 @@ for A_VAR in $VARS; do
     newvar=$A_VAR
 ```
 
+- sshpass package
+> sshpass -p `password` ssh -T test@localhost "command"
+>> ex: 
+```
+sshpass -p $password ssh -T -o StrictHostKeyChecking=no test@localhost -- bash <<'EOF'
+sshpass -p $password ssh -T -o StrictHostKeyChecking=no test@localhost "cat /home/test/Desktop/5GScript/resultPattern.txt"
+```
+s
 #### Iperf command 
 
 - run iperf and export to a file
