@@ -14,14 +14,15 @@ output: will be like this: datetime tput => 20221018.234547.824204 0.656478
 
 
 ## Code description:
+### Example1 read elog and parse time and tput value
 
-### Step: 
+#### Step: 
 1. The code will fist search on the keyword
 2. If keyword match it will start to spit the datetime, and TPUT value. 
 3. It will save to list and print it. (You don't have to save in list)
 
 
-### file or log file
+#### 2. file or log file
 - declare empty list and keyword you wants to filter or search
 ```
 givenString = "DL- ingress traffic" #search word in a file
@@ -37,7 +38,7 @@ with open('elog', 'r') as filedata:
 			 
              timeparse(line)
 
-### parse file and get datetime and tput
+#### 3.parse file and get datetime and tput
 Ｉwants to get the date and TPUT value, so I will use `spit` and `strip` method. 
  
 > method 1:
@@ -66,12 +67,36 @@ m = re.search(r"\[([0-9.]+)\]", s)
 print(m.group(1) ) #20221013.162853.788442
 ```
 
-### print two column datetime and tput result from list
+#### 4-1.print two column datetime and tput result from list
 There are many different method you can accomplish it, I just wants to print two column, the time and Tput. 
 I have store all my date into list, so if I just use print list, it will have all bunch of data, so I wish to have newline after date and tput, or two colummn. 
 
+- print
+```
+	cycle = 0
+    for element in result:
+        cycle += 1
+        #print(element, end="")
+        print(element, end=" ")
+        if cycle % 2 == 0:
+            print("")
+```
+- write
+```
+    #checkfile()
+    cycle = 0    
+    #    with open("result.txt", "a+") as f:
+    with open(filename, "a") as f:
+        cycle += 1
+        for element in result:            
+            #print(element+ " ")
+            f.write(element+ " ")           
+        f.write("\n")
+        #f.write()
 
-#### List Comprehensions Or For loop 
+```
+
+#### 4-2 List Comprehensions Or For loop 
 ```
 for i in [result[c:c+2] for c in range(0,len(result)) if c%2 == 0]:
     print(*i) 
@@ -87,7 +112,7 @@ for i in temp:
     print(*i)
 ```
 
-#### using enumerate
+#### 4-3 using enumerate
 ```
 #results = ['A', 'B', 'C', 'D']
 for index, c in enumerate(result):
@@ -95,7 +120,7 @@ for index, c in enumerate(result):
         print(*results[index:index + 2])
 ```
 
-#### using Zip
+#### 4-4 using Zip
 ```
 #results = iter(["A", "B", "C", "D"])
 results = iter(result)
@@ -103,3 +128,4 @@ for i in zip(results, results):
     print(*i)
 ```
 
+### Example2 parse more value (TBD)
