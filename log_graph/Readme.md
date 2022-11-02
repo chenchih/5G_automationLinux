@@ -5,6 +5,7 @@ I am going to develop drawing a graph when reading data.
 ## checklist version 
 - [x] init
 - [x] anlaysic data get datetime and tput value
+- [x] anlaysic data more value
 - [ ] draw graph
 
 ## Step Manual Test 
