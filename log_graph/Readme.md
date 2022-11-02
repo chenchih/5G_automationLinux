@@ -1,78 +1,90 @@
 ## Intro
-I am going to develop drawing a graph when reading data.
- 
+I am going to develop a automation script to analysic the log file, and then transfer to graph. 
 
-## checklist version 
+There will be two script because two different type of parsing keyword:
+- datetime and Tput value
+```
+[20221102.064905.609030][info]:[[40;32m>>> DL- ingress traffic: 555.198792(Mbps), egress traffic: 551.669556(Mbps), ReTx: 0.000000(Mbps)[0m]
+```
+- datetime, tput, other value such as Mcs, RbNum, and etc
+```
+[20221102.064905.609113][info]:[DL- UE[ 0]: Tput=  555.198792 Mbps, Mcs= 26.0(Sigma= 0.0), RbNum= 198.4, ReTxRatio=   0.0, Layers= 4.0, PdschBler=   0.0, nonWPdschBler=   0.0]
+```
+## checklist status 
 - [x] init
 - [x] anlaysic data get datetime and tput value
-- [x] anlaysic data more value
-- [ ] draw graph
+- [ ] anlaysic data more value (process)
+- [ ] draw graph 
 
 ## Step Manual Test 
 1. Please put your log file in this file
-2. run the code : py parsefile.py
+2. run the code : py parsefile.py 
+output: will be like this: datetime tput => 20221018.234547.824204 0.656478
+3. run the code : py parsefile2.py 
 output: will be like this: datetime tput => 20221018.234547.824204 0.656478
 
-
 ## Code description:
-### Example1 read elog and parse time and tput value
+I am going to show you many different way to parse the related value, you can use `regular expression`, or `split method`. 
 
-#### Step: 
+### Step: 
 1. The code will fist search on the keyword
 2. If keyword match it will start to spit the datetime, and TPUT value. 
 3. It will save to list and print it. (You don't have to save in list)
 
-
-#### 2. file or log file
-- declare empty list and keyword you wants to filter or search
+### main code
+- file or log file: 
+>　declare empty list and keyword you wants to filter or search
 ```
 givenString = "DL- ingress traffic" #search word in a file
 result = [] #empty list to store result
 ```
-- read log file 
+- read log file
+```
 with open('elog', 'r') as filedata:
     for line in filedata:   
         if givenString in line:
-
-             # Print the line, if the given string is found in the current line
-             #print(line)
-			 
-             timeparse(line)
-
-#### 3.parse file and get datetime and tput
-Ｉwants to get the date and TPUT value, so I will use `spit` and `strip` method. 
- 
-> method 1:
-`spit`: Spit what I wants
-`strip`: after spit, remove the empty space if there are
+            # Print the line, if the given string is found in the current line
+            #print(line)
+            timeparse(line)
+```
+### Example1 read elog and parse time and tput value
+file: `parsefile.py`
+#### 1. parse keyword dateitme and tput value
+##### method 1: using spit to spit timedate and tput value
+Ｉwants to get the date and TPUT value, so I will use `spit` and `strip` method.
+- `spit`: Spit what I wants
+- `strip`: after spit, remove the empty space if there are
 
 ```
 datestr = data.split('[', 1)[1].split(']')[0]
 Tput = data.split(" DL- ingress traffic:", 1)[1].split(',')[0].split('(')[0].strip()
 ```
->Note: There are two option you can print or save to list and print list 
+> Note: There are two option you can print or save to list and print list 
 ```
-#save data to list
+#save data to list (result)
 result.append(datestr)
 result.append(Tput)
-
 # print 
 print(datestr, Tput) 
 ```
-> method 2: regular expression get the date data only
-I only show how to get date information
+##### method 2: regular expression get the date data only
+using regular expression to parse the keyword, so `import re`
 ```
 import re
 s = "list[20221013.162853.788442]"
 m = re.search(r"\[([0-9.]+)\]", s)
 print(m.group(1) ) #20221013.162853.788442
 ```
-
-#### 4-1.print two column datetime and tput result from list
-There are many different method you can accomplish it, I just wants to print two column, the time and Tput. 
-I have store all my date into list, so if I just use print list, it will have all bunch of data, so I wish to have newline after date and tput, or two colummn. 
-
-- print
+### 2. print and write the result into a file
+ There are many different method you can accomplish it, i will show you print and write into a file method. 
+ > basic way to write or print
+ > use `list Comprehensions` with `*unpack` list 
+ > enumerate
+  > zip method
+ 
+#### Method 1 print two column datetime and tput result from list
+- Print two column, the datetime and Tput value. 
+- I have store all my datetime, and Tput into list, so if I just use print list, it will have all bunch of data, so I wish to have newline after date and tput, or two colummn. 
 ```
 	cycle = 0
     for element in result:
@@ -82,7 +94,7 @@ I have store all my date into list, so if I just use print list, it will have al
         if cycle % 2 == 0:
             print("")
 ```
-- write
+#### Method 2 write into file basic way
 ```
     #checkfile()
     cycle = 0    
@@ -94,10 +106,9 @@ I have store all my date into list, so if I just use print list, it will have al
             f.write(element+ " ")           
         f.write("\n")
         #f.write()
-
 ```
 
-#### 4-2 List Comprehensions Or For loop 
+#### Method 3 using List Comprehensions Or For loop  to print
 ```
 for i in [result[c:c+2] for c in range(0,len(result)) if c%2 == 0]:
     print(*i) 
@@ -108,25 +119,27 @@ temp = []
 for c in range(0, len(result)):
     if c % 2 == 0:
         temp.append(result[c:c+2])
-
 for i in temp:
     print(*i)
 ```
 
-#### 4-3 using enumerate
+#### Method 4 using enumerate to write and print
 ```
 #results = ['A', 'B', 'C', 'D']
-for index, c in enumerate(result):
-    if index % 2 == 0:
-        print(*results[index:index + 2])
+with open('result.txt', 'a') as output:
+    for index, c in enumerate(result):
+        if index % 2 == 0:
+            #print(*results[index:index + 2])
+            print(*result[index:index + 2], file=output)
 ```
-
-#### 4-4 using Zip
+#### Method 5 using Zip to write and print
 ```
 #results = iter(["A", "B", "C", "D"])
 results = iter(result)
-for i in zip(results, results):
-    print(*i)
+with open('result.txt', 'a') as output:
+    for i in zip(results, results):
+        #print(*i)
+        print(*i, file=output)
 ```
-
-### Example2 parse more value (TBD)
+### Example2 read elog and parse other value (ongoing)
+file: `parsefile_2.py`
