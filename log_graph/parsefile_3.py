@@ -2,26 +2,39 @@ import os, re
 givenString = "DL- UE"
 #givenString = "DL- UE"
 result = []
+result2 = []
 filename="result.txt"
 
 def checkfile():
     if os.path.exists("result.txt"):
         print("file exist, delete file")
         os.remove("result.txt")
+def getelement(li, element):
+    ind = li.index(element)
+    return li[ind+1]
 
 def parse(data):       
     datestr = data.split('[', 1)[1].split(']')[0]
-    search=re.findall(r"[0-9]*\.[0-9]+", data)
+    search = re.search(r'\[(\d+\.\d+\.\d+)\].*?(Mcs=+)*?(Tput=[^]]+)', data)
+    m3New= re.sub("[\(\[].*?[\)\]]", "",search.group(3)).replace(',','').strip().split()
+
+    #search=re.findall(r"[0-9]*\.[0-9]+", data)
     #print(f"datetime: {datestr} TPUT: {search[2]} MCS: {search[3]} RbNum: {search[4]}, ReTxRatio: {search[5]}")
     #print(search[2])
+    #result.append(search[2])
+    #result.append(search[3])
     
     result.clear()
     result.append(datestr)    
-    result.append(search[2])
-    result.append(search[3])
-    print(result)
-    listprint() #write file =>ok
-    #listprint2() #print =>ok
+    #print(getelement(m3New, 'Tput='),' ', getelement(m3New, 'RbNum='), '', getelement(m3New, 'Mcs='))
+    result.append(getelement(m3New, 'Tput='))
+    result.append(getelement(m3New, 'RbNum='))
+    result.append(getelement(m3New, 'Mcs='))
+
+  
+    #print(result)
+    #listprint() #write file =>ok
+    listprint2() #print =>ok
     #listprint_Method2()  # write file =>ok
     #listprint_Method3() #write file =>ok
     #listprint_Method4()
@@ -41,7 +54,7 @@ def timeparse(data):
     result.append(datestr)    
     result.append(Tput)
    
-    print(result)
+    #print(result)
     #listprint() #write file =>ok
     #listprint2() #print =>ok
     #listprint_Method2()  # write file =>ok
@@ -54,6 +67,7 @@ def listprint():
     cycle = 0    
     #    with open("result.txt", "a+") as f:
     with open(filename, "a") as f:
+        
         cycle += 1
         for element in result:            
             #print(element+ " ")
@@ -70,7 +84,7 @@ def listprint2():
         #print(element, end="")
 
         print(element, end=" ")
-        if cycle % 3 == 0:
+        if cycle % 4 == 0:
             print("")
 
 def listprint_Method2():
@@ -122,11 +136,12 @@ def writefile():
         f.write(("datettime \t Tput"+ " "*3+ "MCS\n").expandtabs(24))
         f.write("="*50+"\n")
 
+
     
 ###################################    
     # MAIN SCRIPT    
 ###################################
-writefile()
+#writefile()
 #with open('elog', 'r') as filedata:
 #print ("datettime  \t \t Tput  MCS")
 #print ("="*50)
@@ -135,9 +150,14 @@ with open('elogshort', 'r') as filedata:
         if givenString in line:
 
              # Print the line, if the given string is found in the current line
-            #print(line.strip())
+             #print(line.strip())
              #timeparse(line)
              parse(line)
 #print list value
 print ("="*30)
+
+#test()
+
+for i in result:
+    print(i)
 #print(result)
