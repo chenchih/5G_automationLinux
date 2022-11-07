@@ -53,7 +53,7 @@ Note:
 
 
 
-![img/example1.PNG] 
+!(img/example1.PNG)
 
 ### Example 2: 
 yiu have to enter your elog name, and search keyword. In this sample will parse many more detail value
@@ -63,7 +63,7 @@ enter search keyword: uplink or downlink
 
 Step2: ./excel.py 
 
-![img/example2.PNG] 
+!(img/example2.PNG)
 
 ## Code description:
 I am going to show you many different way to parse the related value, you can use `regular expression`, or `split method`. 
