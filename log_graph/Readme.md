@@ -13,8 +13,16 @@ There will be two script because two different type of parsing keyword:
 ## checklist status 
 - [x] init
 - [x] anlaysic data get datetime and tput value
-- [ ] anlaysic data more value (process)
+- [X ] anlaysic data more value
 - [ ] draw graph 
+
+## Update
+- 202210: update example 1 and example intial code
+- 20221117 update example2 script 
+	- add write to text better format
+	- write text to excel file
+	- let user enter their elog filename and save result name
+
 
 ## Step Manual Test 
 1. Please put your log file in this file
@@ -23,8 +31,25 @@ output: will be like this: datetime tput => 20221018.234547.824204 0.656478
 3. run the code : py parsefile2.py 
 output: will be like this: datetime tput => 20221018.234547.824204 0.656478
 
+## How to run 
+### Example 1:
+will elog and result is hotcode, if you wants yo chnaged please modidy it. 
+Step1: ./parsefile.py
+Step2: ./excel.py to convert from result.txt to excel 
+
+Note: 
+- Change your elog: 'with open('elog', 'r') as filedata:' change the elog to your elog filename
+- don't want to print please comment this part: 'listprint2()'
+- 
+
+### Example 2: 
+
+
 ## Code description:
 I am going to show you many different way to parse the related value, you can use `regular expression`, or `split method`. 
+There are two example in this code
+
+![title](img/screenshot.PNG)
 
 ### Step: 
 1. The code will fist search on the keyword
@@ -143,3 +168,4 @@ with open('result.txt', 'a') as output:
 ```
 ### Example2 read elog and parse other value (ongoing)
 file: `parsefile_2.py`
+

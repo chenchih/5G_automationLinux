@@ -25,7 +25,7 @@ def timeparse(data):
    
     #print(result)
     #listprint() #write file =>ok
-    #listprint2() #print =>ok
+    listprint2() #print =>ok
     #listprint_Method2()  # write file =>ok
     #listprint_Method3() #write file =>ok
     listprint_Method4()
@@ -95,17 +95,29 @@ def listprint_Method4():
         for i in zip(results, results):
             print(*i, file=output)
              #file=output
+
+def writefile():
+    checkfile()
+    with open(filename, 'a') as f:
+        bar="#"*10
+        f.write(("datettime \t Tput  \n").expandtabs(22))
+
+
+        #f.write("="*50+"\n")
+        #f.write(bar+ '\t' +'\t' +'\t'+'\t'+ bar + " "+ bar + " "+ bar+"\n")
+
+
 ###################################    
     # MAIN SCRIPT    
 ###################################
-checkfile()
+writefile()
 with open('elog', 'r') as filedata:
     for line in filedata:   
         if givenString in line:
 
              # Print the line, if the given string is found in the current line
-             print(line.strip())
-             #timeparse(line)
+             #print(line.strip())
+             timeparse(line)
 #print list value
 print ("="*30)
 #print(result)

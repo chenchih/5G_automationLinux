@@ -1,0 +1,2 @@
+parsefile.py:  DL- ingress traffic or UL- ingress traffic
+parsefile_2.py: UL- UE or DL- UE
