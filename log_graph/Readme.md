@@ -62,7 +62,6 @@ enter elog file name:
 enter search keyword: uplink or downlink
 
 Step2: ./excel.py 
-
 !(img/example2.PNG)
 
 ## Code description:
