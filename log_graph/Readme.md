@@ -13,7 +13,7 @@ There will be two script because two different type of parsing keyword:
 ## checklist status 
 - [x] init
 - [x] anlaysic data get datetime and tput value
-- [X ] anlaysic data more value
+- [x] anlaysic data more value
 - [ ] draw graph 
 
 ## Update
@@ -32,18 +32,38 @@ output: will be like this: datetime tput => 20221018.234547.824204 0.656478
 output: will be like this: datetime tput => 20221018.234547.824204 0.656478
 
 ## How to run 
+Modify code
+You can decide write or print as below function:
+    > listprint() #write file =>ok
+    > listprint2() #print =>ok
+    > listprint_Method2()  # write file =>ok
+    > listprint_Method3() #write file =>ok
+    > listprint_Method4()
+
 ### Example 1:
+
 will elog and result is hotcode, if you wants yo chnaged please modidy it. 
 Step1: ./parsefile.py
 Step2: ./excel.py to convert from result.txt to excel 
-
+givenString = "DL- ingress traffic"
 Note: 
 - Change your elog: 'with open('elog', 'r') as filedata:' change the elog to your elog filename
+- change string to find : 'givenString = "DL- ingress traffic"'
 - don't want to print please comment this part: 'listprint2()'
-- 
+
+
+
+![img/example1.PNG] 
 
 ### Example 2: 
+yiu have to enter your elog name, and search keyword. In this sample will parse many more detail value
+Step1: ./parsefile_2.py
+enter elog file name:
+enter search keyword: uplink or downlink
 
+Step2: ./excel.py 
+
+![img/example2.PNG] 
 
 ## Code description:
 I am going to show you many different way to parse the related value, you can use `regular expression`, or `split method`. 
