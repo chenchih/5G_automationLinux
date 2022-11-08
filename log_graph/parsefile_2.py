@@ -5,9 +5,9 @@ elogfileName= input("Please enter your elog FileName:")
 #givenString = "DL- UE"
 #givenString = "DL- UE"
 givenString = input("Please enter your search(Ex: DL- UE or UL- UE):")
+
+filename=f"result-{datetime.now():%Y-%m-%d %H-%M-%S}.txt"
 result = []
-
-
 
 def checkfile():
     if os.path.exists(filename):
@@ -36,6 +36,22 @@ def parse(data):
 
 
     result.clear()
+
+
+    #givenString = input("Please enter your search(Ex: DL- UE or UL- UE):")
+
+    bler1=""
+    bler2=""
+    if givenString in 'DL- UE':
+        bler1="PdschBler="
+        bler2="nonWPdschBler="
+    elif givenString in 'UL- UE':
+        bler1="PuschBler="
+        bler2="nonWPuschBler="
+    else: 
+        print("bler1Not found string")
+
+
     
     result.append(datestr)    
     #print(getelement(m3New, 'Tput='),' ', getelement(m3New, 'RbNum='), '', getelement(m3New, 'Mcs='))
@@ -44,13 +60,21 @@ def parse(data):
     result.append(getelement(m3New, 'Tput='))
     result.append(getelement(m3New, 'RbNum='))
     result.append(getelement(m3New, 'Mcs='))
-    result.append(getelement(m3New, 'PdschBler='))
-    result.append(getelement(m3New, 'nonWPdschBler='))
+    result.append(getelement(m3New, bler1))
+    result.append(getelement(m3New, bler2))
 
+    #DL
+    #result.append(getelement(m3New, 'PdschBler='))
+    #result.append(getelement(m3New, 'nonWPdschBler='))
+
+    #UL
+    #result.append(getelement(m3New, 'PuschBler='))
+    #result.append(getelement(m3New, 'nonWPuschBler='))
+                                     
   
     #print(result)
     listprint() #write file =>ok
-    listprint2() #print =>ok
+    #listprint2() #print =>ok
     #listprint_Method2()  # write file =>ok
     #listprint_Method3() #write file =>ok
     #listprint_Method4()
@@ -157,9 +181,9 @@ def writefile():
 ###################################
 
 
-filename=f"result-{datetime.now():%Y-%m-%d %H-%m-%d}.txt"
-#filename="result.txt"
 
+
+#filename="result.txt"
 writefile()
 #with open('elog', 'r') as filedata:
 #print ("datettime  \t \t Tput  MCS")

@@ -16,11 +16,16 @@ def excelconvertMAC(result):
         list123 = []
         #list123 = line.split(sep=' ')  # convert,
         list123 = line.split()  # convert,
+        #print(type(list123[1]))
         #print(list123)
         for i in range(0, len(list123)):  # remove space
             list123[i] = list123[i].strip('\n')
-            # print(list[i])
+
+   
+      
         sheet[0].append(list123)  # write into excel
+        
+        #print(sheet[0])
         # sheet[0].column_dimensions.width = 20
 
 #adjust the column width 
@@ -53,5 +58,6 @@ def excelconvertMAC(result):
 
 
     excel.save('result.xlsx')
-resultfilename=input("please enter your report txt file name: ")
+#resultfilename=input("please enter your report txt file name: ")
+resultfilename="result.txt"
 excelconvertMAC(resultfilename)

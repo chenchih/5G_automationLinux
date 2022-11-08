@@ -22,6 +22,8 @@ There will be two script because two different type of parsing keyword:
 	- add write to text better format
 	- write text to excel file
 	- let user enter their elog filename and save result name
+- 20221118: update parsefile2.py UL and DL search string different, fix this problem
+	- check string is UL or DL and assign bler1 and bler2 with correct string
 
 
 ## Step Manual Test 
@@ -53,7 +55,7 @@ Note:
 
 
 
-!(img/example1.PNG)
+![](img/example1.PNG)
 
 ### Example 2: 
 yiu have to enter your elog name, and search keyword. In this sample will parse many more detail value
@@ -62,7 +64,7 @@ enter elog file name:
 enter search keyword: uplink or downlink
 
 Step2: ./excel.py 
-!(img/example2.PNG)
+![](img/example2.PNG)
 
 ## Code description:
 I am going to show you many different way to parse the related value, you can use `regular expression`, or `split method`. 
