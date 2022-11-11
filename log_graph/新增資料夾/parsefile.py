@@ -8,11 +8,11 @@ def checkfile():
     if os.path.exists("result.txt"):
         print("file exist, delete file")
         os.remove("result.txt")
-
        
 def timeparse(data):
     datestr = data.split('[', 1)[1].split(']')[0]
-    Tput = data.split(" DL- ingress traffic:", 1)[1].split(',')[0].split('(')[0].strip()
+    Tput = data.split(" DL- egress traffic:", 1)[1].split(',')[0].split('(')[0].strip()
+   
     '''   
     with open("result.txt", "a+") as f:
     #with open("result.txt", "w") as f:
@@ -112,7 +112,7 @@ def writefile():
     # MAIN SCRIPT    
 ###################################
 writefile()
-with open('elog_gnb_cu_pdcp.0.20221109.155113.741593', 'r') as filedata:
+with open('elog_gnb_cu_pdcp.0.20221110.112127.316777', 'r') as filedata:
     for line in filedata:   
         if givenString in line:
 

@@ -1,5 +1,6 @@
 import os
-givenString = "DL- ingress traffic"
+import re
+givenString = "PDCP DL"
 #givenString = "DL- UE"
 result = []
 filename="result.txt"
@@ -9,10 +10,18 @@ def checkfile():
         print("file exist, delete file")
         os.remove("result.txt")
 
-       
+def getelement(li, element):
+    ind = li.index(element)
+    return li[ind+1]
+    
 def timeparse(data):
     datestr = data.split('[', 1)[1].split(']')[0]
-    Tput = data.split(" DL- ingress traffic:", 1)[1].split(',')[0].split('(')[0].strip()
+    #search = re.search(r'\[(\d+\.\d+\.\d+)\].*?(DL-[^]]+)', data)
+    #search = re.search(r'\[(\d+\.\d+\.\d+)\].*?(DL-[^]]+)', data)
+    search = re.findall(r'^\[([\d\.]+).+ingress traffic: ([\d\.]+).+egress traffic: ([\d\.]+).+.', data)
+    print(search)
+    #m3New= re.sub("[\(\[].*?[\)\]]", "",search.group(2)).replace(',','').strip().split()
+    #Tput = data.split(" DL- ingress traffic:", 1)[1].split(',')[0].split('(')[0].strip()
     '''   
     with open("result.txt", "a+") as f:
     #with open("result.txt", "w") as f:
@@ -21,15 +30,20 @@ def timeparse(data):
 '''
     #with list
     result.clear()
-    result.append(datestr)    
-    result.append(Tput)
+    result.append(search)   
+    #print(result)
+    #result.append(getelement(m3New, 'ingress traffic'))
+    #result.append(getelement(m3New, 'egress traffic:'))
+
+    #result.append(Tput)
+   
    
     #print(result)
     #listprint() #write file =>ok
-    listprint2() #print =>ok
+    #listprint2() #print =>ok
     #listprint_Method2()  # write file =>ok
     #listprint_Method3() #write file =>ok
-    listprint_Method4()
+    #listprint_Method4()
     
 #write to file
 def listprint():
@@ -111,8 +125,9 @@ def writefile():
 ###################################    
     # MAIN SCRIPT    
 ###################################
+filename="elog_gnb_cu_pdcp.0.20221110.112127.316777"
 writefile()
-with open('elog_gnb_cu_pdcp.0.20221109.155113.741593', 'r') as filedata:
+with open(filename, 'r') as filedata:
     for line in filedata:   
         if givenString in line:
 
