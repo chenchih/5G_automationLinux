@@ -16,31 +16,32 @@ def getelement(li, element):
     
 def timeparse(data):
     datestr = data.split('[', 1)[1].split(']')[0]
-    #search = re.search(r'\[(\d+\.\d+\.\d+)\].*?(DL-[^]]+)', data)
-    #search = re.search(r'\[(\d+\.\d+\.\d+)\].*?(DL-[^]]+)', data)
-    search = re.findall(r'^\[([\d\.]+).+ingress traffic: ([\d\.]+).+egress traffic: ([\d\.]+).+.', data)
-    print(search)
-    #m3New= re.sub("[\(\[].*?[\)\]]", "",search.group(2)).replace(',','').strip().split()
-    #Tput = data.split(" DL- ingress traffic:", 1)[1].split(',')[0].split('(')[0].strip()
-    '''   
-    with open("result.txt", "a+") as f:
-    #with open("result.txt", "w") as f:
-        for i in result:
-            f.write(datestr +" "+Tput +"\n") 
-'''
+       
+    #search = re.findall(r'^\[([\d\.]+).+ingress traffic: ([\d\.]+).+egress traffic: ([\d\.]+).+.', data)
+    searchtest=re.search(r'(ingress [^(]+).+(egress [^(]+)',data)
+    m3New= searchtest.group(1)+", "+ searchtest.group(2) 
+    m3New_1=m3New.replace(", ", ":").strip().split(':')
+    
+    #print(getelement(m3New_1, 'ingress traffic').strip())
+    #print(getelement(m3New, 'ingress traffic'))
+
+
+
+
     #with list
-    result.clear()
-    result.append(search)   
+    #result.clear()
+    #result.append(m3New)   
     #print(result)
-    #result.append(getelement(m3New, 'ingress traffic'))
-    #result.append(getelement(m3New, 'egress traffic:'))
+    result.append(datestr)  
+    result.append(getelement(m3New_1, 'ingress traffic').strip())    
+    result.append(getelement(m3New_1, 'egress traffic').strip())
 
     #result.append(Tput)
    
    
     #print(result)
     #listprint() #write file =>ok
-    #listprint2() #print =>ok
+    listprint2() #print =>ok
     #listprint_Method2()  # write file =>ok
     #listprint_Method3() #write file =>ok
     #listprint_Method4()
@@ -65,7 +66,7 @@ def listprint2():
         cycle += 1
         #print(element, end="")
         print(element, end=" ")
-        if cycle % 2 == 0:
+        if cycle % 3 == 0:
             print("")
 
 def listprint_Method2():

@@ -37,5 +37,5 @@ dump into logfile in same time
 gnome-terminal -- bash -c  "iperf -s 2>&1 | tee 123.log "
 #many comamnd
 #gnome-terminal --tab -- bash -c "sleep 1s; echo \"command: $command\"; $command; >> testLLog111.txt ;exec bash -i " 
-
-
+#gnome-terminal -- bash -c 'sshpass -p 123456 ssh -t '$hostiperf' "iperf3 -c 127.0.0.1 -t 10;exec bash"'
+gnome-terminal -- bash -c  "iperf3 -s  2>&1 | tee iperf3.txt"
