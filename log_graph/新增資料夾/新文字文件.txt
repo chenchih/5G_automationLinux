@@ -1,6 +1,0 @@
-with open(src, "r") as src:
-    # First line is column headings
-    line = next(src).split()
-    sheet.append(line)
-    # Next line is thrown away
-    next(src)

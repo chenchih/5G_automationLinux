@@ -170,7 +170,7 @@ def writefile():
     checkfile()
     with open(filename, 'a') as f:
         bar="#"*10
-        f.write(("datettime \t Tput"+ " "*3+ "RbNum " + "MCS "+"PdschBler " +"nonWPdschBler\n").expandtabs(22))
+        f.write(("datettime \t Tput"+ " "*3+ "RbNum " + "MCS "+"Bler " +"nonWdBler\n").expandtabs(22))
 
 
         #f.write("="*50+"\n")

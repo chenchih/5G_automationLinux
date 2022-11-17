@@ -4,11 +4,10 @@ givenString = "PDCP DL"
 #givenString = "DL- UE"
 result = []
 filename="result.txt"
-
 def checkfile():
     if os.path.exists("result.txt"):
         print("file exist, delete file")
-        os.remove("result.txt")
+        os.remove(filename)
 
 def getelement(li, element):
     ind = li.index(element)
@@ -29,7 +28,7 @@ def timeparse(data):
 
 
     #with list
-    #result.clear()
+    result.clear()
     #result.append(m3New)   
     #print(result)
     result.append(datestr)  
@@ -40,24 +39,25 @@ def timeparse(data):
    
    
     #print(result)
-    #listprint() #write file =>ok
-    listprint2() #print =>ok
+    listprint() #write file =>ok
+    #listprint2() #print =>ok
     #listprint_Method2()  # write file =>ok
     #listprint_Method3() #write file =>ok
     #listprint_Method4()
     
 #write to file
 def listprint():
+    
     #checkfile()
     cycle = 0    
     #    with open("result.txt", "a+") as f:
-    with open(filename, "a") as f:
+    with open(filename, "a+") as f:
         cycle += 1
         for element in result:            
             #print(element+ " ")
             f.write(element+ " ")           
         f.write("\n")
-        #f.write()
+            #f.write()
 
 #print
 def listprint2():
@@ -78,7 +78,7 @@ def listprint_Method2():
 
     temp = []
     for c in range(0, len(result)):
-        if c % 2 == 0:
+        if c % 3 == 0:
             temp.append(result[c:c+2])   
     #for i in temp:
     #    print(*i)        
@@ -116,19 +116,19 @@ def writefile():
     checkfile()
     with open(filename, 'a') as f:
         bar="#"*10
-        f.write(("datettime \t Tput  \n").expandtabs(22))
-
+        #f.write(("datettime \t Tput  \n").expandtabs(22))
+        f.write(("datettime ingress-traffic egress-traffic \n"))
 
         #f.write("="*50+"\n")
-        #f.write(bar+ '\t' +'\t' +'\t'+'\t'+ bar + " "+ bar + " "+ bar+"\n")
+
 
 
 ###################################    
     # MAIN SCRIPT    
 ###################################
-filename="elog_gnb_cu_pdcp.0.20221110.112127.316777"
+elogfile="elog_gnb_cu_pdcp.0.20221110.112127.316777"
 writefile()
-with open(filename, 'r') as filedata:
+with open(elogfile, 'r') as filedata:
     for line in filedata:   
         if givenString in line:
 
@@ -137,4 +137,4 @@ with open(filename, 'r') as filedata:
              timeparse(line)
 #print list value
 print ("="*30)
-#print(result)
+
