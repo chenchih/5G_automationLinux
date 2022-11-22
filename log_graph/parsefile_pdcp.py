@@ -1,7 +1,6 @@
 import os
 import re
-givenString = "PDCP DL"
-#givenString = "DL- UE"
+
 result = []
 filename="result.txt"
 def checkfile():
@@ -126,7 +125,20 @@ def writefile():
 ###################################    
     # MAIN SCRIPT    
 ###################################
-elogfile="elog_gnb_cu_pdcp.0.20221110.112127.316777"
+#elogfile="elog_gnb_cu_pdcp.0.20221121.173906.228825"
+elogfile=input("enter elog: ")
+givenString=input("enter UL or DL: ")
+if givenString in 'UL':
+    givenString="PDCP UL"
+elif givenString in 'DL':
+    givenString = "PDCP DL"
+else:
+    print("Not found")
+
+    
+#givenString = "PDCP DL"
+#givenString = "DL- UE"
+
 writefile()
 with open(elogfile, 'r') as filedata:
     for line in filedata:   

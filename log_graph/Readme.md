@@ -24,8 +24,11 @@ There will be two script because two different type of parsing keyword:
 	- let user enter their elog filename and save result name
 - 20221118: update parsefile2.py UL and DL search string different, fix this problem
 	- check string is UL or DL and assign bler1 and bler2 with correct string
-
-
+- 20221119: add parsefile_pdcp.py 
+- 20221122: update parsefile2.py, add excel_pandas.py
+	- parsefile2.py : givenstring change more condition
+	-  excel_pandas: adding convert text to excel using pandas
+	- parsefile_pdcp.py: update let user enter logfile and givenstring 
 ## Step Manual Test 
 1. Please put your log file in this file
 2. run the code : py parsefile.py 

@@ -4,7 +4,7 @@ elogfileName= input("Please enter your elog FileName:")
 #elogfileName='elog'
 #givenString = "DL- UE"
 #givenString = "DL- UE"
-givenString = input("Please enter your search(Ex: DL- UE or UL- UE):")
+givenString = input("Please enter your search(Ex: DL- UE or UL- UE or UL- UE[ 0]:):")
 
 filename=f"result-{datetime.now():%Y-%m-%d %H-%M-%S}.txt"
 result = []
@@ -16,14 +16,18 @@ def checkfile():
 def getelement(li, element):
     ind = li.index(element)
     return li[ind+1]
+    
 
-def parse(data):       
+def parse(data):    
+    
     #get the time
     datestr = data.split('[', 1)[1].split(']')[0]
+    
     #split from tput
     #[20221018.170247.411259][info]:[DL- UE[17]: Tput=
     #search = re.search(r'\[(\d+\.\d+\.\d+)\].*?(Mcs=+)*?(Tput=[^]]+)', data)
     search = re.search(r'\[(\d+\.\d+\.\d+)\].*?(Tput=[^]]+)', data)
+    #print(search.group(2))
     #remove () and comma after value
     m3New= re.sub("[\(\[].*?[\)\]]", "",search.group(2)).replace(',','').strip().split()
 
@@ -39,17 +43,18 @@ def parse(data):
 
 
     #givenString = input("Please enter your search(Ex: DL- UE or UL- UE):")
-
+    #print(givenString)
     bler1=""
     bler2=""
-    if givenString in 'DL- UE':
+    
+    if givenString in 'DL- UE' or 'DL- UE' in givenString :
         bler1="PdschBler="
         bler2="nonWPdschBler="
-    elif givenString in 'UL- UE':
+    elif givenString in 'UL- UE' or 'UL- UE' in givenString :
         bler1="PuschBler="
         bler2="nonWPuschBler="
     else: 
-        print("bler1Not found string")
+        print("givenString Not found string")
 
 
     
@@ -73,9 +78,9 @@ def parse(data):
                                      
   
     #print(result)
-    listprint() #write file =>ok
+    #listprint() #write file =>ok
     #listprint2() #print =>ok
-    #listprint_Method2()  # write file =>ok
+    listprint_Method2()  # write file =>ok
     #listprint_Method3() #write file =>ok
     #listprint_Method4()
     
@@ -95,9 +100,10 @@ def timeparse(data):
     result.append(Tput)
    
     #print(result)
-    listprint() #write file =>ok
-    listprint2() #print =>ok
-    #listprint_Method2()  # write file =>ok
+    #listprint() #write file =>ok
+    #listprint2() #print =>ok
+    listprint_Method2()  # write file =>ok
+    
     #listprint_Method3() #write file =>ok
     #listprint_Method4()
     
@@ -134,9 +140,12 @@ def listprint_Method2():
        
     #####method1-2 normal for loop
     temp = []
+
     for c in range(0, len(result)):
-        if c % 2 == 0:
-            temp.append(result[c:c+2])   
+        if c % 6 == 0:
+            temp.append(result[c:c+6])   
+        #print(*i) 
+  
     #for i in temp:
     #    print(*i)        
     #temp is two array
@@ -184,7 +193,10 @@ def writefile():
 
 
 #filename="result.txt"
+
 writefile()
+
+
 #with open('elog', 'r') as filedata:
 #print ("datettime  \t \t Tput  MCS")
 #print ("="*50)
@@ -194,10 +206,12 @@ writefile()
 with open(elogfileName, 'r') as filedata:
     for line in filedata:   
         if givenString in line:
-
+            
              # Print the line, if the given string is found in the current line
              #print(line.strip())
              #timeparse(line)
+             
              parse(line)
+             
 #print list value
 print ("="*30)
