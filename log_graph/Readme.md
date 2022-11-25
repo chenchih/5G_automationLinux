@@ -29,6 +29,7 @@ There will be two script because two different type of parsing keyword:
 	- parsefile2.py : givenstring change more condition
 	-  excel_pandas: adding convert text to excel using pandas
 	- parsefile_pdcp.py: update let user enter logfile and givenstring 
+- 20221123: update parsefile2.py add elog parse log file before parse string
 ## Step Manual Test 
 1. Please put your log file in this file
 2. run the code : py parsefile.py 
