@@ -30,6 +30,8 @@ There will be two script because two different type of parsing keyword:
 	-  excel_pandas: adding convert text to excel using pandas
 	- parsefile_pdcp.py: update let user enter logfile and givenstring 
 - 20221123: update parsefile2.py add elog parse log file before parse string
+- 20221209: create parsefile2_v2_improve.py: improvement of the code. Use UL, DL or both to parse. 
+
 ## Step Manual Test 
 1. Please put your log file in this file
 2. run the code : py parsefile.py 
