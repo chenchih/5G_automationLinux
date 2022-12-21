@@ -6,7 +6,7 @@ elogfileName= input("Please enter your elog FileName:")
 #givenString = "DL- UE"
 givenString = input("Please enter your search(Ex: DL- UE or UL- UE or UL- UE[ 0]:):")
 
-filename=f"result-{datetime.now():%Y-%m-%d %H-%M-%S}.txt"
+filename=f"result-{datetime.now():%Y-%m-%d-%H-%M-%S}.txt"
 elog_parse="elogResult.txt"
 result = []
 
@@ -214,7 +214,7 @@ with open(elogfileName, 'r') as filedata:
              # Print the line, if the given string is found in the current line
              #print(line.strip())
              #timeparse(line)
-             #saveresult(line)
+             saveresult(line)
              parse(line)
              
 #print list value

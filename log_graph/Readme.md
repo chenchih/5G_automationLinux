@@ -30,17 +30,23 @@ There will be two script because two different type of parsing keyword:
 	-  excel_pandas: adding convert text to excel using pandas
 	- parsefile_pdcp.py: update let user enter logfile and givenstring 
 - 20221123: update parsefile2.py add elog parse log file before parse string
-- 20221209: create parsefile2_v2_improve.py: improvement of the code. Use UL, DL or both to parse. 
-
+- 20221209: create parsefile2_v2_improve.py: improvement of the code. Use UL, DL or both to parse.  
+- 20221221: 
+	- change create parsefile2_v2_improve.py into parsefile_layer2_v2_.py
+	- create parsefile_pdcp_v2.py improvement of the code. Use UL, DL or both to parse. 
+	- add while loop into both parsefile_pdcp_v2.py and  parsefile_layer2_v2_.py for user to enter
+	- add backup directory to keep old version code
 ## Step Manual Test 
 1. Please put your log file in this file
-2. run the code : py parsefile.py 
-output: will be like this: datetime tput => 20221018.234547.824204 0.656478
-3. run the code : py parsefile2.py 
-output: will be like this: datetime tput => 20221018.234547.824204 0.656478
+2. run the code
+	- run layer 2 only parse tput ingress: py parsefile.py 
+	output: will be like this: datetime tput => 20221018.234547.824204 0.656478
+	- run the code for layer2 more detail informtion : py parsefile2.py 
+	- run the code for pdcp  for both ingress and engress tput : py parsefile_pdcp_v2.py 
+
 
 ## How to run 
-Modify code
+- print result list after parsing :
 You can decide write or print as below function:
     > listprint() #write file =>ok
     > listprint2() #print =>ok
@@ -58,8 +64,6 @@ Note:
 - Change your elog: 'with open('elog', 'r') as filedata:' change the elog to your elog filename
 - change string to find : 'givenString = "DL- ingress traffic"'
 - don't want to print please comment this part: 'listprint2()'
-
-
 
 ![](img/example1.PNG)
 
@@ -193,6 +197,4 @@ with open('result.txt', 'a') as output:
         #print(*i)
         print(*i, file=output)
 ```
-### Example2 read elog and parse other value (ongoing)
-file: `parsefile_2.py`
 
