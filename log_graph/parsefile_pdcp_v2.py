@@ -130,7 +130,7 @@ def emptywrite(status):
 #elogfile="elog_gnb_cu_pdcp.0.20221121.173906.228825"
 
 def main():
-    
+    accepted_strings = {'UL', 'DL', 'both'}
 	#elogfile=input("enter elog: ")
     givenString=input("enter UL/DL/both: ")
 
@@ -145,7 +145,8 @@ def main():
         #print(f"="*25+"DL"+"="*25)
         ULDLprint(DL)
 
-        
+    elif givenString not in accepted_strings:
+        print("Not found, please reenter correct option")
     else:   
         if givenString=="UL":
             emptywrite("UL")

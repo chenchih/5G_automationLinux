@@ -114,30 +114,37 @@ def ULDLprint(target):
 
 def main():
     #elogfileName= input("Please enter your elog FileName: ")
+    #accepted_strings = {'DL- UE', 'UL- UE', 'both', 'UL- UE[ ' }
+    accepted_strings = re.compile(r"([DU]L\-\ UE(\[\ (\d)\])?)|both$")
     givenString = input("Please enter your search (Ex: DL- UE / UL- UE / UL- UE[ 0] / both:):")
-    writefile()
-    if givenString =="both":
-        UL = 'UL- UE'
-        DL = 'DL- UE'
-        emptywrite("UL")
-        #print(f"="*25+"UL"+"="*25)
-        ULDLprint(UL)
-        #split line ==
-        emptywrite("DL")
-        #print(f"="*25+"DL"+"="*25)
-        ULDLprint(DL)
-        #ULprint()
-        #DLprint()
-    else:      
-        emptywrite(givenString)           
-        with open(elogfileName, 'r') as filedata:
-            
-            for line in filedata:   
-                if givenString in line:
-                    
-                     # Print the line, if the given string is found in the current line
-                     #print(line.strip())
-                     parse(line, givenString)
+    
+    
+    if accepted_strings.match(givenString):
+        writefile()
+        if givenString =="both":
+            UL = 'UL- UE'
+            DL = 'DL- UE'
+            emptywrite("UL")
+            #print(f"="*25+"UL"+"="*25)
+            ULDLprint(UL)
+            #split line ==
+            emptywrite("DL")
+            #print(f"="*25+"DL"+"="*25)
+            ULDLprint(DL)
+            #ULprint()
+            #DLprint()
+        else:      
+            emptywrite(givenString)           
+            with open(elogfileName, 'r') as filedata:
+                
+                for line in filedata:   
+                    if givenString in line:
+                        
+                         # Print the line, if the given string is found in the current line
+                         #print(line.strip())
+                         parse(line, givenString)
+    else:
+        print("Not found, please reenter correct option") 
     #print ("="*30)
     
 ###################################################################################

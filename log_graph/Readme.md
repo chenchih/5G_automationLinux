@@ -36,6 +36,10 @@ There will be two script because two different type of parsing keyword:
 	- create parsefile_pdcp_v2.py improvement of the code. Use UL, DL or both to parse. 
 	- add while loop into both parsefile_pdcp_v2.py and  parsefile_layer2_v2_.py for user to enter
 	- add backup directory to keep old version code
+- 20221226:
+	-  rename parsefile2_v2_ to parsefile2_v2 and add better condition statement if enter wrong option will print error
+	-  parsefile2.py add better condition statement if enter wrong option will print error 
+	
 ## Step Manual Test 
 1. Please put your log file in this file
 2. run the code
