@@ -39,7 +39,8 @@ There will be two script because two different type of parsing keyword:
 - 20221226:
 	-  rename parsefile2_v2_ to parsefile2_v2 and add better condition statement if enter wrong option will print error
 	-  parsefile2.py add better condition statement if enter wrong option will print error 
-	
+- 20221230:
+	- update excel.py change when reading file if read =, ignore this line, and other line write into excel
 ## Step Manual Test 
 1. Please put your log file in this file
 2. run the code
