@@ -32,7 +32,7 @@ There will be two script because two different type of parsing keyword:
 - 20221123: update parsefile2.py add elog parse log file before parse string
 - 20221209: create parsefile2_v2_improve.py: improvement of the code. Use UL, DL or both to parse.  
 - 20221221: 
-	- change create parsefile2_v2_improve.py into parsefile_layer2_v2_.py
+	- rename create parsefile2_v2_improve.py into parsefile_layer2_v2_.py
 	- create parsefile_pdcp_v2.py improvement of the code. Use UL, DL or both to parse. 
 	- add while loop into both parsefile_pdcp_v2.py and  parsefile_layer2_v2_.py for user to enter
 	- add backup directory to keep old version code
@@ -41,6 +41,10 @@ There will be two script because two different type of parsing keyword:
 	-  parsefile2.py add better condition statement if enter wrong option will print error 
 - 20221230:
 	- update excel.py change when reading file if read =, ignore this line, and other line write into excel
+- 20230214:
+	- rename excel.py to excel_layer2.py
+	- add excel_pdcp.py after running parsefile_pdcp_v2.py, then run this will write excel into different sheet
+	
 ## Step Manual Test 
 1. Please put your log file in this file
 2. run the code

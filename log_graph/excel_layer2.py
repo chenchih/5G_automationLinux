@@ -9,7 +9,7 @@ def excelconvertMAC(result):
     excel = openpyxl.Workbook()
     sheet = excel.worksheets
     line = f.readline();  # read text
-    
+
     while line:
         #list123 = []
         #list123 = line.split(sep=' ')  # convert,
