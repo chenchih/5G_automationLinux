@@ -44,6 +44,11 @@ There will be two script because two different type of parsing keyword:
 - 20230214:
 	- rename excel.py to excel_layer2.py
 	- add excel_pdcp.py after running parsefile_pdcp_v2.py, then run this will write excel into different sheet
+- 20230218:
+	- edit excel_layer2.py rename function to  writeExcel 
+	- add excel_pdcp_v2.py will read text file will detect contain UL or DL or both 
+		- excel_pdcp.py: only support text file with both UL and DL [Nothing change notice)
+	
 	
 ## Step Manual Test 
 1. Please put your log file in this file

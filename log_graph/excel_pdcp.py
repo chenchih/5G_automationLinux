@@ -1,6 +1,6 @@
 lists = {}
 current_key = None
-with open ('test.txt', 'r')as myfile:  
+with open ('PDCP_result.txt', 'r')as myfile:  
     readline=myfile.read().splitlines()
     for line in readline:
         #print(line)

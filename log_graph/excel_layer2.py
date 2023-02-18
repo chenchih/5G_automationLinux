@@ -2,7 +2,7 @@ import openpyxl, string
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import Font
 
-def excelconvertMAC(result):
+def writeExcel(result):
     f = open(result, 'r+')  # open text
     #########if load excel file ########################
     # excel=openpyxl.load_workbook(r'D:\\test\\test.xlsx') #open excel
@@ -64,7 +64,7 @@ def excelconvertMAC(result):
 resultfilename=input("please enter your report txt file name: ")
 excelfilename=input("please enter save excel file name: ")
 #resultfilename="result.txt"
-excelconvertMAC(resultfilename)
+writeExcel(resultfilename)
 
 
 
