@@ -27,29 +27,41 @@ There will be two script because two different type of parsing keyword:
 - 20221119: add parsefile_pdcp.py 
 - 20221122: update parsefile2.py, add excel_pandas.py
 	- parsefile2.py : givenstring change more condition
-	-  excel_pandas: adding convert text to excel using pandas
+	- [New Feature]excel_pandas: adding convert text to excel using pandas
 	- parsefile_pdcp.py: update let user enter logfile and givenstring 
 - 20221123: update parsefile2.py add elog parse log file before parse string
 - 20221209: create parsefile2_v2_improve.py: improvement of the code. Use UL, DL or both to parse.  
 - 20221221: 
-	- rename create parsefile2_v2_improve.py into parsefile_layer2_v2_.py
+	- [Improvement]create parsefile2_v2_improve.py 
 	- create parsefile_pdcp_v2.py improvement of the code. Use UL, DL or both to parse. 
+	- rename parsefile2_v2_improve.py into parsefile_layer2_v2_.py
 	- add while loop into both parsefile_pdcp_v2.py and  parsefile_layer2_v2_.py for user to enter
 	- add backup directory to keep old version code
 - 20221226:
-	-  rename parsefile2_v2_ to parsefile2_v2 and add better condition statement if enter wrong option will print error
+	-  Rename parsefile_layer2_v2_.py with better condition statement if enter wrong option will print error
 	-  parsefile2.py add better condition statement if enter wrong option will print error 
+	Note: parsefile2.py contain many different method to print data, while parsefile_layer2_v2_.py use only one method.
 - 20221230:
 	- update excel.py change when reading file if read =, ignore this line, and other line write into excel
 - 20230214:
 	- rename excel.py to excel_layer2.py
-	- add excel_pdcp.py after running parsefile_pdcp_v2.py, then run this will write excel into different sheet
+	- [New Feature]add excel_pdcp.py after running parsefile_pdcp_v2.py, then run this will write excel into different sheet
 - 20230218:
 	- edit excel_layer2.py rename function to  writeExcel 
 	- add excel_pdcp_v2.py will read text file will detect contain UL or DL or both 
 		- excel_pdcp.py: only support text file with both UL and DL [Nothing change notice)
-	
-	
+		
+- 20230320:	edit parsefile_layer2_v2.py. Change regular expression spacing 
+
+	```
+	#orignal version when must input [ XX] , which x is number with space
+	#accepted_strings = re.compile(r"([DU]L\-\ UE(\[\ (\d)\])?)|both$")
+	# current version: support [XX] or [ XX], due to file will contain [ 01] or [11], thi solve problem
+	accepted_strings = re.compile(r"([DU]L\-\ UE(\[\s*(\d{1,2})\])?)|both$") 	```
+- 20230323: add excel_layer2_sheet_multiply_UE.py which automatic add both DL and UL into excel
+- 20230323-20230324: add parsefile_layer2_multiply_UE.py this file will parse multiply UE's average throughput and get MCS value
+
+
 ## Step Manual Test 
 1. Please put your log file in this file
 2. run the code

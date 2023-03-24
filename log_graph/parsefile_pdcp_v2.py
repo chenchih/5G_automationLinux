@@ -124,6 +124,9 @@ def ULDLprint(target):
 def emptywrite(status):
     with open(filename, "a") as f:
         f.write(f"="*25+status+"="*25+"\n")
+        print("writing")
+        f.write(("datettime ingress-traffic egress-traffic \n"))
+        #f.write(("datettime IngressTraffic EgressTraffic \n"))
 ###################################    
     # MAIN SCRIPT    
 ###################################
