@@ -52,7 +52,6 @@ There will be two script because two different type of parsing keyword:
 		- excel_pdcp.py: only support text file with both UL and DL [Nothing change notice)
 		
 - 20230320:	edit parsefile_layer2_v2.py. Change regular expression spacing 
-
 	```
 	#orignal version when must input [ XX] , which x is number with space
 	#accepted_strings = re.compile(r"([DU]L\-\ UE(\[\ (\d)\])?)|both$")
@@ -60,7 +59,7 @@ There will be two script because two different type of parsing keyword:
 	accepted_strings = re.compile(r"([DU]L\-\ UE(\[\s*(\d{1,2})\])?)|both$") 	```
 - 20230323: add excel_layer2_sheet_multiply_UE.py which automatic add both DL and UL into excel
 - 20230323-20230324: add parsefile_layer2_multiply_UE.py this file will parse multiply UE's average throughput and get MCS value
-
+- 20230325: edit parsefile_layer2_v2.1.py to rewrite text file and excel_layer2.py used for UL or DL 
 
 ## Step Manual Test 
 1. Please put your log file in this file

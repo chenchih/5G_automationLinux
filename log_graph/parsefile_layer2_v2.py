@@ -14,11 +14,15 @@ def checkfile():
 def getelement(li, element):
     ind = li.index(element)
     return li[ind+1]
-def writefile():
+def writefile(status):
     checkfile()
     with open(filename, 'a') as f:
-        bar="#"*10
+        #bar="#"*10
+        f.write(f"="*25+status+"="*25+"\n")
         f.write(("datettime \t Tput"+ " "*3+ "RbNum " + "MCS "+"Bler " +"nonWdBler\n").expandtabs(22))
+        
+
+
 
 def parse(data, ULDLstr):    
     
@@ -122,21 +126,24 @@ def main():
 
     
     if accepted_strings.match(givenString):
-        writefile()
+        
         if givenString =="both":
             UL = 'UL- UE'
             DL = 'DL- UE'
-            emptywrite("UL")
+            writefile("UL")
+            #emptywrite("UL")
             #print(f"="*25+"UL"+"="*25)
             ULDLprint(UL)
             #split line ==
-            emptywrite("DL")
+            #emptywrite("DL")
+            writefile("DL")
             #print(f"="*25+"DL"+"="*25)
             ULDLprint(DL)
             #ULprint()
             #DLprint()
         else:      
-            emptywrite(givenString)           
+            #emptywrite(givenString)     
+            writefile(givenString)
             with open(elogfileName, 'r') as filedata:
                 
                 for line in filedata:   
