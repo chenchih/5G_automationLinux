@@ -19,8 +19,11 @@ def writefile(status):
     with open(filename, 'a') as f:
         #bar="#"*10
         f.write(f"="*25+status+"="*25+"\n")
-        f.write(("datettime \t Tput"+ " "*3+ "RbNum " + "MCS "+"Bler " +"nonWdBler\n").expandtabs(22))
+        if 'DL' in status: 
+            f.write(("datettime \t DL-Tput"+ " "*3+ "DL-RbNum " + "DL-MCS "+"DL-Bler " +"DL-nonWPdschBler\n").expandtabs(22))
         
+        elif  'UL' in status: 
+            f.write(("datettime \t UL-Tput"+ " "*3+ "UL-RbNum " + "UL-MCS "+"UL-Bler " +"UL-nonWPuschBler\n").expandtabs(22))
 
 
 

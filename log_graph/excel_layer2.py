@@ -22,26 +22,38 @@ def excelconvertMAC(result):
         else:
         #print(line)
         #if not "=" in line:
-
+           
 
             if list123[1] == 'Tput':
+               
+                #pass
+                sheet[0].append(list123)  # write into excel
+            elif list123[1] == 'DL-Tput':
+                #pass
+                sheet[0].append(list123)  # write into excel
+            elif list123[1] == 'UL-Tput':
+                #pass
+                sheet[0].append(list123)  # write into excel               
+                
             
-                sheet[0].append(list123)  # write into excel
+                #print(list123)
+           # elif list123[2] == 'RbNum':
+               # print(list123[1], "three-2")
+                #sheet[0].append(list123)  # write into excel
+            #elif list123[3] == 'MCS':
+                #print("3")
+                #sheet[0].append(list123)  # write into excel
+            #elif list123[4] == 'PdschBler':
+                #print("4")
+                #sheet[0].append(list123)  # write into excel
+           # elif list123[5] == 'nonWPdschBler':
+                #print("5")
+                #sheet[0].append(list123)  # write into excel
                 
-                
-                
-                
-            elif list123[2] == 'RbNum':
-                sheet[0].append(list123)  # write into excel
-            elif list123[3] == 'MCS':
-                sheet[0].append(list123)  # write into excel
-            elif list123[4] == 'PdschBler':
-                sheet[0].append(list123)  # write into excel
-            elif list123[5] == 'nonWPdschBler':
-                sheet[0].append(list123)  # write into excel
             
             else:
-                
+
+
                 list123[1] = float(list123[1])
                 list123[2] = float(list123[2])
                 list123[3] = float(list123[3])
@@ -50,7 +62,7 @@ def excelconvertMAC(result):
                 sheet[0].append(list123)  # write into excel
                
                 #excel cell's font
-                sheet[0]['A1'] .font = Font(size = 24, bold = True)
+                sheet[0]['A1'] .font = Font(size = 14, bold = True)
                 sheet[0]['B1'].font = Font(size = 14, bold = True)
                 sheet[0]['C1'].font = Font(size = 14, bold = True)
                 sheet[0]['D1'].font = Font(size = 14, bold = True)
