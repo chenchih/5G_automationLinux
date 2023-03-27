@@ -60,7 +60,7 @@ There will be two script because two different type of parsing keyword:
 - 20230323: add excel_layer2_sheet_multiply_UE.py which automatic add both DL and UL into excel
 - 20230323-20230324: add parsefile_layer2_multiply_UE.py this file will parse multiply UE's average throughput and get MCS value
 - 20230325: edit parsefile_layer2_v2.1.py to rewrite text file and excel_layer2.py used for UL or DL 
-
+- 20230326: add excel_layer2 _BothULandDL convert single UL or DL or both UL
 ## Step Manual Test 
 1. Please put your log file in this file
 2. run the code
