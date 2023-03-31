@@ -57,10 +57,8 @@ def writeExcel(result):
         #uplink
         df1 = pd.DataFrame(ULlist)
         df1 = df1.rename(columns=df1.iloc[0]).drop(df1.index[0])
-        #df1['ingress-traffic'] = df1['ingress-traffic'].astype(float)
-        #df1['egress-traffic'] = df1['egress-traffic'].astype(float)
         df['UL_Tput(ingress)'] = df1['UL_Tput(ingress)'].astype(float)
-        df1['UL_Tput(gress)'] = df1['UL_Tput(gress)'].astype(float)
+        df1['UL_Tput(egress)'] = df1['UL_Tput(egress)'].astype(float)
         df1['UL_RbNum'] = df1['UL_RbNum'].astype(float)
         df1['UL_MCS'] = df1['UL_MCS'].astype(float)
         df1['UL_Bler'] = df1['UL_Bler'].astype(float)
@@ -73,7 +71,7 @@ def writeExcel(result):
         #df2['egress-traffics'] = df2['egress-traffics'].astype(float)
 
         df2['DL_Tput(ingress)'] = df2['DL_Tput(ingress)'].astype(float)
-        df2['DL_Tput(gress)'] = df2['DL_Tput(gress)'].astype(float)
+        df2['DL_Tput(egress)'] = df2['DL_Tput(egress)'].astype(float)
         df2['DL_RbNum'] = df2['DL_RbNum'].astype(float)
         df2['DL_MCS'] = df2['DL_MCS'].astype(float)
         df2['DL_Bler'] = df2['DL_Bler'].astype(float)
@@ -91,7 +89,7 @@ def writeExcel(result):
         #df1['ingress-traffic'] = df1['ingress-traffic'].astype(float)
         #df1['egress-traffics'] = df1['egress-traffics'].astype(float)
         df1['UL_Tput(ingress)'] = df1['UL_Tput(ingress)'].astype(float)
-        df1['UL_Tput(gress)'] = df1['UL_Tput(gress)'].astype(float)
+        df1['UL_Tput(egress)'] = df1['UL_Tput(egress)'].astype(float)
         df1['UL_RbNum'] = df1['UL_RbNum'].astype(float)
         df1['UL_MCS'] = df1['UL_MCS'].astype(float)
         df1['UL_Bler'] = df1['UL_Bler'].astype(float)
@@ -101,7 +99,7 @@ def writeExcel(result):
         df2 = pd.DataFrame(DLlist)
         df2 = df2.rename(columns=df2.iloc[0]).drop(df2.index[0])
         df2['DL_Tput(ingress)'] = df2['DL_Tput(ingress)'].astype(float)
-        df2['DL_Tput(gress)'] = df2['DL_Tput(gress)'].astype(float)
+        df2['DL_Tput(egress)'] = df2['DL_Tput(egress)'].astype(float)
         df2['DL_RbNum'] = df2['DL_RbNum'].astype(float)
         df2['DL_MCS'] = df2['DL_MCS'].astype(float)
         df2['DL_Bler'] = df2['DL_Bler'].astype(float)
@@ -122,14 +120,14 @@ def writeExcel(result):
                 #'background-color': 'yellow' })
                 
                 
-            df1.to_excel(writer, 'sheet1', index=False)
-            worksheet = writer.sheets['sheet1']   
+            df1.to_excel(writer, 'UL', index=False)
+            worksheet = writer.sheets['UL']   
             worksheet.set_column(0, 2, 20)   
             worksheet.set_column(3, 6, 15)     
                
-            df2.to_excel(writer, 'sheet2', index=False)
+            df2.to_excel(writer, 'DL', index=False)
             #worksheet.set_column(1, 0, 20)
-            worksheet = writer.sheets['sheet2'] 
+            worksheet = writer.sheets['DL'] 
             worksheet.set_column(0, 2, 20)   
             worksheet.set_column(3, 6, 15) 
 

@@ -22,7 +22,7 @@ def writefile(status):
     checkfile()
     with open(filename, 'a') as f:
         bar="#"*10
-        f.write((f"datettime \t {status}_Tput(ingress) {status}_Tput(gress) {status}_RbNum {status}_MCS {status}_Bler {status}_nonWdBler\n").expandtabs(22))
+        f.write((f"datettime \t {status}_Tput(ingress) {status}_Tput(egress) {status}_RbNum {status}_MCS {status}_Bler {status}_nonWdBler\n").expandtabs(22))
 
 def new(line):
     if re.search(r'\[(\d+\.\d+\.\d+)\].*?(>>> DL- Mcs=[^]]+)', line):

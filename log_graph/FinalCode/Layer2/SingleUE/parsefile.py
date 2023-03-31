@@ -29,7 +29,7 @@ def timeparse(data):
     listprint2() #print =>ok
     #listprint_Method2()  # write file =>ok
     #listprint_Method3() #write file =>ok
-    listprint_Method4()
+    #listprint_Method4()
     
 #write to file
 def listprint():
@@ -111,8 +111,9 @@ def writefile():
 ###################################    
     # MAIN SCRIPT    
 ###################################
+elogfile=input("Please enter your elog file:")
 writefile()
-with open('elog_gnb_cu_pdcp.0.20221109.155113.741593', 'r') as filedata:
+with open(elogfile, 'r') as filedata:
     for line in filedata:   
         if givenString in line:
 

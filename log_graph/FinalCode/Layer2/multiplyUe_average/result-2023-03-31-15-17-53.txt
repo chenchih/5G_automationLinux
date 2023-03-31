@@ -1,0 +1,6 @@
+=========================DL=========================
+datettime              DL_Tput(ingress) DL_Tput(egress) DL_RbNum DL_MCS DL_Bler DL_nonWdBler
+20230311.012825.882186 117.590118 120.919250 71.2 55.0 2.1 1.9 
+=========================UL=========================
+datettime              UL_Tput(ingress) UL_Tput(egress) UL_RbNum UL_MCS UL_Bler UL_nonWdBler
+20230311.012825.882348 77.519501 74.335068 265.8 19.2 0.0 4.4 

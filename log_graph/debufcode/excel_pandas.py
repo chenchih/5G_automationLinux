@@ -17,4 +17,5 @@ header_format = writer.book.add_format({'bold':True, 'font_size':14})
 for index, name in enumerate(column_names):
     sheet.write(0, index, name, header_format)
  
-writer.save()
+#writer.save()
+writer.close()
