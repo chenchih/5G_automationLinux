@@ -3,13 +3,16 @@ I am going to develop a automation script to analysic the log file, and then tra
 
 There will be two script because two different type of parsing keyword:
 - datetime and Tput value
+
 ```
 [20221102.064905.609030][info]:[[40;32m>>> DL- ingress traffic: 555.198792(Mbps), egress traffic: 551.669556(Mbps), ReTx: 0.000000(Mbps)[0m]
 ```
+
 - datetime, tput, other value such as Mcs, RbNum, and etc
 ```
 [20221102.064905.609113][info]:[DL- UE[ 0]: Tput=  555.198792 Mbps, Mcs= 26.0(Sigma= 0.0), RbNum= 198.4, ReTxRatio=   0.0, Layers= 4.0, PdschBler=   0.0, nonWPdschBler=   0.0]
 ```
+
 ## checklist status 
 - [x] init
 - [x] anlaysic data get datetime and tput value
@@ -31,6 +34,7 @@ Below I will show you the log file information.
 		- DL: datetime, ingress Tput, egress Tput, MCS,PdschBler,nonWPdschBler
 - PDCP Parameter: 
 	-  datetime,ingress traffic, and egress traffic
+	
 ### Step of this automation and file Name:
 - Step 1 Put Your log into directory
 	- I have place the related log into LogFile 
@@ -53,31 +57,35 @@ L2log will display different with single UE and Multiply UE, UE please refer it 
 PDCP log will record both DL and UL traffic. ASk you can see below there are ingress and egress paramter string, I will parse the Tput of both string. 
 ![](img/log_pdcp.PNG)
 
-
 ## How to run code 
 - Something to Know:
-	- We will parse DL and UL realted string, but there is one special String that is differnt for UL and DL that is Bler:
-		- UL: PuschBler nonWDuschBler
-		- DL: PdschBler nonWPdschBler
+    - We will parse DL and UL realted string, but there is one special String that is differnt for UL and DL that is Bler:
+        - UL: PuschBler nonWDuschBler
+	- DL: PdschBler nonWPdschBler
 
 ### Example 1: Layer 2 Single UE get only Tput Value (ONLY DL)
 In this example I hotcode the parsing parmater ONLY DL, you can change it. I will descript code in below.
 You can use Example2, which is much flexible get DL Ul or both string. 
 
 - Path: `/FinalCode/Layer2/SingleUE/timedate_tputONLY`
+
 #### FileDescription:
-	- `parsefile.py`: parse the log into txt file
-	- `ExcelWrite_Printl.py`: convert the txt file into excel method1
-	I also have write other method of converting the excel :
-	- `Excel_openpyxl_Method2/excelconvert.py`: convert the txt file into excel method2 
-	- `ExcelPandasMethod/excel_pandas.py`: convert the txt file into excel using pandas method
+    - parsefile.py: parse the log into txt file
+    - ExcelWrite_Printl.py: convert the txt file into excel method1
+    
+I also have write other method of converting the excel:
+    - Excel_openpyxl_Method2/excelconvert.py: convert the txt file into excel method2 
+    - ExcelPandasMethod/excel_pandas.py: convert the txt file into excel using pandas method
+    
 ##### How to run it 
-	Step1: parse the log => `./parsefile.py`
-	Step2: convert generate txt file to excel => `./ExcelWrite_Printl.py`
+	Step1: parse the log => ./parsefile.py
+	Step2: convert generate txt file to excel => ./ExcelWrite_Printl.py
 	![](img/Layer2_SingleUE_timedateAndTput_Step_running.PNG)
+
 #### Code Description and Note
-- Hotcode only DL to search specfic string: `givenString = "DL- ingress traffic"`
+- Hotcode only DL to search specfic string: givenString = "DL- ingress traffic"
 - Parse string tput and Tput value 
+
 ```
 datestr = data.split('[', 1)[1].split(']')[0]
 Tput = data.split(" DL- ingress traffic:", 1)[1].split(',')[0].split('(')[0].strip()
@@ -87,7 +95,8 @@ Tput = data.split(" DL- ingress traffic:", 1)[1].split(',')[0].split('(')[0].str
     result.clear()
     result.append(datestr)    
     result.append(Tput)
-```			
+```	
+
 - print result list after parsing :
 You can decide write or print as below function, i write many method:
     > listprint() #write file =>ok
@@ -101,14 +110,17 @@ In this example I will get this paramter string: `datettime Tput RbNum UL-MCS UL
 
 - Path: `/FinalCode/Layer2/SingleUE/`
 #### FileDescription:
-	- `excel_layer2_BothULandDL.py`:convert the txt file into excel both UL and DL
+	- `excel_layer2_BothULandDL.py`: convert the txt file into excel both UL and DL
 	- `excel_layer2.py`:convert the txt file into excel UL or DL 
 	- `parsefile_2.py`:parse the log into txt file (old version, for debug use)
 	- `parsefile_layer2_v2.py`:parse the log into txt file
+	
 ##### How to run it 
 Note: In this example there are serveral option you need to know: 
-You can select DL, UL, DL's ID , UL's ID or both UL and DL.	Please refer below log:
-	![](img/Layer2_SingleUE-ParseLoginfo.PNG)
+You can select DL, UL, DL's ID , UL's ID or both UL and DL. Please refer below log:
+
+![](img/Layer2_SingleUE-ParseLoginfo.PNG)
+	
 My code will ask you to select:
 	- DL -UE:parse only Downlink String
 	- UL -UE: parse only Uplink String
@@ -118,6 +130,7 @@ My code will ask you to select:
 	> Case1: Get either DL or UL or specfic DL/Ul ID
 	Step1: parse the log =>`parsefile_layer2_v2.py` 
 	Step2: convert generate txt file to excel => `./ExcelWrite_Printl.py`
+	
 	![](img/Layer2_SingleUE-DL_Step_running.PNG)	
 	 
 	> Case2: Get both DL and UL string
