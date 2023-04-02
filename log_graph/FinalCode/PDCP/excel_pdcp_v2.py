@@ -10,8 +10,7 @@ with open (resultfilename, 'r')as myfile:
     for line in readline:
         #print(line)
         if "=" in line:
-            current_key = line.strip("=")
-           
+            current_key = line.strip("=")           
             lists[current_key] = []
         else:
             assert current_key is not None # there shouldn't be data before a header
@@ -26,7 +25,6 @@ DLlist= []
 def UL():
     for i in lists["UL"]:
     #remove end space
-        
         i=i.rstrip().split(' ')
         #i=i.split(' ')
         #print(i)
@@ -36,14 +34,11 @@ def UL():
 def DL():
     for i in lists["DL"]:
         #remove end space
-        
         i=i.rstrip().split(' ')
         #i=i.split(' ')
         #print(i)
         DLlist.append(i)
-        
-
-     
+            
 def writeExcel(result):
 #writing into excel sheet
     if result =="UL":
@@ -53,8 +48,7 @@ def writeExcel(result):
         df1['ingress-traffic'] = df1['ingress-traffic'].astype(float)
         df1['egress-traffic'] = df1['egress-traffic'].astype(float)
             #writeexcel(result)
-
-        
+     
     elif result =="DL":
         df2 = pd.DataFrame(DLlist)
         df2 = df2.rename(columns=df2.iloc[0]).drop(df2.index[0])
@@ -136,10 +130,5 @@ elif "DL" in lists:
 else:
     #print("Neither exist")
      types="NOt Exist"
-     
-
         #writeexcel(result)
-#parsing(types)
-        
-#print(types)
 

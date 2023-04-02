@@ -1,8 +1,6 @@
 import os, re
 from datetime import datetime
 
-
-
 filename=f"result-{datetime.now():%Y-%m-%d-%H-%M-%S}.txt"
 result = []
 
@@ -14,10 +12,7 @@ def checkfile():
 def getelement(li, element):
     ind = li.index(element)
     return li[ind+1]
-    
-    
-    
-    
+
 def writefile(status):
     checkfile()
     with open(filename, 'a') as f:
@@ -38,8 +33,6 @@ def parse(data, ULDLstr):
     result.append(datestr)
     result.append(getelement(m3New_1, 'ingress traffic').strip())
     result.append(getelement(m3New_1, 'egress traffic').strip())    
-
-
     #listprint2()
     #listprint()
     #result.clear()
@@ -67,27 +60,18 @@ def parse_bler(data, ULDLstr):
     result.append(getelement(blerDL, 'Mcs='))
     result.append(getelement(blerDL, bler1).strip())
     result.append(getelement(blerDL, bler2).strip())
-    
-
-    
+ 
     listprint()
     result.clear()
-
- 
-    
-
 def listprint():
     #checkfile()
     cycle = 0    
-    #    with open("result.txt", "a+") as f:
     
     with open(filename, "a") as f:
         for element in result:            
             #print(element+ " ")
             f.write(element+ " ")     
-        f.write("\n")
-    
-        #f.write()
+        f.write("\n")    
 def emptywrite(status):
     with open(filename, "a") as f:
         #f.write(f"hello\n")
@@ -103,44 +87,15 @@ def listprint2():
             print("")
             
 def ULDLprint(target):
-    
     with open(elogfileName, 'r') as filedata:
         for line in filedata:   
             if target in line:
                 # Print the line, if the given string is found in the current line
                 parse(line, target)
    
-def main1():
+def main():
     countUL =0 
-    countDL =0 
-    
-    with open(elogfileName, 'r') as filedata:    
-        for line in filedata:   
-            #if DLpar in line: 
-            #print(re.findall(r"(m>>>\ DL\- ?)", line)) 
-            if re.findall(r"(m>>>\ DL\- ?)", line):
-                if countDL == 0:
-                    emptywrite("DL")
-                    writefile("DL")
-                    countDL+=1
-                    
-               
-                givenString="DL"
-                #print(line.strip())
-                parse(line, givenString)
-               
-                #new(line)
-            #if re.findall(r"(m>>>\ DL\- ?)", line):
-            else:
-                if re.search(r'\[(\d+\.\d+\.\d+)\].*?(>>> DL- Mcs=[^]]+)', line):
-                    parse_bler(line, 'DL')
-
-
-
-def main2():
-    countUL =0 
-    countDL =0
-            
+    countDL =0            
 ##########################
     with open(elogfileName, 'r') as filedata:    
         for line in filedata:                    
@@ -154,9 +109,7 @@ def main2():
                     if re.search(r'\[(\d+\.\d+\.\d+)\].*?(>>> DL- Mcs=[^]]+)', nextline):
                         #print(line, nextline, end='')
                         givenString="DL"
-                        #print(line.strip())
                         parse(line, givenString)
-                        #print(nextline.strip())
                         parse_bler(nextline, givenString)
                         
                         break # so you can start looking for the first match again
@@ -173,7 +126,6 @@ def main2():
                     #if re.search(r'\[(\d+\.\d+\.\d+)\] .*?(>>> DL- Mcs=[^]]+)', nextline):
                         #if re.search(r'\[(\d+\.\d+\.\d+)\]', nextline):
                     if re.search(r'\[(\d+\.\d+\.\d+)\].*?(UL <<<- Mcs=[^]]+)', nextline):
-                        #print(line, nextline, end='')
                         givenString="UL"
                         #print(line.strip())
                         parse(line, givenString)
@@ -182,61 +134,16 @@ def main2():
                         
                         break # so you can start looking for the first match again
 
-
-def main():
-    countUL =0 
-    countDL =0 
-    
-    with open(elogfileName, 'r') as filedata:    
-        for line in filedata:   
-            #if DLpar in line: 
-            #print(re.findall(r"(m>>>\ DL\- ?)", line)) 
-            if re.findall(r"(m>>>\ DL\- ?)", line): 
-                if countDL == 0:
-                    emptywrite("DL")
-                    writefile("DL")
-                    countDL+=1
-                    
-               
-                givenString="DL"
-                #print(line.strip())
-                parse(line, givenString)
-               
-                #new(line)
-            #if re.findall(r"(m>>>\ DL\- ?)", line):
-            
-            if re.search(r'\[(\d+\.\d+\.\d+)\].*?(>>> DL- Mcs=[^]]+)', line):
-                parse_bler(line, 'DL')    
-                
-                
-
-'''            
-    with open(elogfileName, 'r') as filedataUL:   
-            
-            
-            for line in filedataUL:   
-                #UL
-                if re.findall(r"(mUL\ <<<- ?)", line):
-                    if countUL == 0:
-                        emptywrite("UL")
-                        writefile("UL")
-                        countUL+=1
-                   
-                    givenString="UL"
-                    #print(line.strip())
-                    parse(line, givenString)
-                    
-                    #if re.findall(r"(m>>>\ DL\- ?)", line):
-                if re.search(r'\[(\d+\.\d+\.\d+)\].*?(UL <<<- Mcs=[^]]+)', line):
-                    parse_bler(line, 'UL')
-'''
-    
+                              
 ###################################################################################
 
 elogfileName= input("Please enter your elog FileName: ")
 #elogfileName="elog.txt"
-startscript= input("####press any key, q to exit script#####: ")
-main2()
+#startscript= input("####press any key, q to exit script#####: ")
+
+main()
+
+
 '''
 while True:
     startscript= input("####press any key, q to exit script#####: ")
@@ -244,7 +151,7 @@ while True:
         break
     else:
         
+        #main()
         main()
 '''
    
-

@@ -2,7 +2,7 @@ import openpyxl, string
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import Font
 
-def excelconvertMAC(result):
+def excelconvertResult(result):
     f = open(result, 'r+')  # open text
     #########if load excel file ########################
     # excel=openpyxl.load_workbook(r'D:\\test\\test.xlsx') #open excel
@@ -11,49 +11,20 @@ def excelconvertMAC(result):
     line = f.readline();  # read text
 
     while line:
-
-        list123 = line.split()  # convert
-        
+        list123 = line.split()  # convert        
         if "=" in line:
-            pass
-            
-            #list123 = []
+            pass            
             #list123 = line.split(sep=' ')  # convert,
         else:
         #print(line)
-        #if not "=" in line:
-           
-
+        #if not "=" in line:           
             if list123[1] == 'Tput':
-               
-                #pass
                 sheet[0].append(list123)  # write into excel
             elif list123[1] == 'DL-Tput':
-                #pass
                 sheet[0].append(list123)  # write into excel
             elif list123[1] == 'UL-Tput':
-                #pass
-                sheet[0].append(list123)  # write into excel               
-                
-            
-                #print(list123)
-           # elif list123[2] == 'RbNum':
-               # print(list123[1], "three-2")
-                #sheet[0].append(list123)  # write into excel
-            #elif list123[3] == 'MCS':
-                #print("3")
-                #sheet[0].append(list123)  # write into excel
-            #elif list123[4] == 'PdschBler':
-                #print("4")
-                #sheet[0].append(list123)  # write into excel
-           # elif list123[5] == 'nonWPdschBler':
-                #print("5")
-                #sheet[0].append(list123)  # write into excel
-                
-            
+                sheet[0].append(list123)  # write into excel                                          
             else:
-
-
                 list123[1] = float(list123[1])
                 list123[2] = float(list123[2])
                 list123[3] = float(list123[3])
@@ -74,14 +45,13 @@ def excelconvertMAC(result):
         while column < 6:
             i = get_column_letter(column)  
             #print(i)         
-            sheet[0].column_dimensions[i].width = 25    
-              
+            sheet[0].column_dimensions[i].width = 25                  
             column += 1
         line = f.readline()  # read next line
     excel.save(excelfilename+'.xlsx')
 resultfilename=input("please enter your report txt file name: ")
 excelfilename=input("please enter save excel file name: ")
-excelconvertMAC(resultfilename)
+excelconvertResult(resultfilename)
 
 
 

@@ -1,0 +1,5 @@
+f = open('result.txt', 'r')
+data = f.readlines()
+    #check last new line if no add new line
+if '\n' not in data[-1]: 
+    data[-1] += '\n'

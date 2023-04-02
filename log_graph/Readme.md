@@ -16,210 +16,250 @@ There will be two script because two different type of parsing keyword:
 - [x] anlaysic data more value
 - [ ] draw graph 
 
-## Update
-- 202210: update example 1 and example intial code
-- 20221117 update example2 script 
-	- add write to text better format
-	- write text to excel file
-	- let user enter their elog filename and save result name
-- 20221118: update parsefile2.py UL and DL search string different, fix this problem
-	- check string is UL or DL and assign bler1 and bler2 with correct string
-- 20221119: add parsefile_pdcp.py 
-- 20221122: update parsefile2.py, add excel_pandas.py
-	- parsefile2.py : givenstring change more condition
-	- [New Feature]excel_pandas: adding convert text to excel using pandas
-	- parsefile_pdcp.py: update let user enter logfile and givenstring 
-- 20221123: update parsefile2.py add elog parse log file before parse string
-- 20221209: create parsefile2_v2_improve.py: improvement of the code. Use UL, DL or both to parse.  
-- 20221221: 
-	- [Improvement]create parsefile2_v2_improve.py 
-	- create parsefile_pdcp_v2.py improvement of the code. Use UL, DL or both to parse. 
-	- rename parsefile2_v2_improve.py into parsefile_layer2_v2_.py
-	- add while loop into both parsefile_pdcp_v2.py and  parsefile_layer2_v2_.py for user to enter
-	- add backup directory to keep old version code
-- 20221226:
-	-  Rename parsefile_layer2_v2_.py with better condition statement if enter wrong option will print error
-	-  parsefile2.py add better condition statement if enter wrong option will print error 
-	Note: parsefile2.py contain many different method to print data, while parsefile_layer2_v2_.py use only one method.
-- 20221230:
-	- update excel.py change when reading file if read =, ignore this line, and other line write into excel
-- 20230214:
-	- rename excel.py to excel_layer2.py
-	- [New Feature]add excel_pdcp.py after running parsefile_pdcp_v2.py, then run this will write excel into different sheet
-- 20230218:
-	- edit excel_layer2.py rename function to  writeExcel 
-	- add excel_pdcp_v2.py will read text file will detect contain UL or DL or both 
-		- excel_pdcp.py: only support text file with both UL and DL [Nothing change notice)
-		
-- 20230320:	edit parsefile_layer2_v2.py. Change regular expression spacing 
-	```
-	#orignal version when must input [ XX] , which x is number with space
-	#accepted_strings = re.compile(r"([DU]L\-\ UE(\[\ (\d)\])?)|both$")
-	# current version: support [XX] or [ XX], due to file will contain [ 01] or [11], thi solve problem
-	accepted_strings = re.compile(r"([DU]L\-\ UE(\[\s*(\d{1,2})\])?)|both$") 	```
-- 20230323: add excel_layer2_sheet_multiply_UE.py which automatic add both DL and UL into excel
-- 20230323-20230324: add parsefile_layer2_multiply_UE.py this file will parse multiply UE's average throughput and get MCS value
-- 20230325: edit parsefile_layer2_v2.1.py to rewrite text file and excel_layer2.py used for UL or DL 
-- 20230326: add excel_layer2 _BothULandDL convert single UL or DL or both UL
-## Step Manual Test 
-1. Please put your log file in this file
-2. run the code
-	- run layer 2 only parse tput ingress: py parsefile.py 
-	output: will be like this: datetime tput => 20221018.234547.824204 0.656478
-	- run the code for layer2 more detail informtion : py parsefile2.py 
-	- run the code for pdcp  for both ingress and engress tput : py parsefile_pdcp_v2.py 
+## Description of code
+This is an automation of parsing the log file to get UL/DL(UL for Upload. DL for Downlaod) related parameter or string. 
+There're two types of code one is Layer2 log and PDCP log. 
+
+Below I will show you the log file information. 
+- Layer2 Parameter: 
+	- Single UE or Specfic ID: 
+		- UL or DL: datetime, Tput
+		- UL: datetime, Tput, MCS,PuschBler,nonWPuschBler
+		- DL: datetime, Tput, MCS,PdschBler,nonWPdschBler
+	- Multiply UE: datetime, ingress Tput, egress Tput, MCS, PuschBler,nonWPuschBler
+		- UL: datetime, ingress Tput, egress Tput, MCS,PuschBler,nonWPuschBler
+		- DL: datetime, ingress Tput, egress Tput, MCS,PdschBler,nonWPdschBler
+- PDCP Parameter: 
+	-  datetime,ingress traffic, and egress traffic
+### Step of this automation and file Name:
+- Step 1 Put Your log into directory
+	- I have place the related log into LogFile 
+- Step 2 run the script to parse the log's related parameter String like this: 
+	- Single UE time and tput: 
+		> `20221018.234547.824204 0.656478` 
+	- Single UE all string: 
+		> `20230213.174330.880843 0.001306 107.8 9.0 0.0 0.0 ` 
+	- Multiply UE all string: 
+		> `20230311.012825.882186 117.590118 120.919250 71.2 55.0 2.1 1.9`
+- Step 3 run script to convert Step2 txt file into excel 
+
+### Log File Description:	
+
+#### Log Layer2
+L2log will display different with single UE and Multiply UE, UE please refer it as a Router. Let me show below picture for more clear example of the log:
+![](img/log_single_multiply.PNG)
+
+#### Log PDCP
+PDCP log will record both DL and UL traffic. ASk you can see below there are ingress and egress paramter string, I will parse the Tput of both string. 
+![](img/log_pdcp.PNG)
 
 
-## How to run 
-- print result list after parsing :
-You can decide write or print as below function:
-    > listprint() #write file =>ok
-    > listprint2() #print =>ok
-    > listprint_Method2()  # write file =>ok
-    > listprint_Method3() #write file =>ok
-    > listprint_Method4()
+## How to run code 
+- Something to Know:
+	- We will parse DL and UL realted string, but there is one special String that is differnt for UL and DL that is Bler:
+		- UL: PuschBler nonWDuschBler
+		- DL: PdschBler nonWPdschBler
 
-### Example 1:
+### Example 1: Layer 2 Single UE get only Tput Value (ONLY DL)
+In this example I hotcode the parsing parmater ONLY DL, you can change it. I will descript code in below.
+You can use Example2, which is much flexible get DL Ul or both string. 
 
-will elog and result is hotcode, if you wants yo chnaged please modidy it. 
-Step1: ./parsefile.py
-Step2: ./excel.py to convert from result.txt to excel 
-givenString = "DL- ingress traffic"
-Note: 
-- Change your elog: 'with open('elog', 'r') as filedata:' change the elog to your elog filename
-- change string to find : 'givenString = "DL- ingress traffic"'
-- don't want to print please comment this part: 'listprint2()'
-
-![](img/example1.PNG)
-
-### Example 2: 
-yiu have to enter your elog name, and search keyword. In this sample will parse many more detail value
-Step1: ./parsefile_2.py
-enter elog file name:
-enter search keyword: uplink or downlink
-
-Step2: ./excel.py 
-![](img/example2.PNG)
-
-## Code description:
-I am going to show you many different way to parse the related value, you can use `regular expression`, or `split method`. 
-There are two example in this code
-
-![title](img/screenshot.PNG)
-
-### Step: 
-1. The code will fist search on the keyword
-2. If keyword match it will start to spit the datetime, and TPUT value. 
-3. It will save to list and print it. (You don't have to save in list)
-
-### main code
-- file or log file: 
->　declare empty list and keyword you wants to filter or search
-```
-givenString = "DL- ingress traffic" #search word in a file
-result = [] #empty list to store result
-```
-- read log file
-```
-with open('elog', 'r') as filedata:
-    for line in filedata:   
-        if givenString in line:
-            # Print the line, if the given string is found in the current line
-            #print(line)
-            timeparse(line)
-```
-### Example1 read elog and parse time and tput value
-file: `parsefile.py`
-#### 1. parse keyword dateitme and tput value
-##### method 1: using spit to spit timedate and tput value
-Ｉwants to get the date and TPUT value, so I will use `spit` and `strip` method.
-- `spit`: Spit what I wants
-- `strip`: after spit, remove the empty space if there are
-
+- Path: `/FinalCode/Layer2/SingleUE/timedate_tputONLY`
+#### FileDescription:
+	- `parsefile.py`: parse the log into txt file
+	- `ExcelWrite_Printl.py`: convert the txt file into excel method1
+	I also have write other method of converting the excel :
+	- `Excel_openpyxl_Method2/excelconvert.py`: convert the txt file into excel method2 
+	- `ExcelPandasMethod/excel_pandas.py`: convert the txt file into excel using pandas method
+##### How to run it 
+	Step1: parse the log => `./parsefile.py`
+	Step2: convert generate txt file to excel => `./ExcelWrite_Printl.py`
+	![](img/Layer2_SingleUE_timedateAndTput_Step_running.PNG)
+#### Code Description and Note
+- Hotcode only DL to search specfic string: `givenString = "DL- ingress traffic"`
+- Parse string tput and Tput value 
 ```
 datestr = data.split('[', 1)[1].split(']')[0]
 Tput = data.split(" DL- ingress traffic:", 1)[1].split(',')[0].split('(')[0].strip()
 ```
-> Note: There are two option you can print or save to list and print list 
+- save result into list
 ```
-#save data to list (result)
-result.append(datestr)
-result.append(Tput)
-# print 
-print(datestr, Tput) 
+    result.clear()
+    result.append(datestr)    
+    result.append(Tput)
+```			
+- print result list after parsing :
+You can decide write or print as below function, i write many method:
+    > listprint() #write file =>ok
+    > listprint2() #print =>ok
+    > listprint_Method2()  # write file =>ok
+    > listprint_Method3()  # write file =>ok
+    > listprint_Method4()
+
+### Example 2: Layer 2 Single UE get related string
+In this example I will get this paramter string: `datettime Tput RbNum UL-MCS UL-Bler UL-nonWPuschBler`
+
+- Path: `/FinalCode/Layer2/SingleUE/`
+#### FileDescription:
+	- `excel_layer2_BothULandDL.py`:convert the txt file into excel both UL and DL
+	- `excel_layer2.py`:convert the txt file into excel UL or DL 
+	- `parsefile_2.py`:parse the log into txt file (old version, for debug use)
+	- `parsefile_layer2_v2.py`:parse the log into txt file
+##### How to run it 
+Note: In this example there are serveral option you need to know: 
+You can select DL, UL, DL's ID , UL's ID or both UL and DL.	Please refer below log:
+	![](img/Layer2_SingleUE-ParseLoginfo.PNG)
+My code will ask you to select:
+	- DL -UE:parse only Downlink String
+	- UL -UE: parse only Uplink String
+	- both: parse only both UL and Downlink String
+	- DL -UE[ id]: parse specfic UE's ID String		
+	
+	> Case1: Get either DL or UL or specfic DL/Ul ID
+	Step1: parse the log =>`parsefile_layer2_v2.py` 
+	Step2: convert generate txt file to excel => `./ExcelWrite_Printl.py`
+	![](img/Layer2_SingleUE-DL_Step_running.PNG)	
+	 
+	> Case2: Get both DL and UL string
+	Step1: same as above Step1  =>`parsefile_layer2_v2.py` 
+	Step2: convert generate txt file to excel => `./excel_layer2_BothULandDL.py`
+	![](img/Layer2_SingleUE_excel_both_Step_running.PNG)
+	
+	If you use Case1 result and convert using Case2's excel convert script excel_layer2_BothULandDL.py will have problem. 
+	Please refer below picture, as you can see if you convert excel DL need to scroll down to fidn it and will not be bold.
+	![](img/Layer2_SingleUE_excel_both_wrongscript_Step_running.PNG)
+
+#### Code Description and Note
+- will work with  specific UE ID like '[ 0] or [10]'
+`re.compile(r"([DU]L\-\ UE(\[\s*(\d{1,2})\])?)|both$")`
+below code will not work:
 ```
-##### method 2: regular expression get the date data only
-using regular expression to parse the keyword, so `import re`
+accepted_strings = re.compile(r"([DU]L\-\ UE(\[\ (\d)\])?)|both$") #only work with space [ 0] or  [ 1]
+accepted_strings = re.compile(r"([DU]L\-\ UE(\[\ {0,1}(\d)\])?)|both$") #will work with [ 01] but [11] not work
 ```
-import re
-s = "list[20221013.162853.788442]"
-m = re.search(r"\[([0-9.]+)\]", s)
-print(m.group(1) ) #20221013.162853.788442
+- excel:
 ```
-### 2. print and write the result into a file
- There are many different method you can accomplish it, i will show you print and write into a file method. 
- > basic way to write or print
- > use `list Comprehensions` with `*unpack` list 
- > enumerate
-  > zip method
- 
-#### Method 1 print two column datetime and tput result from list
-- Print two column, the datetime and Tput value. 
-- I have store all my datetime, and Tput into list, so if I just use print list, it will have all bunch of data, so I wish to have newline after date and tput, or two colummn. 
+    while line:
+        list123 = line.split()  # convert        
+        if "=" in line:
+            pass            
+            #list123 = line.split(sep=' ')  # convert,
+        else:
+        #print(line)
+        #if not "=" in line:           
+            if list123[1] == 'Tput':
+                sheet[0].append(list123)  # write into excel
+            elif list123[1] == 'DL-Tput':
+                sheet[0].append(list123)  # write into excel
+            elif list123[1] == 'UL-Tput':
+                sheet[0].append(list123)  # write into excel                                          
+            else:
+                list123[1] = float(list123[1])
+                list123[2] = float(list123[2])
+                list123[3] = float(list123[3])
+                list123[4] = float(list123[4])
+                list123[5] = float(list123[5])
+                sheet[0].append(list123)  # write into excel
+               
+                #excel cell's font
+                sheet[0]['A1'] .font = Font(size = 14, bold = True)
+                sheet[0]['B1'].font = Font(size = 14, bold = True)
+                sheet[0]['C1'].font = Font(size = 14, bold = True)
+                sheet[0]['D1'].font = Font(size = 14, bold = True)
+                sheet[0]['E1'].font = Font(size = 14, bold = True)
+                sheet[0]['F1'].font = Font(size = 14, bold = True)
+                
 ```
-	cycle = 0
-    for element in result:
-        cycle += 1
-        #print(element, end="")
-        print(element, end=" ")
-        if cycle % 2 == 0:
-            print("")
+- excel pandas:
+	```
+	df1 = pd.DataFrame(ULlist)
+	df1 = df1.rename(columns=df1.iloc[0]).drop(df1.index[0])
+	df1['ingress-traffic'] = df1['ingress-traffic'].astype(float)
+	df1['egress-traffic'] = df1['egress-traffic'].astype(float)
+	```
+	
+- Change format styling 
+> df1=df1.style.set_properties(**{'text-align': 'center'})
+> df2=df2.style.set_properties(**{'text-align': 'center'})
+	
+### Example 3: Layer 2 Multiply UE get related String
+In this example I will get this paramter string: `datettime DL_Tput(ingress) DL_Tput(egress) DL_RbNum DL_MCS DL_Bler DL_nonWdBler`
+- Path: `/FinalCode/Layer2/multiplyUe_average/`
+#### FileDescription:
+	- `parsefile_layer2_multiply_UE.py`: parse the log into txt file
+	- `excel_layer2_sheet_multiply_UE.py`: convert the txt file into excel
+
+##### How to run it 
+	Step1: parse the log => `./parsefile_layer2_multiply_UE.py`
+	Step2: convert generate txt file to excel => `./excel_layer2_sheet_multiply_UE.py`
+	![](img/Layer2_multiplyUE_Step_running.PNG)
+	
+#### Code Description and Note
+- get Tput value 
 ```
-#### Method 2 write into file basic way
+    Tputvalue=re.search(r'(ingress [^(]+).+(egress [^(]+)',data)
+    m3New= Tputvalue.group(1)+", "+ Tputvalue.group(2) 
+    m3New_1=m3New.replace(", ", ":").strip().split(':')
+```	
+- using regular expression to to get MCS related string and date and time
+	- DL: `re.search(r'\[(\d+\.\d+\.\d+)\].*?(>>> DL- Mcs=[^]]+)', line)`
+	- UL: `re.search(r'\[(\d+\.\d+\.\d+)\].*?(UL <<<- Mcs=[^]]+)', nextline):`
+
+
+### Example 4: PDCP
+In this example I will get this paramter string: `datettime DL_Tput(ingress) DL_Tput(egress) DL_RbNum DL_MCS DL_Bler DL_nonWdBler`
+- Path: `/FinalCode/PDCP`
+#### FileDescription:
+	- `parsefile_pdcp_v2.py`: parse the log into txt file
+	- `excel_pdcp_v2.py`: convert the txt file into excel
+	- `excel_pdcp.py`: old version
+##### How to run it 
+	Step1: parse the log => `./parsefile_layer2_multiply_UE.py`
+	Step2: convert generate txt file to excel => `./excel_layer2_sheet_multiply_UE.py`
+	![](img/Layer2_multiplyUE_Step_running.PNG)
+	
+#### Code Description and Note
+- read file if file contain "=" split, use dictionary to hold your different lists
 ```
-    #checkfile()
-    cycle = 0    
-    #    with open("result.txt", "a+") as f:
-    with open(filename, "a") as f:
-        cycle += 1
-        for element in result:            
-            #print(element+ " ")
-            f.write(element+ " ")           
-        f.write("\n")
-        #f.write()
+lists = {}
+current_key = None
+with open (resultfilename, 'r')as myfile:  
+    readline=myfile.read().splitlines()
+    for line in readline:
+        if "=" in line:
+            current_key = line.strip("=")           
+            lists[current_key] = []
+        else:
+            assert current_key is not None # there shouldn't be data before a header
+            lists[current_key].append(line)
+print(lists["UL"])
+# ['datettime ingress-traffic egress-traffic ', '20221217.194802.492443 96.125687 95.911179 ', '20221217.194807.520007 96.032410 95.818085 ', '20221217.194812.548244 96.111160 95.896652 ']
+print(lists["DL"])
+# ['datettime ingress-traffic egress-traffic ', '20221217.194802.492424 240.038696 215.966110 ', '20221217.194807.520000 239.936981 210.369705 ', '20221217.194812.548238 239.968109 214.256439 ']
 ```
 
-#### Method 3 using List Comprehensions Or For loop  to print
+- split lists and save to DL or UL list 
 ```
-for i in [result[c:c+2] for c in range(0,len(result)) if c%2 == 0]:
-    print(*i) 
-```
-If you're not familar with it, you can use a normal `for loop` as below:
-```
-temp = []
-for c in range(0, len(result)):
-    if c % 2 == 0:
-        temp.append(result[c:c+2])
-for i in temp:
-    print(*i)
-```
-
-#### Method 4 using enumerate to write and print
-```
-#results = ['A', 'B', 'C', 'D']
-with open('result.txt', 'a') as output:
-    for index, c in enumerate(result):
-        if index % 2 == 0:
-            #print(*results[index:index + 2])
-            print(*result[index:index + 2], file=output)
-```
-#### Method 5 using Zip to write and print
-```
-#results = iter(["A", "B", "C", "D"])
-results = iter(result)
-with open('result.txt', 'a') as output:
-    for i in zip(results, results):
-        #print(*i)
-        print(*i, file=output)
+ULlist= []
+DLlist= []
+def UL():
+    for i in lists["UL"]:
+        i=i.rstrip().split(' ')
+        ULlist.append(i)
+def DL():
+    for i in lists["DL"]:
+        i=i.rstrip().split(' ')
+        DLlist.append(i)            
 ```
 
+
+- write into excel use pandas method:
+```
+df1 = pd.DataFrame(ULlist)
+df1 = df1.rename(columns=df1.iloc[0]).drop(df1.index[0])
+df1['ingress-traffic'] = df1['ingress-traffic'].astype(float)
+df1['egress-traffic'] = df1['egress-traffic'].astype(float)
+```
+- Change format styling 
+> df1=df1.style.set_properties(**{'text-align': 'center'})
+> df2=df2.style.set_properties(**{'text-align': 'center'})
