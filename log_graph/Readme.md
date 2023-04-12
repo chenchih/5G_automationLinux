@@ -38,6 +38,8 @@ There're two types of code one is `Layer2 log` and `PDCP` log.  Below I will sho
   - datetime,ingress traffic, and egress traffic
 
 ### Step of this automation and file Name:
+![](img/FILES.PNG)
+
 - Step 1 Put Your log into directory
   - I have place the related log into LogFile 
 - Step 2 run the script to parse the log's related parameter String like this: 
@@ -53,6 +55,9 @@ There're two types of code one is `Layer2 log` and `PDCP` log.  Below I will sho
     `datettime UL_Tput(ingress) UL_Tput(egress) UL_RbNum UL_MCS UL_Bler UL_nonWuBler`
     `20230311.012825.882186 117.590118 120.919250 71.2 55.0 2.1 1.9`
 - Step 3 run script to convert Step2 txt file into excel 
+
+
+
 
 ### Log File Description:
 Let me show different Log type in this project. 
@@ -72,6 +77,8 @@ PDCP log will record both DL and UL traffic. ASk you can see below there are ing
   - I will parse `DL` and `UL` realted string, but there is one special string that is differnt for UL and DL that is Bler:
     - `UL`: PuschBler nonWDuschBler
     - `DL`: PdschBler nonWPdschBler
+![](img/RUNFILES.PNG)
+
 
 ### Example 1: Layer 2 Single UE get only Tput Value (ONLY DL)
 
