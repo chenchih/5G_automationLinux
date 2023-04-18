@@ -16,6 +16,7 @@ def writeexcel(result):
         if "=" in line:            
             pass  
         elif "-" not in line and "#" not in line:   
+
         #else:    
             if count <=2:
                 if list123[1] == 'Tput':

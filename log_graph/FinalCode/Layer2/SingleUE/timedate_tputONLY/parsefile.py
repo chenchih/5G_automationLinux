@@ -48,7 +48,7 @@ def listprint2():
         print(element, end=" ")
         #print ('='*30)
         if cycle % 2 == 0:
-            print("")
+            print(" ")
 
 def listprint_Method2():
 #####method1
