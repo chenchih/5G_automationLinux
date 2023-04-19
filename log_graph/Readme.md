@@ -36,12 +36,36 @@ There're two types of code one is `Layer2 log` and `PDCP` log.  Below I will sho
     - `DL`: datetime, ingress Tput, egress Tput, MCS,PdschBler,nonWPdschBler
 - PDCP Parameter: 
   - datetime,ingress traffic, and egress traffic
-
+- elog merge(2022-04 update new feature): 
+	- This code is useful when you have multiply elog, it allow to merge into one file, and run above code to parse.
+	- Filename: `merge_multiply_elogfile.py`
+	> Method1:using `read and write`
+	```
+	#path
+	directory = "."
+    # Output file name
+    output_file = "merged.txt"
+	with open(output_file, "w") as outfile:
+        for filename in os.listdir(directory):
+            if filename.startswith("elog_gnb_du_layer2"):
+                with open(os.path.join(directory, filename), "r") as infile:
+                    outfile.write(infile.read())
+	```
+	> Method2: using `glob` libary
+	```
+	file_pattern = 'elog_gnb_du_layer2*'
+    file_list = glob.glob(file_pattern)
+	with open('merged_file.txt', 'w') as outfile:
+        for file in file_list:
+            with open(file, 'r') as infile:
+                outfile.write(infile.read())
+	```
 ### Step of this automation and file Name:
 ![](img/FILES.PNG)
 
 - Step 1 Put Your log into directory
   - I have place the related log into LogFile 
+  `Note:` If you have multiply elog file, you can use this code to merge into onefile
 - Step 2 run the script to parse the log's related parameter String like this: 
   - Single UE time and tput: 
     > `20221018.234547.824204 0.656478` 
@@ -55,8 +79,6 @@ There're two types of code one is `Layer2 log` and `PDCP` log.  Below I will sho
     `datettime UL_Tput(ingress) UL_Tput(egress) UL_RbNum UL_MCS UL_Bler UL_nonWuBler`
     `20230311.012825.882186 117.590118 120.919250 71.2 55.0 2.1 1.9`
 - Step 3 run script to convert Step2 txt file into excel 
-
-
 
 
 ### Log File Description:
@@ -78,6 +100,7 @@ PDCP log will record both DL and UL traffic. ASk you can see below there are ing
     - `UL`: PuschBler nonWDuschBler
     - `DL`: PdschBler nonWPdschBler
 ![](img/RUNFILES.PNG)
+
 
 
 ### Example 1: Layer 2 Single UE get only Tput Value (ONLY DL)
