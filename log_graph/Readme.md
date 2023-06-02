@@ -60,6 +60,23 @@ There're two types of code one is `Layer2 log` and `PDCP` log.  Below I will sho
             with open(file, 'r') as infile:
                 outfile.write(infile.read())
 	```
+	- fix some issue read file in order 
+	if your file is name XXX_8.txt,XXX_9.txt, XXX_10.txt, it will read like 10, 8, 9. in order to fixe this issue add 'norsort'
+	```
+	from natsort import natsorted
+	def method3():
+		file_pattern = 'elog_gnb_du_layer2*'
+		file_list = glob.glob(file_pattern)
+		sorted_file_list = natsorted(file_list)  # Sort the file list naturally
+
+		with open('merged_file.txt', 'w') as outfile:
+			for file in sorted_file_list:
+				with open(file, 'r') as infile:
+					outfile.write(infile.read())
+	```
+	
+	
+	
 ### Step of this automation and file Name:
 ![](img/FILES.PNG)
 
