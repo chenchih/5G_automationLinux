@@ -19,7 +19,7 @@ There will be two different type of Tput value:
 - [x] init
 - [x] anlaysic data get datetime and tput value
 - [x] anlaysic data more value
-- [ ] draw graph 
+- [x] draw graph 
 
 ## Description of code
 
@@ -75,7 +75,9 @@ There're two types of code one is `Layer2 log` and `PDCP` log.  Below I will sho
 					outfile.write(infile.read())
 	```
 	
-	
+- Draw line graph using `matplotlib.pyplot`(2022-06 update new feature) :
+	- New Add draw graph TPUT ONLY
+	- New Add draw graph TPUT and MCS 
 	
 ### Step of this automation and file Name:
 ![](img/FILES.PNG)
@@ -337,3 +339,18 @@ df1['egress-traffic'] = df1['egress-traffic'].astype(float)
 df1=df1.style.set_properties(**{'text-align': 'center'})
 df2=df2.style.set_properties(**{'text-align': 'center'})
 ```
+
+### Example 5: Merge Multiply elog files 
+In this example if you have multiply log file wish to merge into one file, you can run this script
+- Path: `/FinalCode/Layer2/`
+#### FileDescription:
+- `merge_multiply_elogfile.py` if you have many elog log file, you can run this first and will merge into one file
+
+### Example 6: Draw graph
+After you have Done parsing the file and export to excel, you can run below either script to generate data visualization draw line graph and save pic
+- Path: `/FinalCode/Layer2/drawLineGraph`
+#### FileDescription:
+- `chart_TPUT_MCS.py`: excel only contain TPUT and MCS column
+![](img/tputGraph.png)
+- `chart_TPUT_only.py`: excel only contain TPUT only 
+
