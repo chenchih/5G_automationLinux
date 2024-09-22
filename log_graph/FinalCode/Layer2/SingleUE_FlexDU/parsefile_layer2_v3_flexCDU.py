@@ -1,0 +1,116 @@
+import os, re
+from datetime import datetime
+filename=f"result-{datetime.now():%Y-%m-%d-%H-%M-%S}.txt"
+result = []
+
+def checkfile():
+    if os.path.exists("result.txt"):
+        print("file exist, delete file")
+        os.remove("result.txt")
+
+def getelement(li, element):
+    ind = li.index(element)
+    return li[ind+1]
+    
+def writefile(status):
+    checkfile()
+    with open(filename, 'a') as f:
+        f.write(f"="*25+status+"="*25+"\n")
+        if 'D-UE' in status or 'DL' in status: 
+            f.write(("datettime \t DL-Tput"+ " "*3+ "DL-RbNum " + "DL-MCS "+"DL-Bler\n").expandtabs(22))
+        elif 'U-UE' in status or 'UL' in status:
+            f.write(("datettime \t UL-Tput"+ " "*3+ "UL-RbNum " + "UL-MCS "+"UL-Bler\n").expandtabs(22))
+
+def parse_test(data, ULDLstr):    
+    #get the time
+    datestr = data.split('[', 1)[1].split(']')[0]  
+    search = re.search(r'\[(\d+\.\d+\.\d+)\].*?(Tput=[^A]+)', data)
+    m3New = re.sub(r"[\(\[].*?[\)\]]", "", search.group(2)).replace('=', '= ').replace(',', ' ').strip().split()
+    result.clear()
+    bler="Bler="
+    result.append(datestr)
+    result.append(getelement(m3New, 'Tput='))
+    result.append(getelement(m3New, 'RB= ')) 
+    result.append(getelement(m3New, 'Mcs='))
+    result.append(getelement(m3New, bler))
+    #print(result)
+
+def parse(data, ULDLstr):    
+    #get the time
+    datestr = data.split('[', 1)[1].split(']')[0]  
+    search = re.search(r'\[(\d+\.\d+\.\d+)\].*?(Tput=[^A]+)', data)
+    m3New = re.sub(r"[\(\[].*?[\)\]]", "", search.group(2)).replace('=', '= ').replace(',', ' ').strip().split()
+    result.clear()
+
+    givenString=ULDLstr
+    bler="Bler="
+    result.append(datestr)    
+    result.append(getelement(m3New, 'Tput='))
+    result.append(getelement(m3New, 'RB='))
+    result.append(getelement(m3New, 'Mcs='))
+    result.append(getelement(m3New, bler))
+    listprint() 
+    
+#write to file
+def listprint():
+    #checkfile()
+    cycle = 0        
+    with open(filename, "a") as f:
+        for element in result:            
+            f.write(element+ " ")     
+        f.write("\n")
+def emptywrite(status):
+    with open(filename, "a") as f:
+        f.write(f"="*25+status+"="*25+"\n")
+  
+def listprint2():
+    cycle = 0
+    for element in result:
+        cycle += 1
+        #print(element, end="")
+        print(element, end=" ")
+        if cycle % 6 == 0:
+            print("")
+            
+def ULDLprint(target):
+    with open(elogfileName, 'r') as filedata:
+        for line in filedata:   
+            if target in line:
+                # Print the line, if the given string is found in the current line
+                parse(line, target)
+   
+def main():
+    accepted_strings = re.compile(r"^(D-UE|U-UE)(\[\d\]|\[ \d\])?$|^both$")
+    givenString = input("Please enter your search (Ex: D-UE / U-UE/ U-UE[ 0] / both:):")
+
+    if accepted_strings.match(givenString):
+        if givenString =="both":
+            UL = 'U-UE'
+            DL = 'D-UE'
+            writefile("UL")
+            ULDLprint(UL)
+            writefile("DL")
+            ULDLprint(DL)
+        else:        
+            writefile(givenString)
+            with open(elogfileName, 'r') as filedata:
+                for line in filedata:   
+                    if givenString in line:
+                        
+# Print the line, if the given string is found in the current line
+                        #print(line.strip())
+                        parse(line, givenString)
+    else:
+        print("Not found, please reenter correct option") 
+
+###################################################################################
+elogfileName= input("Please enter your elog FileName: ")
+while True:
+    startscript= input("####press any key, q to exit script#####: ")
+    if startscript =="q":
+        break
+    else:
+        main()
+
+   
+

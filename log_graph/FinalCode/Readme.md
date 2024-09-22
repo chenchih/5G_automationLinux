@@ -1,13 +1,14 @@
 # How to run
-## Layer2- single UE
+
+## Layer2- single UE(Split DU)
 - Path: `/FinalCode/Layer2/SingleUE/`
 ![](../img/RunLayer1_bothULDL.gif) 
 
-## Layer2- Multiply UE
+## Layer2- Multiply UE(Split DU)
 - Path: `/FinalCode/Layer2/multiplyUe_average`
 ![](../img/RunLayer2_multiplyUE.gif) 
 
-## PDCP UE
+## PDCP UE(Split DU)
 - Path: `/FinalCode/Layer2/SingleUE/timedate_tputONLY`
 ![](../img/Run_PDCPscript.gif)
 

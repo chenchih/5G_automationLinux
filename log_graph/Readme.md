@@ -1,8 +1,10 @@
 ## Intro
 
-I am going to develop a automation script to parse the file. After parsing will generate a txt file, and use the excel script to convert txt into excel file. 
+I am going to develop a automation script to log analysic parse. After parsing will generate a txt file, and use the excel script to convert txt into excel file. 
 
 There will be two different type of Tput value:
+
+### Split CDU
 
 - datetime and Tput value
 ```
@@ -13,6 +15,21 @@ There will be two different type of Tput value:
 ```
 [20221102.064905.609113][info]:[DL- UE[ 0]: Tput=  555.198792 Mbps, Mcs= 26.0(Sigma= 0.0), RbNum= 198.4, ReTxRatio=   0.0, Layers= 4.0, PdschBler=   0.0, nonWPdschBler=   0.0]
 ```
+### Flex CDU 
+
+update 2024.09.22
+
+- datetime, tput, other value such as Mcs, RbNum, and etc
+```
+[20240606.150020.325614][info]:[D-UE[ 1][  1]: Tput= 585.617676, Mcs=28.0, RB=262.6, ReTx=  0.0, L=4.0, Bler=  0.0, A[9490]N[  0]D[ 0]S[  17], Rssi=81]
+```
+
+### Comparsion 
+
+There are two type of system:
+- Split CDU (original CDU): Ubuntu
+- Flex CDU: CentOS
+
 
 ## checklist status
 
@@ -27,10 +44,11 @@ This is an automation of parsing the log file to get `UL/DL`(UL for Upload, DL f
 There're two types of code one is `Layer2 log` and `PDCP` log.  Below I will show you the log file information. 
 
 - Layer2 Parameter: 
-  - Single UE or Specfic ID: 
+  - Single CDU or Specfic ID: 
     - `UL or DL`: datetime, Tput
     - `UL`: datetime, Tput, MCS,PuschBler,nonWPuschBler
     - `DL`: datetime, Tput, MCS,PdschBler,nonWPdschBler
+
   - Multiply UE: datetime, ingress Tput, egress Tput, MCS, PuschBler,nonWPuschBler
     - `UL`: datetime, ingress Tput, egress Tput, MCS,PuschBler,nonWPuschBler
     - `DL`: datetime, ingress Tput, egress Tput, MCS,PdschBler,nonWPdschBler
@@ -100,13 +118,17 @@ There're two types of code one is `Layer2 log` and `PDCP` log.  Below I will sho
 - Step 3 run script to convert Step2 txt file into excel 
 
 
-### Log File Description:
+### Log File Structure:
 Let me show different Log type in this project. 
 #### Log: Layer2
-- L2log will display different with `single UE` and `Multiply UE`, UE please refer it as a Router. 
-- Let me show below picture for more clear example of the log:
 
+- **Split CDU**
+	- L2 Log parse `single UE` and `Multiply UE`, Uplink, Downlink and both traffic data
 ![](img/log_single_multiply.PNG)
+
+- **Flex CDU**
+	- L2 Log parse `single UE` Uplink, Downlink and both traffic data
+![](img/log_single_flexDU.png)
 
 #### Log: PDCP
 
@@ -114,13 +136,12 @@ PDCP log will record both DL and UL traffic. ASk you can see below there are ing
 ![](img/log_pdcp.PNG)
 
 ## How to run code
+
 - Something to Know how this script:
   - I will parse `DL` and `UL` realted string, but there is one special string that is differnt for UL and DL that is Bler:
     - `UL`: PuschBler nonWDuschBler
     - `DL`: PdschBler nonWPdschBler
 ![](img/RUNFILES.PNG)
-
-
 
 ### Example 1: Layer 2 Single UE get only Tput Value (ONLY DL)
 

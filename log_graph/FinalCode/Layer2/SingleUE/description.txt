@@ -1,6 +1,0 @@
-parsefile.py get timedate tput 
-parsefile_2.py get realted information 
-parsefile_layer2_v2 improvement of parsefile parsefile_2.py 
-
-excel_layer2.py :convert txt file on UL or DL
-excel_layer2 _BothULandDL.py convert txt file on both DL and UL
