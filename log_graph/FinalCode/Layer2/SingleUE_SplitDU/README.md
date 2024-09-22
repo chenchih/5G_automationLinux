@@ -119,7 +119,6 @@ Please Mark off the `#` if you decide to use which one.
 
 `NOTE` I will only put some function in `parsefile_layer2_v2.py`, but you wants to see all method please go to `timedate_tputONLY `> `parse.py` file to check.
 
-
 ```
 listprint() #write file =>ok
 #listprint2() #print =>ok

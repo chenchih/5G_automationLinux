@@ -5,7 +5,7 @@ from openpyxl.styles import Font
 def excelconvertResult(result):
     f = open(result, 'r+')  # open text
     #########if load excel file ########################
-    # excel=openpyxl.load_workbook(r'D:\\test\\test.xlsx') #open excel
+    #excel=openpyxl.load_workbook(r'D:\\test\\test.xlsx') #open excel
     excel = openpyxl.Workbook()
     sheet = excel.worksheets
     line = f.readline();  # read text
