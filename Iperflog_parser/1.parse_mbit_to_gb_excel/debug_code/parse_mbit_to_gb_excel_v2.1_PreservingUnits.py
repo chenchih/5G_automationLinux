@@ -1,10 +1,13 @@
 """
 version: v2.1: 
-    - preserving the original units from file
-    - issue: unit might contain gbit/mbit unit and value wil be inconsistency 
-
-Parses a log file, extracts SUM lines with Mbits/sec or Gbits/sec,
-formats data, and writes to an Excel file, preserving the original units.
+    - preserving the original units from log file, formats data, and writes to an Excel file. 
+- [Issue]
+    - issue1[FIX]: The tput value is inconsistency data type, some are in gb some are in mb(when tpt not reach will show mb)
+        - [SOLUTION] Preserving unit from log file, which mean unit use from log file. 
+    - issue2: The unit type is been hoted code to mbps on the last column which value is gbps, but unit show mbps. 
+    - issue3: datetime need to adjust the width
+- [Improvement]
+    - Parses a log file, extracts SUM lines with Mbits/sec or Gbits/sec, whcih mean both mbit or gbit log are aviable to use. 
 """
 import re
 from datetime import datetime
@@ -51,7 +54,7 @@ def process_log_file_to_excel(input_file, output_excel_file):
         print(f"An unexpected error occurred: {e}")
 
 # Example usage:
-input_file_path = "input_Mbits.txt"
+input_file_path = "input_Mbits_Short.txt"
 output_excel_file_path = "output.xlsx"
 
 process_log_file_to_excel(input_file_path, output_excel_file_path)

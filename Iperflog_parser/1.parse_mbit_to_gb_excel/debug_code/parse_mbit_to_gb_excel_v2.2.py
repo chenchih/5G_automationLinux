@@ -1,7 +1,20 @@
 """
-version: v2.3 [Final]
-    - progress par to each function
-Parses, transforms, and writes data to Excel with detailed progress bars.
+version: v2.2
+
+Description: convert value to consitency and add progress bar
+
+- [Issue]
+    - issue2: The unit type is been hoted code to mbps on the last column which value is gbps, but unit show mbps. 
+    - issue3: datetime need to adjust the width
+- [Improvement]
+    - issue1: The tput value is inconsistency data type
+        - [SOLUTION]: improve the unit value by convert all the value to gb. Check unit if M then convert value to gb by divide 1000
+
+- [New Feature]
+    - implement with detailed progress bars which include parses, transforms, and writes data to Excel .
+- [Issue]
+    - issue 2: writting mbit data, the mbit unit will display incorrect type 
+    - issue 3 FIX: adjust the datetime column width
 """
 
 import re
@@ -16,12 +29,13 @@ def process_log_file_to_excel(input_file, output_excel_file):
         unit = None
 
         # 1. Parsing Stage
-        with open(input_file, 'r') as infile:
+        with open(input_file, 'r',  encoding='utf-8', errors='replace') as infile:
             lines = infile.readlines()
             with tqdm(total=len(lines), desc="Parsing Log Lines") as pbar_parse:
                 for line in lines:
                     if "[SUM]" in line:
-                        match = re.match(r"(\w{3} \w{3} \d{2} \d{2}:\d{2}:\d{2} \d{4}) \[SUM\].*?([\d\.]+) (M|G)bits/sec", line)
+                        #match = re.match(r"(\w{3} \w{3} \d{2} \d{2}:\d{2}:\d{2} \d{4}) \[SUM\].*?([\d\.]+) (M|G)bits/sec", line)
+                        match = re.match(r"(\w{3} \w{3} \d{2} \d{2}:\d{2}:\d{2} \d{4}) \[SUM\].*?([\d\.]+) (bits|Mbits|Gbits)/sec",line)
                         if match:
                             date_str = match.group(1)
                             transfer_str = match.group(2)
@@ -79,7 +93,7 @@ def process_log_file_to_excel(input_file, output_excel_file):
         print(f"An unexpected error occurred: {e}")
 
 # Example usage:
-input_file_path = "input_Mbits.txt"
-output_excel_file_path = "output.xlsx"
+input_file_path = "input_Gbits_Short.txt"
+output_excel_file_path = "Gbit_output.xlsx"
 
 process_log_file_to_excel(input_file_path, output_excel_file_path)

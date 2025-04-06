@@ -1,12 +1,22 @@
+'''
+version: v2.4
+Description: wrap up feature in to function, for better readable and manage
+
+- [New Feature]
+
+- [Issue]
+    - issue 2: The unit type is been hoted code to mbps on the last column which value is gbps, but unit show mbps. 
+- [improvement]
+    - wrap up feature in to function, for better readable and management
+
+'''
 import re
 from datetime import datetime
 import openpyxl
 from tqdm import tqdm
 
 def process_log_file_to_excel_combined(input_file, output_excel_file):
-    """
-    Combines all processing stages into a single progress bar.
-    """
+
     try:
         data, unit = parse_log_file(input_file)
         if data:
@@ -32,7 +42,8 @@ def parse_log_file(input_file):
         with tqdm(total=len(lines), desc="Processing Log File") as pbar:
             for line in lines:
                 if "[SUM]" in line:
-                    match = re.match(r"(\w{3} \w{3} \d{2} \d{2}:\d{2}:\d{2} \d{4}) \[SUM\].*?([\d\.]+) (M|G)bits/sec", line)
+                    #match = re.match(r"(\w{3} \w{3} \d{2} \d{2}:\d{2}:\d{2} \d{4}) \[SUM\].*?([\d\.]+) (M|G)bits/sec", line)
+                    match = re.match(r"(\w{3} \w{3} \d{2} \d{2}:\d{2}:\d{2} \d{4}) \[SUM\].*?([\d\.]+) (bits|Mbits|Gbits)/sec",line)
                     if match:
                         date_str = match.group(1)
                         transfer_str = match.group(2)
@@ -48,6 +59,8 @@ def parse_log_file(input_file):
                             data.append([formatted_date, transfer_value])
                         except ValueError:
                             print(f"Warning: Invalid data format in line: '{line}'. Skipping.")
+                    else:
+                        print(f"\nNo match found in line: {line.strip()}")
                 pbar.update(1)
     return data, unit
 
@@ -76,8 +89,10 @@ def adjust_column_width(sheet):
     adjusted_width = max_length + 2
     sheet.column_dimensions['A'].width = adjusted_width
 
-# Example usage:
-input_file_path = "input_Mbits.txt"
-output_excel_file_path = "output_combined.xlsx"
+#input_file_path = "iperf3_F.log"
+#output_excel_file_path = "output_combined.xlsx"
+
+input_file_path= input('Please enter log file name: ')
+output_excel_file_path = (input('save file name: ') +'.xlsx')
 
 process_log_file_to_excel_combined(input_file_path, output_excel_file_path)

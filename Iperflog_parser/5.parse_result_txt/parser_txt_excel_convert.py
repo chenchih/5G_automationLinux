@@ -1,32 +1,36 @@
-import re
+import re, sys
 from datetime import datetime
-import openpyxl  # You'll need to install this: pip install openpyxl
+import openpyxl 
 
 def process_log_file(input_file):
-    """
-    Parses the input log file, extracts date and mbps from [SUM] lines,
-    and returns the extracted data.
-    """
+
     data =[]
     try:
         with open(input_file, 'r', errors='replace') as infile:
             for line in infile:
                 if "[SUM]" in line:
-                    match = re.match(r"(\w{3} \w{3} \d{2} \d{2}:\d{2}:\d{2} \d{4}) \[SUM\].*?(\d+) Mbits/sec", line)
+                    #only filter M or G
+                    #match = re.match(r"(\w{3} \w{3}\s+\d{1,2} \d{2}:\d{2}:\d{2} \d{4}) \[SUM\].*?([\d\.]+) (M|G)bits/sec", line)
+                    match = re.match(r"(\w{3} \w{3}\s+\d{1,2} \d{2}:\d{2}:\d{2} \d{4}) \[SUM\].*?([\d\.]+) (bits|Mbits|Gbits)/sec", line)
                     if match:
                         date_str = match.group(1)
-                        mbps_str = match.group(2)
+                        TPUT = match.group(2)
+                        unit = match.group(3)
 
+                        '''
+                        if unit is None:
+                            unit = unit
+                        elif unit == 'G':      
+                            print('Warming Your log file contains Gbits/seclog file which not support. \nThis script only captures Mbits/sec log files, please change log file!!!')                        
+                            sys.exit(1) # Exit with an error code
+                        '''
                         try:
                             date_obj = datetime.strptime(date_str, "%a %b %d %H:%M:%S %Y")
                             formatted_date = date_obj.strftime("%Y%m%d_%H:%M:%S")
-                            # Convert mbps_str to integer here:
-                            mbps_int = int(mbps_str)  
-                            data.append([formatted_date, mbps_int])  # Append the integer
+                            data.append([formatted_date, float(TPUT), unit])  # Append the integer
                         except ValueError:
                             print(f"Warning: Invalid date format in line: '{line}'. Skipping.")
-                        except ValueError:
-                            print(f"Warning: Invalid mbps value in line: '{line}'. Skipping.") # Handle potential mbps conversion error
+
     except FileNotFoundError:
         print(f"Error: Input file '{input_file}' not found.")
         return None  # Indicate failure
@@ -35,33 +39,31 @@ def process_log_file(input_file):
         return None  # Indicate failure
     return data
 
-# ... (rest of your code - write_data_to_txt, write_data_to_excel, etc.)def write_data_to_txt(data, output_file):
-    """
-    Writes the extracted data to a tab-delimited text file.
-    """
+def write_data_to_txt(data, output_file):
     if data:
         try:
             with open(output_file, 'w', encoding='utf-8') as outfile:
-                outfile.write("timedate\tmbps\n")
+                outfile.write("timedate\tTPUT\tunits\n")
                 for row in data:
-                    outfile.write(f"{row[0]}\t {row[1]}\n")
+                    outfile.write(f"{row[0]}\t {row[1]}\t {row[2]}\n")
             print(f"Data written to {output_file}")
         except Exception as e:
             print(f"An error occurred while writing to text file: {e}")
     else:
         print("No data to write to text file.")
+        
 
+    
 def write_data_to_excel(data, output_file):
-    """
-    Writes the extracted data to an Excel file.
-    """
     if data:
         try:
             workbook = openpyxl.Workbook()
             sheet = workbook.active
-            sheet.append(["timedate", "mbps"])  # Header row
+            sheet.append(["timedate", "TPUT","Unit"])  # Header row
+            
             for row in data:
                 sheet.append(row)
+            adjust_column_width(sheet)
             workbook.save(output_file)
             print(f"Data written to {output_file}")
         except Exception as e:
@@ -69,13 +71,26 @@ def write_data_to_excel(data, output_file):
     else:
         print("No data to write to Excel file.")
 
-# Example usage:
-input_file_path = "input_Mbits.txt"
+def adjust_column_width(sheet):
+    """Adjusts the first column's width."""
+    datetime_column = sheet['A']
+    max_length = 0
+    for cell in datetime_column:
+        try:
+            if len(str(cell.value)) > max_length:
+                max_length = len(str(cell.value))
+        except TypeError:
+            pass
+    adjusted_width = max_length + 2
+    sheet.column_dimensions['A'].width = adjusted_width
+input_file_path = input('Enter your filename: ')
 output_file_path = "output"  # Base name, extensions will be added
 
-output_format = "excel"  # or "txt" or "both"
+output_format = input('Enter output format type (excel, txt, both): ')
+#output_format = "excel"  # or "txt" or "both"
 
 extracted_data = process_log_file(input_file_path)
+
 
 if extracted_data:  # Only write if data was extracted successfully
     if output_format.lower() == "txt" or output_format.lower() == "both":
