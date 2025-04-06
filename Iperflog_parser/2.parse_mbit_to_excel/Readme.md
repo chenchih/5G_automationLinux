@@ -2,18 +2,18 @@
 
 
 ## Description
-This code is similar to `parse_mbit_to_gb_excel.py`, the only different is it will parse only the mbit log file, without convert data unit. In `parse_mbit_to_gb_excel.py` you will realize I will convert mbit log file to gbit, however if you want to get only the mbit you can use this code. Essentialy this code is just to parse the mbit value without convert to gbit. 
+This code is similar to `parse_mbit_to_gb_excel.py`, the only difference is that it will parse only the mbit log file, without converting the data unit. In `parse_mbit_to_gb_excel.py`, you will realize I will convert mbit log file to gbit, however, if you want to get only the mbit, you can use this code. Essentially this code is just to parse the mbit value without converting to gbit. 
 
 Please NOTED, this code ONLY SUPPORT mbit log file, iso in case if you use other than mbit then will throw msg and exit code. 
 
 ## Output
-If you enter the logfile contain gbit will show Error telling you this code only can capture mbit logfile 
-![reading_parseresult](../../img/parse_mbit_gbit/2_parse_mbit_excel_output.png)
+If you enter the logfile contains gbit will show an Error telling you that this code can only capture mbit logfiles 
+![reading_parseresult](../img/parse_mbit_gbit/2_parse_mbit_excel_output.png)
 
 ## Code Version explanation
 
 - v1.0: inital release
-- v1.1: change outpust default file or user enter for much flexible.
+- v1.1: change the output default file or user enter for much more flexibility.
 - v1.2: change cpature matching string `\d{2}` to `\s+\d{1,2}` which will capture single or multiple date. 
 
 ### Capture matching string

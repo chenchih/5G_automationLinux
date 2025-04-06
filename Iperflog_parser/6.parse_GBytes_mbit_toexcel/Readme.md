@@ -5,7 +5,7 @@ This script is use to parse Mbit log file, which can filter GBytes and Mbits thi
 
 ## Output
 If you enter the logfile contain gbit will show Error telling you this code only can capture mbit logfile
-![reading_parseresult_output](../../img/parse_GBytes_mbit_toexcel.png)
+![reading_parseresult_output](../img/parse_GBytes_mbit_toexcel.png)
 
 
 ## Code explanation
@@ -18,7 +18,7 @@ if match:
     transfer_str = match.group(2)#GBytes value
     bitrate_str = match.group(3)#Mbit value
 ```
-![parse_GBytes_mbit_toexcel_regularexpression](../../img/parse_GBytes_mbit_toexcel_reg.png)
+![parse_GBytes_mbit_toexcel_regularexpression](../img/parse_GBytes_mbit_toexcel_reg.png)
 
 ### convert datetime 
 ```

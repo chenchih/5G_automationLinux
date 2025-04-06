@@ -1,13 +1,12 @@
 # Parse with bidirectional iperf Log
 
 ## Description of Code
-This script is use to parse iperf bidirectional Log with string `[SUM][RX-C]` and `[SUM][TX-C]` and capture datetime, TPUT and unit. 
-
+This script is used to parse the iperf bidirectional Log with string `[SUM][RX-C]` and `[SUM][TX-C]` and capture the datetime, TPUT, and unit. 
 > iperf3 command: `iperf3 -c <IP-ADD> -P 32 -t <second> --bidir -b 36M `
 
 Bidirectional mean run both UL(upload) and DL(Download) in the same time, so it will occur TX and RX string in iperf log, and I want to parse that string. 
 
-![bidirectional](../../img/bidirectional.PNG)
+![bidirectional](../img/bidirectional.PNG)
 
 ## Output
 
@@ -33,7 +32,7 @@ def parse_log_file_rx_tx(input_file):
 			transfer_str = match.group(3)#tput value
 			unit = match.group(4) #unit		
 ```
-![reading_parseresult_regularexpression](../../img/parse_mbit_gbit/bidirectional_regular.PNG)
+![reading_parseresult_regularexpression](../img/parse_mbit_gbit/bidirectional_regular.PNG)
 
 #### convert datetime from log to date format
 ```
@@ -143,7 +142,7 @@ def parse_log_file_rx_tx(input_file):
 	match = re.match(r"(\w{3} \w{3}\s+\d{1,2} \d{2}:\d{2}:\d{2} \d{4}) \[SUM]\[(RX-C|TX-C)\].*?([\d\.]+) (bits|Mbits|Gbits)/sec", line_str)
 	....
 ```
-![reading_parseresult_regularexpression_issue1.2](../../img/parse_mbit_gbit/bidirectional_regular_v1.2.PNG)
+![reading_parseresult_regularexpression_issue1.2](../img/parse_mbit_gbit/bidirectional_regular_v1.2.PNG)
 
 
 - `d{2}`: looks for exactly two digits.

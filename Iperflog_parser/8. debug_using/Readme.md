@@ -12,7 +12,7 @@ output_file_path = "output.txt"
 ```
 
 **Output:**
-![conver_Datetime_format](../../img/debugCode/convertdateFormat.png)
+![conver_Datetime_format](../img/debugCode/convertdateFormat.png)
 
 ### reading_parseLogFile
 
@@ -21,11 +21,11 @@ This script is use to reading the parsing or filter result. This is useful if yo
 - `parse_sum_line()`: Filter and capture `[SUM]` and print it out the result. This is just liek using find `[SUM]` in the log file, but instead capture the result. 
 - `parse_matching_str()`: Filter `[SUM][RX-C]` and `[SUM][TX-C]` for bidirectional log file. It capture the datetime and print it. 
 
-![reading_parseresult](../../img/parseResult.png/)
+![reading_parseresult](../img/parseResult.png/)
 
 
 **Output:**
-![reading_parseresult](../../img/debugCode/)
+![reading_parseresult](../img/debugCode/)
 
 ### timeduration_calculate
 This code is to calculates the duration between two datetime strings. If you want to caculate the datetime of duration, you can use this code, will help you caculate date and time(convert day to hours)
@@ -36,4 +36,4 @@ start_time_str= input('enter your starting date:')
 end_time_str = input('enter your ending date:')
 ```
 **Output:**
-![timeduration_calc](../../img/debugCode/timeduration_calc.png)
+![timeduration_calc](../img/debugCode/timeduration_calc.png)

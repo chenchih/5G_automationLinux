@@ -2,30 +2,29 @@
 
 ## Description
 
-Process multiple log files in a directory, extracts SUM lines, converts transfer rates to Gbits/sec,
+Process multiple log files in a directory, extract SUM lines, convert transfer rates to Gbits/sec,
 formats data, and writes to separate sheets in an Excel file.
 
-This code user don't have to enter the logfile, it will parse all the logfile or txt file in current workign directory. 
+This code user doesn't have to enter the logfile, it will parse all the logfiles or txt files inthe  current working directory. 
 
 ## output
-It will check current working directory for file contain `.txt` and `.log` and parse, but if content contain [RX-C] [TX-C] which is bidirectional log then will skip this logfile
+It will check the current working directory for files containing `.txt` and `.log` and parse, but if the content contains [RX-C] [TX-C] which is a bidirectional log then it will skip this logfile
 
-![parse_excelshee_output](..\..\img\parse_excelsheet_output.png)
+![parse_excelshee_output](../img/parse_excelsheet_output.png)
 ## version update
 - v1: parse unit gbit and mbit
-	- run working directory file that contain log or txt file will read the file and parse data
-    - if unit is M then will convert unit to G, ex: 1000 then it will change to 1 
-    - remove the unit
+	- Run the current working directory file that contains log or txt file will read the file and parse data
+    - If the unit is M then it will convert the unit to G, ex: 1000 then it will change to 1 
+    - Remove the unit
     - NOT SUPPORT bidirectional 
     - [Issue 001]: 0.00 bit not able to filter
 - v2: Capture 0.00 bit  
-	- fix issue: adding 0.00 bit also able to parse
-	- [Isssue 002]: two digit and space for date will not be capture
-- v3: ignore log contain tx or RX 
-	- if log contain tx or tx then ignore that file(bidirectional)
+	- fix issue: adding 0.00 bit is also able to parse
+	- [Isssue 002]: two digit and space for date will not be captured
+- v3: ignore log contains tx or RX 
+	- if log contains tx or tx then ignore that file(bidirectional)
 - v4: capture date with space and digit 
 	- fix issue: Capture space with two digit for date `add \\s+\\d{1,2}`
-
 
 ### check current directory for log and txt file 
 ```
@@ -40,7 +39,7 @@ if not file_list:
 		return
 ```
 
-### parse and capture string
+### parse and capture a string
 - v1
 ```
 with open(input_file_path, 'r') as infile:

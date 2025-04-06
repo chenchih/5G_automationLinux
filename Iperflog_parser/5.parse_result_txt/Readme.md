@@ -1,10 +1,10 @@
 # Debug For Coding 
 
 ## Description of Code
-These two code all can parse the logfile and write result into txt file. In case if you don't want to display in excel, and want to use txt, you can run this code. 
+These two codes all can parse the logfile and write the  result into text file. In case if you don't want to display in Excel, and want to use text file, you can run this code. 
 
-- `parser_result_txt`: write result into text file
-- `parser_txt_excel_convert`: write result into text, or excel or both file. 
+- `parser_result_txt`: write the result into a text file
+- `parser_txt_excel_convert`: write the result into a text, or Excel or both file. 
 
 ### parser_result_txt
 
@@ -12,12 +12,10 @@ These two code all can parse the logfile and write result into txt file. In case
 Parses the input log file, extracts date and units from `[SUM]` lines, and writes the results to the output file.
 Dynamically sets the header based on the units found in the file, and perserve the log unit, which mean bit will become bit,  gbit will become gbit and so on
 
-
-
 **output:**
 This support both mbit or gbit log file, so you can enter both mbit logfile or gbit logfile, it will work. 
 
-![txt_parsing_output](../../img/parser_result_txt_output.png)
+![txt_parsing_output](../img/parser_result_txt_output.png)
 
 #### Code Explanation
 - Parse log file
@@ -70,7 +68,7 @@ It also support both type mbit or gbit log file.
 - support both mbit and gbit
 
 **output:**
-![txt_parsing_output](../../img/parser_txt_excel_convert_output.png)
+![txt_parsing_output](../img/parser_txt_excel_convert_output.png)
 
 #### Code explanation
 
