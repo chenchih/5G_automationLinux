@@ -7,7 +7,7 @@ The purpose of automation is to accelerating work, to work smark and indeed to m
 ## checklist 
 - [x] log_graph (python)
 - [x] Ubuntu_Scipt (linux bash script)
-- [x]seperate_autoscript
+- [x] seperate_autoscript
 - [x] Iperflog_parser 
 
 ## Description:

@@ -7,9 +7,10 @@ This is an automation to parse or filter the iperf3 log file and write the Throu
 	- Change original parse_gbps_toexcel.py to parse_mbit_excel
 	- adding datecalc.py for calculating the start to end datetime
 - 2025.4.6: adding readme for each code, and fixing some bug
+- 2025.4.10: update iperf related file, python file, exe file, fix md error, adding toc link
 
 ## Content
-- 1. LogFile Structure(#1.LogFileStructure)
+- [1. LogFile Structure](#1.LogFileStructure)
 	- [1.1 input_Gbits.txt use for run throughput log](#1.1)
 	- [1.2 input_Mbits.txt use for stability test log](#1.2)
 	- [1.3 iperf3_bidirectional_0bit_test.txt use for stability test log](#1.3)
@@ -26,7 +27,7 @@ This is an automation to parse or filter the iperf3 log file and write the Throu
 - 3. [3.Code Explantion on each feature](#3)
 	- [[3.1 parser regular expression](#3.1)
 	- [3.2 convert datetime](#3.2)
-	- [3.3 parse result and save to txt file(#3.3)
+	- [3.3 parse result and save to txt file](#3.3)
 	- [3.4 write result into excel](#3.4)
 	- [3.5 Dynamically set the header](#3.5)
 	- [3.6 Excel remove default sheet and create new sheet](#3.6)
@@ -209,9 +210,9 @@ This is similar to previous one, but this code only support Mbit, which will not
 
 <a name="3"></a>
 ## 3.Code Explantion on each feature [🔝](#Content)
-- [[3.1 parser regular expression](#3.1)
+- [3.1 parser regular expression](#3.1)
 - [3.2 convert datetime](#3.2)
-- [3.3 parse result and save to txt file(#3.3)
+- [3.3 parse result and save to txt file](#3.3)
 - [3.4 write result into excel](#3.4)
 - [3.5 Dynamically set the header](#3.5)
 - [3.6 Excel remove default sheet and create new sheet](#3.6)
