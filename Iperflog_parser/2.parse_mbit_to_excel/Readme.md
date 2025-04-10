@@ -26,7 +26,7 @@ match = re.match(r"(\w{3} \w{3} \d{2} \d{2}:\d{2}:\d{2} \d{4}) \[SUM]\[(RX-C|TX-
         unit = match.group(4) #
 
 ```
-![reading_parseresult_regularexpression](../../img/parse_mbit_gbit/2_parse_mbit_excel_output_reg.png)
+![reading_parseresult_regularexpression](../img/parse_mbit_gbit/2_parse_mbit_excel_output_reg.png)
 
 ### convert datetime from log to date format
 ```

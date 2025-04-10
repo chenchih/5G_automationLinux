@@ -12,12 +12,10 @@ def reading_logfile(input_file, output_directory, lines_per_file):
             os.makedirs(output_directory)
             
         #total_lines = sum(1 for _ in open(input_file, 'r', encoding='utf-8', errors='ignore')) #calculate total lines.
-        file_size = os.path.getsize(input_file)
-        average_line_length = 100  # Adjust as needed
-        estimated_total_lines = file_size // average_line_length
-        
-        
-
+        file_size = os.path.getsize(input_file) # Gets the size of the input file in bytes
+        average_line_length = 100  #Assumes that each line in the file is approximately 100 bytes long. 
+        estimated_total_lines = file_size // average_line_length #Estimates the total number of lines in the file by dividing the file size by the average line length. T
+      
         with open(input_file, 'r', encoding='utf-8', errors='ignore') as infile:
             lines = []
             file_count = 1

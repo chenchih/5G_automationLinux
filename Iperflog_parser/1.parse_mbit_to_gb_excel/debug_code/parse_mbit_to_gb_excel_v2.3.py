@@ -1,15 +1,4 @@
-'''
-version: v2.4
-Description: wrap up feature in to function, for better readable and manage
 
-- [New Feature]
-
-- [Issue]
-    - issue 2: The unit type is been hoted code to mbps on the last column which value is gbps, but unit show mbps. 
-- [improvement]
-    - wrap up feature in to function, for better readable and management
-
-'''
 import re
 from datetime import datetime
 import openpyxl
@@ -32,9 +21,8 @@ def process_log_file_to_excel_combined(input_file, output_excel_file):
         print(f"Error: Input file '{input_file}' not found.")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
-
+#Parses the log file and returns the data and unit
 def parse_log_file(input_file):
-    """Parses the log file and returns the data and unit."""
     data = []
     unit = None
     with open(input_file, 'r') as infile:
@@ -54,8 +42,11 @@ def parse_log_file(input_file):
                             date_obj = datetime.strptime(date_str, "%a %b %d %H:%M:%S %Y")
                             formatted_date = date_obj.strftime("%Y%m%d_%H:%M:%S")
                             transfer_value = float(transfer_str)
-                            if unit == "M":
+                            #v2.2 convert mbit and bit to gbit                                    
+                            if unit == "Mbits":
                                 transfer_value /= 1000.0
+                            elif unit == "bits":
+                                transfer_value /= 1000000000.0    
                             data.append([formatted_date, transfer_value])
                         except ValueError:
                             print(f"Warning: Invalid data format in line: '{line}'. Skipping.")
@@ -63,21 +54,17 @@ def parse_log_file(input_file):
                         print(f"\nNo match found in line: {line.strip()}")
                 pbar.update(1)
     return data, unit
-
+#Writes data to the Excel sheet.
 def write_data_to_excel(sheet, data, unit):
-    """Writes data to the Excel sheet."""
-    if unit == "G":
-        header = ["Datetime", "Tput", "gbps"]
-    else:
-        header = ["Datetime", "Tput", "mbps"]
+    #v2.2, since convert to gbps, so unit will be gbps
+    header = ["Datetime", "Tput", "gbps"]
     sheet.append(header)
     with tqdm(total=len(data), desc="Writing to Excel") as pbar:
         for row in data:
             sheet.append([row[0], row[1], header[2]])
             pbar.update(1)
-
+#Adjusts the first column's width
 def adjust_column_width(sheet):
-    """Adjusts the first column's width."""
     datetime_column = sheet['A']
     max_length = 0
     for cell in datetime_column:

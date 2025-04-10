@@ -1,22 +1,3 @@
-"""
-version: v2.2
-
-Description: convert value to consitency and add progress bar
-
-- [Issue]
-    - issue2: The unit type is been hoted code to mbps on the last column which value is gbps, but unit show mbps. 
-    - issue3: datetime need to adjust the width
-- [Improvement]
-    - issue1: The tput value is inconsistency data type
-        - [SOLUTION]: improve the unit value by convert all the value to gb. Check unit if M then convert value to gb by divide 1000
-
-- [New Feature]
-    - implement with detailed progress bars which include parses, transforms, and writes data to Excel .
-- [Issue]
-    - issue 2: writting mbit data, the mbit unit will display incorrect type 
-    - issue 3 FIX: adjust the datetime column width
-"""
-
 import re
 from datetime import datetime
 import openpyxl
@@ -46,8 +27,12 @@ def process_log_file_to_excel(input_file, output_excel_file):
                                 date_obj = datetime.strptime(date_str, "%a %b %d %H:%M:%S %Y")
                                 formatted_date = date_obj.strftime("%Y%m%d_%H:%M:%S")
                                 transfer_value = float(transfer_str)
-                                if unit == "M":
+                                #v2.2 convert mbit and bit to gbit                                    
+                                if unit == "Mbits":
                                     transfer_value /= 1000.0
+                                elif unit == "bits":
+                                    transfer_value /= 1000000000.0    
+                                    
                                 data.append([formatted_date, transfer_value])
                             except ValueError:
                                 print(f"Warning: Invalid data format in line: '{line}'. Skipping.")
@@ -56,12 +41,15 @@ def process_log_file_to_excel(input_file, output_excel_file):
         if data:
             workbook = openpyxl.Workbook()
             sheet = workbook.active
+            '''
             if unit == "G":
                 header = ["Datetime", "Tput", "gbps"]
             else:
                 header = ["Datetime", "Tput", "mbps"]
+            '''
+            #v2.2, since convert to gbps, so unit will be gbps
+            header = ["Datetime", "Tput", "gbps"]
             sheet.append(header)
-
             # 2. Writing to Excel Stage
             with tqdm(total=len(data), desc="Writing Data to Excel") as pbar_write:
                 for row in data:
@@ -92,8 +80,7 @@ def process_log_file_to_excel(input_file, output_excel_file):
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
 
-# Example usage:
-input_file_path = "input_Gbits_Short.txt"
-output_excel_file_path = "Gbit_output.xlsx"
+input_file_path = "input_Mbits_Short.txt"
+output_excel_file_path = "Mbit_output.xlsx"
 
 process_log_file_to_excel(input_file_path, output_excel_file_path)

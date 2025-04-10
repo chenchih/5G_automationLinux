@@ -1,21 +1,5 @@
 '''
 version: v2.0
-Description: 
-Parses a log file, extracts SUM lines, formats data, and writes to an Excel file.
-Dynamically sets the header and adjusts the datetime column width.
-   
-Args:
-input_file: Path to the input log file.
-output_excel_file: Path to the output Excel file.
-
-- [New Feature]
-    - implement Parses a log file, extracts SUM lines with Mbits/sec and Gbit
-    - foramt the datetime into customize format YYMMDD_HHMMSS
-
-- [Issue]
-    - Issue-001: bit not parse
-    - issue1-003: The tput value is inconsistency data type, some are in gb some are in mb(when tpt not reach will show mb)
-    - issue-002: The unit type is been hoted code to mbps on the last column which value is gbps, but unit show mbps. 
 '''
 import re
 from datetime import datetime
@@ -76,8 +60,8 @@ def process_log_file_to_excel(input_file, output_excel_file):
         print(f"An unexpected error occurred: {e}")
 
 # Example usage:
-input_file_path = "input_Mbits_Short.txt"  # Replace with your input file path
-output_excel_file_path = "input_Mbits.xlsx"  # Replace with your output Excel file path
+input_file_path = "input_Gbits_Short.txt"  # Replace with your input file path
+output_excel_file_path = "input_Gbits.xlsx"  # Replace with your output Excel file path
 
 process_log_file_to_excel(input_file_path, output_excel_file_path)
 
