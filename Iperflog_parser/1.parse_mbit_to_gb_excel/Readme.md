@@ -214,9 +214,6 @@ In 2.1 the unit I use perserve the logfile's unit, however it seem like it's not
 
 ![v2.1_parse_mbit_gbit](../img/parse_mbit_gbit/v2.1_solution.PNG)
 
-
-
-
 - Feature in v2.2:
 	- convert tput to gbit, all value will be consistency unit
 	- Adjusts the datetime column width. 
@@ -224,6 +221,7 @@ In 2.1 the unit I use perserve the logfile's unit, however it seem like it's not
 	- Adding porgress bar to show it process something
 	
 **output:** 
+
 ![v2_parse_mbit_gbit](../img/parse_mbit_gbit/v2.2.PNG)
 
 <a name="v2.2_fixissue-001"></a>
@@ -542,7 +540,7 @@ output_file_path = "output.txt" # Replace with your output file
 <a name="v1_convertdatetime"></a>
 #### [NEW] convert the datetime format [🔺BACK](#v1)
 
-It will convert th elog file date format `Wed	Apr	2	15:42:24	2025` to `20250402_15:42:24`. You can manual use the `convertdateFormat.py` under `8. debug_using` which have same effect. 
+It will convert th elog file date format `Wed	Apr	2	15:42:24	2025` to `20250402_15:42:24`. You can manual use the `convertdateFormat.py` under `8. debug_using` directory which have same effect. 
 ```
 if match:
 	date_str = match.group(1) #datetime

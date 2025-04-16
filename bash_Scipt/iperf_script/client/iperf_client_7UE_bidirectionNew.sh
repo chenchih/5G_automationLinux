@@ -1,6 +1,6 @@
 #!/bin/bash
-ul_size="7M" #tdd2 15 p2:12 p1:7
-dl_size="80M" #tdd2 36 p2:47 p1:80
+ul_size="15M" #tdd2 15 p2:12 p1:7
+dl_size="36M" #tdd2 36 p2:47 p1:80
 duration="30"
 length="1300" #1360
 name="UDP"

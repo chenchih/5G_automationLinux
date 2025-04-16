@@ -25,7 +25,7 @@ This is an automation to parse or filter the iperf3 log file and write the Throu
 	- [2.7 Split_LargeFile_smallFile: Split large logfile into smaller file](#2.7) 
 	- [2.8 debug using ](#2.8) 
 - 3. [3.Code Explantion on each feature](#3)
-	- [[3.1 parser regular expression](#3.1)
+	- [3.1 parser regular expression](#3.1)
 	- [3.2 convert datetime](#3.2)
 	- [3.3 parse result and save to txt file](#3.3)
 	- [3.4 write result into excel](#3.4)
@@ -46,35 +46,36 @@ This is an automation to parse or filter the iperf3 log file and write the Throu
 
 <a name="1.1"></a>
 ### Filename: `input_Gbits.txt` use for run throughput log [🔙](#1.LogFileStructure)
-	- Iperf command: `iperf3 -c <IP Addr>  -i 1 -f m -w 2m -P 32 -t 0 -t <seconds> --timestamp --logfile <logname>`
-	- **Log output:** 
+
+- **Iperf command**: `iperf3 -c <IP Addr>  -i 1 -f m -w 2m -P 32 -t 0 -t <seconds> --timestamp --logfile <logname>`
+- **Log output**:
 	```
 	Thu Mar 13 10:04:31 2025 [SUM]   0.00-1.01   sec   277 MBytes  2.30 Gbits/sec                  
 	Thu Mar 13 10:04:32 2025 [SUM]   1.01-2.01   sec   284 MBytes  2.38 Gbits/sec                  
 	Thu Mar 13 10:04:33 2025 [SUM]   2.01-3.01   sec   283 MBytes  2.37 Gbits/sec    
 	```
- 	- **screenshot:**
+ 
+- **screenshot**:
     
 	![gbitLogstucture](img/gbit_log.PNG) 
 	
 <a name="1.2"></a>	
 ### Filename: `input_Mbits.txt` use for stability test log [🔙](#1.LogFileStructure)
-	- Iperf command: `iperf3 -c  <IP Addr>  -i 1 -P 48 -R -t <seconds> --timestamp --logfile <logname> `
-	- Log output: 
+- Iperf command: `iperf3 -c  <IP Addr>  -i 1 -P 48 -R -t <seconds> --timestamp --logfile <logname> `
+- Log output: 
 	```
 	Mon Mar 10 18:47:06 2025 [SUM]   0.00-10.00  sec  2.76 GBytes  2368 Mbits/sec                  
 	Mon Mar 10 18:47:16 2025 [SUM]  10.00-20.02  sec  2.61 GBytes  2236 Mbits/sec                  
 	Mon Mar 10 18:47:26 2025 [SUM]  20.02-30.01  sec  2.76 GBytes  2372 Mbits/sec                  
 	Mon Mar 10 18:47:36 2025 [SUM]  30.01-40.01  sec  2.41 GBytes  2073 Mbits/sec      
 	```
- 	- **screenshot:**
-    
-    	 ![mbitLogstucture](img/mbit_log.PNG)
+- screenshot:
+![mbitLogstucture](img/mbit_log.PNG)
 
 <a name="1.3"></a>	
 ### Filename: `iperf3_bidirectional_0bit_test.txt` use for stability test log [🔙](#1.LogFileStructure)
-	- Iperf command: `iperf3 -c <IP-ADD> -P 32 -t 2400 --bidir -b 36M -t <seconds> --timestamp --logfile <logname>`
-	- Log output: 
+- **Iperf command**: `iperf3 -c <IP-ADD> -P 32 -t 2400 --bidir -b 36M -t <seconds> --timestamp --logfile <logname>`
+- **Log output**: 
 	```
 	Mon Mar 24 19:57:33 2025 [SUM][TX-C] 4530.00-4531.00 sec   138 MBytes  1.16 Gbits/sec                  
 	Mon Mar 24 19:57:33 2025 [SUM][RX-C] 4530.00-4531.00 sec   138 MBytes  1.16 Gbits/sec                  
@@ -84,17 +85,16 @@ This is an automation to parse or filter the iperf3 log file and write the Throu
 	Mon Mar 24 19:57:34 2025 [SUM][RX-C] 4531.00-4532.00 sec   133 MBytes  1.11 Gbits/sec                  
 	Mon Mar 24 20:33:23 2025 [SUM][TX-C] 6680.01-6681.00 sec  0.00 Bytes  0.00 bits/sec  
 	```
-	 - **screenshot:**
-    
- 	![bidirectionalLogstucture](img/bidirectional.PNG)
+- **screenshot**:
+
+![bidirectionalLogstucture](img/bidirectional.PNG)
 	
 <a name="1.4"></a>
 ### All log comparison [🔙](#1.LogFileStructure)
-	- **screenshot:**
-   
-	![logStructure](img/log_example.PNG)
 
-As you can above log, I will get the Datetime, Throughput value `2.37 Gbits/sec` or `2368 Mbits/sec` to capture the result and save into excel or txt file. 
+![logStructure](img/log_example.PNG)
+
+As you can above pciture, I will get the **Datetime**, **Throughput value** `2.37 Gbits/sec` or `2368 Mbits/sec` to capture the result and save into excel or txt file. 
 
 <a name="2.pythonCode"></a>
 ## 2. Python File Overview [🔝](#Content)
@@ -141,8 +141,8 @@ As you can above log, I will get the Datetime, Throughput value `2.37 Gbits/sec`
 This is similar to previous one, but this code only support Mbit, which will not convert mbit to gbit. It will remain mbps value, in case if you don't want to convert gbit, then you can use this code. 
 
 - Code Name: `parse_mbit_excel_release.py`
-	- Description: This is realated to above, but this only allow to parse Mbit logfile, and write the mbps into excel file without convert to gb. This is an alernative of above, in case you don't want to convert the Tput value into gb. It like mbit tput value will display 1000 mbit, and in above case will convert it to gb by divide by 1000. In this case it will perserve the tput mbps without convering. 
-	- Support LogFile: `input_Mbits`
+	- **Description**: This is realated to above, but this only allow to parse Mbit logfile, and write the mbps into excel file without convert to gb. This is an alernative of above, in case you don't want to convert the Tput value into gb. It like mbit tput value will display 1000 mbit, and in above case will convert it to gb by divide by 1000. In this case it will perserve the tput mbps without convering. 
+	- **Support LogFile**: `input_Mbits`
 	
 ![reading_parseresult](img/parse_mbit_gbit/2_parse_mbit_excel_output.png)
 
@@ -150,15 +150,16 @@ This is similar to previous one, but this code only support Mbit, which will not
 <a name="2.3"></a>
 ### 2.3 Parse_bidirectional: Parse bidrectional log and write result to excel on different sheet [🔙](#2.pythonCode)
 - Code Name: `bidirectional.py`
-	- Description: This case allow to parsing the bidrirectional tput value into excel. If you see the bidirectional log you will have notice will have a TX and RX string which is what I will filter to capture the TPUT value. 
-	- Support LogFile: `iperf3_bidirectional`
+	- **Description**: This case allow to parsing the bidrirectional tput value into excel. If you see the bidirectional log you will have notice will have a TX and RX string which is what I will filter to capture the TPUT value. 
+	- **Support LogFile**: `iperf3_bidirectional`
+
 ![bidirectional_output](img/bidirectional_output.png)
 
 <a name="2.4"></a>
 ### 2.4 Parse_log_workingdir: Parse All log file and write result to excel in different sheet (sheet name by filename) [🔙](#2.pythonCode)
 - Code Name: `parse_alllog_excelSheet_v2_release.py`
-	- Description: This case will just parse all the log or txt file extesion file and parse these log without enter your log file and write result into excel. 
-	- Support LogFile: `input_Mbits` `input_Gbits` 
+	- **Description**: This case will just parse all the log or txt file extesion file and parse these log without enter your log file and write result into excel. 
+	- **Support LogFile**: `input_Mbits` `input_Gbits` 
 
 ![parse_excelshee_output](img/parse_excelsheet_output.png)
 
@@ -166,47 +167,49 @@ This is similar to previous one, but this code only support Mbit, which will not
 ### 2.5 parse_result_txt: Parse and export result to txt file  [🔙](#2.pythonCode)
 
 - Code Name: `parser_result_txt.py`
-	- Description: Ｐarse and write result into txt file. This is also an alternative usage in case you want to know how to write into txt file 
-	- Support LogFile: `input_Mbits` `input_Gbits` 
+	- **Description**: parse and write result into txt file. This is also an alternative usage in case you want to know how to write into txt file 
+	- **Support LogFile**: `input_Mbits` `input_Gbits`
+   
 ![parser_result_txt_output](img/parser_result_txt_output.png)
 
-
 - Code Name: `parser_txt_excel_convert.py`
-	- Description: Parse result and write into excel, txt or, both
-	- Support LogFile: `input_Mbits` 
+	- **Description**: Parse result and write into excel, txt or, both
+	- **Support LogFile**: `input_Mbits`
+ 
 ![parser_txt_excel_convert](img/parser_txt_excel_convert_output.png)
 
 <a name="2.6"></a>
 ### 2.6 parse_GBytes_mbit_toexcel: Parse log contain Mbits and GBytes value and save to excel [🔙](#2.pythonCode)
 - Code Name: `parse_GBytes_mbit_toexcel.py`
-	- Description: Show how to parse only mbit and gbit for gbit log file, since it contain both mbit anf gbit string.
-	- Support LogFile: `input_Mbits` 
+	- **Description**: Show how to parse only mbit and gbit for gbit log file, since it contain both mbit and gbit string.
+	- **Support LogFile**: `input_Mbits` 
  
 ![reading_parseresult](img/parse_GBytes_mbit_toexcel_output.png)
 
 <a name="2.7"></a>
 ### 2.7 Split_LargeFile_smallFile: Split large logfile into smaller file (ex:1~2Gb logfile) [🔙](#2.pythonCode)
 - Code Name: `extract_big_logFile.py`
-	- Description: If you have a large logfile like 2Gb some editor not able to open. This script will split the code into multiple file, so you can use editor tool to open it. 
+	- **Description**: If you have a large logfile like 2Gb some editor not able to open. This script will split the code into multiple file, so you can use editor tool to open it. 
 
 <a name="2.8"></a>
 ### 2.8 debug using  [🔙](#2.pythonCode)
 
 - Code Name: `convertdateFormat.py`
-	- Description: convert datetime to specfic format 
-	- File: `datedata.txt`: code will read this file and write result into `output.txt` file. 
-![reading_parseresult](img/convertdateFormat.png)
+	- **Description**: convert datetime to specfic format 
+	- **File**: `datedata.txt`: code will read this file and write result into `output.txt` file.
+
+![reading_parseresult](img/debugCode/convertdateFormat.png)
 
 - Code Name: `reading_parseLogFile.py`
-	- Description: parse capture result and print output
-![reading_parseresult](img/parseResult.png)
+	- **Description**: parse capture result and print output
+![reading_parseresult](img/debugCode/parseResult.png)
 	
 - Code Name: `timeduration_calc.py`
-	- Description: calculate the start and end time to see the duration time
-![reading_parseresult](img/timeduration_calc.png)
+	- **Description**: calculate the start and end time to see the duration time
+![reading_parseresult](img/debugCode/timeduration_calc.png)
 
 - Code Name: `create_move_fileoutput_debug.py`
-	- Description: use for testing generate file, create folder and move file into folder.
+	- **Description**: use for testing generate file, create folder and move file into folder.
 
 <a name="3"></a>
 ## 3.Code Explantion on each feature [🔝](#Content)
@@ -233,7 +236,7 @@ Reg argument: `(bits|Mbits|Gbits)`:
 match = re.match(r"(\w{3} \w{3} \d{2} \d{2}:\d{2}:\d{2} \d{4}) \[SUM\].*?([\d\.]+) (bits|Mbits|Gbits)/sec",line)
 ```
 
--3. parse space with single date
+- 3. parse space with single date
 
 Reg argument: `\s+\d{1,2} `:
 ```
@@ -356,7 +359,7 @@ Note: This means the entire log file is loaded into memory at once. If your log 
 	- `total=len(lines)`: tells tqdm that the progress bar should track progress over the number of lines in the lines list.
 	- `desc="Parsing Log Lines"`: sets the description that will be displayed before the progress bar.
 - `pbar_parse.update(1)`:
-Inside the loop, pbar_parse.update(1) increments the progress bar by 1 for each line processed. This tells tqdm that one more iteration has been completed.
+Inside the loop, `pbar_parse.update(1)` increments the progress bar by 1 for each line processed. This tells tqdm that one more iteration has been completed.
 
 ```
 from tqdm import tqdm

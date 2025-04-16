@@ -1,4 +1,4 @@
-## Intro
+## Automation and Note 
 This repoistory wil be automation script on 5G system. 
 I been using the 5G system which ues Ubuntu as it's OS. 
 
@@ -11,11 +11,11 @@ The purpose of automation is to accelerating work, to work smark and indeed to m
 - [x] Iperflog_parser 
 
 ## Description:
-- log_graph: analyze CDU Log parse the log file, and draw graph 
 - Ubuntu Script: Common used linux command without typing command used the code
-- Iperflog_parser: filter iperf3 log and export to excel or txt file
+- log_graph: Analysic CDU elog file, and capture the tput value and write result to excel, include plot graph. 
+- Iperflog_parser: Analysic iperf3 log file, capture result (datetime, tput), and export to excel or txt file. 
 
-## Linux commands:
+## Linux commands and script:
 
 - SSH automate
 ```
@@ -54,7 +54,7 @@ gnome-terminal -- bash -c  "iperf -s 2>&1 | tee 123.log "
 gnome-terminal -- bash -c  "iperf3 -s  2>&1 | tee iperf3.txt"
 ```
 
-## Code description(old) need to remove:
+## other small automation:(Ubuntu Script)
 
 - `add_virtual.sh`: adding virtual IP when multiple UE connect on Switch 
 - `ipadd_test.sh`:

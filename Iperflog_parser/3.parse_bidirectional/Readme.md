@@ -124,6 +124,47 @@ def parse_log_file_rx_tx(input_file):
 	transfer_value = float(transfer_str)
 	.....
 ```
+#### progress bar 
+
+
+Initial Wait show count instead of progress bar, remove this method 
+
+```
+#old version will show number counting 
+def parse_log_file_rx_tx(input_file):
+    rx_data = []
+    tx_data = []
+    with open(input_file, 'r', encoding='utf-8', errors='ignore') as infile:
+        total_lines = 0
+        with tqdm(desc="Counting Lines") as counting_pbar:
+            for _ in open(input_file, 'r', encoding='utf-8', errors='ignore'):
+                total_lines += 1
+                counting_pbar.update(1)
+
+        with tqdm(total=total_lines, desc="Processing Log File") as pbar:
+            for line in infile:
+                match = re.match(r"(\w{3} \w{3} \d{2} \d{2}:\d{2}:\d{2} \d{4}) \[SUM]\[(RX-C|TX-C)\].*?([\d\.]+) (M|G)bits/sec", line)
+                if match:
+                    date_str = match.group(1)
+                    rx_tx = match.group(2)
+                    transfer_str = match.group(3)
+                    unit = match.group(4)
+                    try:
+                        date_obj = datetime.strptime(date_str, "%a %b %d %H:%M:%S %Y")
+                        formatted_date = date_obj.strftime("%Y%m%d_%H:%M:%S")
+                        transfer_value = float(transfer_str)
+                        if unit == "M":
+                            transfer_value /= 1000.0
+                        if rx_tx == "RX-C":
+                            rx_data.append([formatted_date, transfer_value, "gbps"])
+                        else:
+                            tx_data.append([formatted_date, transfer_value, "gbps"])
+                    except ValueError:
+                        print(f"Warning: Invalid data format in line: '{line}'. Skipping.")
+                pbar.update(1)
+    return rx_data, tx_data
+```
+
 
 #### convert Tput value mbit to gbit 
 ```
