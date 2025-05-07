@@ -10,10 +10,98 @@ Bidirectional mean run both UL(upload) and DL(Download) in the same time, so it 
 
 ## Output
 
+- bidirectional write result to excel
 ![bidirectional_output](../img/bidirectional_output.png)
 
+- bidirectional write result to excel and draw graph
+![bidirectional_graphoutput](../img/bidirectional_graphoutput.png)
 
 ## Code Version explanation
+
+### V2 Implement excel with plot graph 
+
+- Implement plot graph, and restructure the code
+
+**Output**
+```
+PS C:\gitfile\5G_automation\Iperflog_parser\3.parse_bidirectional> py .\bidirectional_exel_graph.py
+Enter your log filename (e.g., iperf3.log): iperf3_bidirectional.log
+Enter base name for output files (press Enter for default):
+--------------------------------------------------
+Attempting to open log file: iperf3_bidirectional.log
+Parsing log file...
+Reading Log: 100%|██████████████████████████████████████████████████████████████████| 352M/352M [00:10<00:00, 33.1MB/s]
+Parsing complete. Found 50091 RX entries and 50092 TX entries.
+Writing RX-DL: 100%|███████████████████████████████████████████████████████| 50091/50091 [00:00<00:00, 86822.56 rows/s]
+Writing TX-UL: 100%|███████████████████████████████████████████████████████| 50092/50092 [00:00<00:00, 68586.58 rows/s]
+--------------------------------------------------
+Saving Excel file to 2025-05-07_16-17-10_iperf3_bidirectional_analysis.xlsx... Please wait.
+Data successfully written to 2025-05-07_16-17-10_iperf3_bidirectional_analysis.xlsx
+--------------------------------------------------
+Generating plot for RX-DL...
+Saving plot to 2025-05-07_16-17-10_iperf3_bidirectional_analysis_RX-DL_plot.png...
+RX-DL plot saved successfully.
+--------------------------------------------------
+Generating plot for TX-UL...
+Saving plot to 2025-05-07_16-17-10_iperf3_bidirectional_analysis_TX-UL_plot.png...
+TX-UL plot saved successfully.
+--------------------------------------------------
+Moving generated files to folder: 2025-05-07_iperf3_bidirectional_analysis
+Ensured folder '2025-05-07_iperf3_bidirectional_analysis' exists.
+File '2025-05-07_16-17-10_iperf3_bidirectional_analysis.xlsx' moved to '2025-05-07_iperf3_bidirectional_analysis\2025-05-07_16-17-10_iperf3_bidirectional_analysis.xlsx'.
+File '2025-05-07_16-17-10_iperf3_bidirectional_analysis_RX-DL_plot.png' moved to '2025-05-07_iperf3_bidirectional_analysis\2025-05-07_16-17-10_iperf3_bidirectional_analysis_RX-DL_plot.png'.
+File '2025-05-07_16-17-10_iperf3_bidirectional_analysis_TX-UL_plot.png' moved to '2025-05-07_iperf3_bidirectional_analysis\2025-05-07_16-17-10_iperf3_bidirectional_analysis_TX-UL_plot.png'.
+--------------------------------------------------
+Calculating Durations:
+RX-DL => Start Time: 2025-05-05 18:31:49
+RX-DL => End Time:   2025-05-06 08:26:54
+RX-DL => Running duration: 0 days, 13 hours, 55 minutes, 5 seconds (Total: 50105s)
+TX-UL => Start Time: 2025-05-05 18:31:49
+TX-UL => End Time:   2025-05-06 08:26:55
+TX-UL => Running duration: 0 days, 13 hours, 55 minutes, 6 seconds (Total: 50106s)
+--------------------------------------------------
+Script finished.
+PS C:\gitfile\5G_automation\Iperflog_parser\3.parse_bidirectional>
+```
+
+### V1.3 Remove replicate reading file progress
+- passing rx and tx into process_log_file_to_excel_rx_tx
+Seem like it will reading log file two time, which is not efficiently, so I remove it 
+
+```
+def process_log_file_to_excel_rx_tx(rx_data, tx_data, output_excel_file):
+	.....
+
+rx_data, tx_data = parse_log_file_rx_tx(input_file_path) #will parse the tx and rx result
+#pass the tx and tx data into process_log_file_to_excel_rx_tx so it will not have redo this again. 
+process_log_file_to_excel_rx_tx(rx_data, tx_data, output_excel_file_path)
+```
+- rename the excel filename by datetime
+```
+datename=datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+input_file_path = input('Enter your filename(ex:iperf3_bidirectional.log): ')
+output_excel_file_path = (input('save exel file name (enter for default) : ') )
+```
+
+**output:**
+```
+Enter your filename(ex:iperf3_bidirectional.log): iperf3_bidirectional.log
+save exel file name (enter for default) :
+--------------------------------------------------
+Reading File: 100%|█████████████████████████████████████████████████████████████████| 352M/352M [00:10<00:00, 32.9MB/s]
+Writing to RX-DL: 100%|███████████████████████████████████████████████████████| 50091/50091 [00:00<00:00, 90787.26it/s]
+Writing to TX-UL: 100%|███████████████████████████████████████████████████████| 50092/50092 [00:00<00:00, 86360.10it/s]
+--------------------------------------------------
+Saving Excel file... Please wait.
+Data written to 2025-05-06_14-57-52_output_rx_tx.xlsx
+Folder '2025-05-06_14-58-13' created.
+File '2025-05-06_14-57-52_output_rx_tx.xlsx' moved to '2025-05-06_14-58-13\2025-05-06_14-57-52_output_rx_tx.xlsx'.
+--------------------------------------------------
+RX-DL => Running duration: 0 days, 13 hours, 55 minutes
+RX-DL => Converted hours: 13 hours
+TX-UL => Running duration: 0 days, 13 hours, 55 minutes
+TX-UL => Converted hours: 13 hours
+```
 
 ### V1.2 adding matching one digit date
 

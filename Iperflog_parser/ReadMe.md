@@ -8,7 +8,10 @@ This is an automation to parse or filter the iperf3 log file and write the Throu
 	- adding datecalc.py for calculating the start to end datetime
 - 2025.4.6: adding readme for each code, and fixing some bug
 - 2025.4.10: update iperf related file, python file, exe file, fix md error, adding toc link
-
+- 2025.05.p7: update bidirectional file
+	- rename `bidirectional.py` to `bidirectional_excel.py` to 
+	- improvement `bidirectional_exel_graph.py`: replicate reading log in code, remove it, so will occur reading file one time
+	- create `bidirectional_exel_graph.py`: implement plot data to graph and reorganize code structure
 ## Content
 - [1. LogFile Structure](#1.LogFileStructure)
 	- [1.1 input_Gbits.txt use for run throughput log](#1.1)
@@ -103,7 +106,8 @@ As you can above pciture, I will get the **Datetime**, **Throughput value** `2.3
 | :-- | :--: |:--:|:--:|:--:| :--:| :--|
 |parse_mbit_to_gb_excel.py | V  | V | V | X |V|*major convert mb to gb|
 |parse_mbit_excel_release.py| V  | V | V | X |V|*major display mb|
-|bidirectional.py| NA  | NA | V | X |V|*major for bidirectional log|
+|bidirectional_excel.py| NA  | NA | V | X |V|*major for bidirectional log write result to excel|
+|bidirectional_exel_graph.py| NA  | NA | V | X |V|*major for bidirectional log write result to excel and plot graph|
 |parse_alllog_excelSheet.py| V  | V | V | X |V |*major for gbit|
 |parser_result_txt.py| V  | V | X |V |X | minor|
 |txt_excel_convert.py| V  | X| V  |V | X |minor|
@@ -149,11 +153,16 @@ This is similar to previous one, but this code only support Mbit, which will not
 
 <a name="2.3"></a>
 ### 2.3 Parse_bidirectional: Parse bidrectional log and write result to excel on different sheet [🔙](#2.pythonCode)
-- Code Name: `bidirectional.py`
+- Code Name: `bidirectional_excel.py`
 	- **Description**: This case allow to parsing the bidrirectional tput value into excel. If you see the bidirectional log you will have notice will have a TX and RX string which is what I will filter to capture the TPUT value. 
 	- **Support LogFile**: `iperf3_bidirectional`
 
 ![bidirectional_output](img/bidirectional_output.png)
+
+- Code Name: `bidirectional_exel_graph.py`
+	- **Description**: This will [arse result just like above just will plot the data into graph 
+	- **Support LogFile**: `iperf3_bidirectional`
+![bidirectional_output](img/bidirectional_graphoutput.png)
 
 <a name="2.4"></a>
 ### 2.4 Parse_log_workingdir: Parse All log file and write result to excel in different sheet (sheet name by filename) [🔙](#2.pythonCode)
