@@ -1,6 +1,9 @@
 import re
 from datetime import datetime
 import openpyxl
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 
 def process_log_file_to_excel(input_file, output_excel_file):
     try:
@@ -58,11 +61,12 @@ def adjust_column_width(sheet):
     sheet.column_dimensions['A'].width = adjusted_width
 
 
-# Example usage:
-#input_file_path = "input_Mbits_short.txt"  # Replace with your input file path
-#output_excel_file_path = "input_Mbits_short.xlsx"  # Replace with your output Excel file path
+if __name__ == "__main__":        
+    # Example usage:
+    #input_file_path = "input_Mbits_short.txt"  # Replace with your input file path
+    #output_excel_file_path = "input_Mbits_short.xlsx"  # Replace with your output Excel file path
 
-input_file_path = input('Enter your filename: ')
-output_excel_file_path = (input('save exel file name: ')+'.xlsx' )
+    input_file_path = input('Enter your filename: ')
+    output_excel_file_path = (input('save exel file name: ')+'.xlsx' )
 
-process_log_file_to_excel(input_file_path, output_excel_file_path)
+    process_log_file_to_excel(input_file_path, output_excel_file_path)

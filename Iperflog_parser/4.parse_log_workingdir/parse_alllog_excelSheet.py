@@ -1,4 +1,3 @@
-
 import re
 import sys
 from datetime import datetime
@@ -6,6 +5,10 @@ import openpyxl
 import os
 from openpyxl.styles import Alignment
 from tqdm import tqdm
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+import numpy as np
 
 def process_log_files_to_excel(directory_path, output_excel_file):
 
@@ -93,6 +96,109 @@ def process_log_files_to_excel(directory_path, output_excel_file):
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
 
+#using interval         
+def plot_from_excel_simple_adjusted_interval(excel_file):
+    try:
+        all_sheets_data = pd.read_excel(excel_file, sheet_name=None)
+        for sheet_name, df in all_sheets_data.items():
+            if 'Datetime' in df.columns and 'Tput' in df.columns:
+                # Ensure 'Datetime' is treated as string for direct display
+                datetime_col = df['Datetime']
+                tput_col = pd.to_numeric(df['Tput'], errors='coerce') # Convert Tput to numeric, handle errors
+                plt.figure(figsize=(12, 5), dpi=150) # Adjust figure size if needed
+                plt.plot(datetime_col, tput_col, label='Tput')
+                plt.xlabel('Time')
+                plt.ylabel('Throughput (gbps)')
+                plt.title(f'Throughput - {sheet_name}')
+                plt.legend()
+                plt.grid(True)
+                # Set y-axis limits
+                plt.ylim(0, 4)
+                # Display full datetime on x-axis
+                #plt.xticks(rotation=45, ha='right')
+                plt.xticks( np.linspace(0, len(datetime_col)-1, 50 ),rotation=90, ha='right' )
+                plt.tight_layout()
+                plt.savefig(f"tput_adjusted_{sheet_name}.png")
+                plt.close()
+                print(f"Adjusted plot for {sheet_name} saved.")
+            else:
+                print(f"Warning: Sheet '{sheet_name}' missing 'Datetime' or 'Tput' columns.")
+    except FileNotFoundError:
+        print(f"Error: Excel file '{excel_file}' not found.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+#mintute interval
+def plot_from_excel_simple_adjusted(excel_file):
+    try:
+        all_sheets_data = pd.read_excel(excel_file, sheet_name=None)
+        for sheet_name, df in all_sheets_data.items():
+            if 'Datetime' in df.columns and 'Tput' in df.columns:
+                # Ensure 'Datetime' is treated as string for direct display
+                
+                df['Datetime'] = pd.to_datetime(df['Datetime'], errors='coerce', format='%Y%m%d_%H:%M:%S')
+                df.dropna(subset=['Datetime', 'Tput'], inplace=True)
+                
+                datetime_col = df['Datetime']
+                tput_col = pd.to_numeric(df['Tput'], errors='coerce') # Convert Tput to numeric, handle errors
+                
+                df['Datetime'] = pd.to_datetime(df['Datetime'], errors='coerce', format='%Y%m%d_%H:%M:%S')
+                df.dropna(subset=['Datetime', 'Tput'], inplace=True) # Remove rows with NaT or NaN
+
+                datetime_col = df['Datetime']
+                tput_col = pd.to_numeric(df['Tput'], errors='coerce') # Convert Tput to numeric, handle errors
+                #
+                '''
+                plt.figure(figsize=(12, 5), dpi=150)  # Adjust figure size if needed
+                plt.plot(datetime_col, tput_col, label='Tput')
+                plt.xlabel('Time')
+                plt.ylabel('Throughput (gbps)')
+                plt.title(f'Throughput - {sheet_name}')
+                plt.legend()
+                plt.grid(True)
+                '''
+                fig, ax = plt.subplots(figsize=(12, 5), dpi=150) # Use subplots for date formatting
+                ax.plot(datetime_col, tput_col, label='Tput')
+                ax.set_xlabel('Time')
+                ax.set_ylabel('Throughput (gbps)')
+                ax.set_title(f'Throughput - {sheet_name}')
+                ax.legend()
+                ax.grid(True)
+                
+                
+                '''
+                # Set y-axis limits
+                plt.ylim(0, 4)
+                # Display full datetime on x-axis
+                #plt.xticks(rotation=45, ha='right')
+                
+                plt.xticks( np.linspace(0, len(datetime_col)-1, 50 ),rotation=90, ha='right' )
+                plt.tight_layout()
+                plt.savefig(f"tput_adjusted_{sheet_name}.png")
+                plt.close()
+                print(f"Adjusted plot for {sheet_name} saved.")
+                '''
+                # Set y-axis limits
+                ax.set_ylim(0, 4)
+                # Set x-axis to show minute intervals
+                
+                ax.xaxis.set_major_locator(mdates.MinuteLocator(interval=1)) # Adjust interval as needed
+                ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d %H:%M')) # Format as desired
+                plt.xticks(rotation=45, ha='right') # Rotate labels for readability
+
+                plt.tight_layout()
+                plt.savefig(f"tput_adjusted_{sheet_name}.png")
+                plt.close()
+                print(f"Adjusted plot for {sheet_name} saved.")
+            else:
+                print(f"Warning: Sheet '{sheet_name}' missing 'Datetime' or 'Tput' columns.")
+    except FileNotFoundError:
+        print(f"Error: Excel file '{excel_file}' not found.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        
+###############################################################
+        
 directory_path = "."  # Current directory (you can change this)
 output_excel_file_path = "all_log_txt_output.xlsx"
 print('\t\t<========================================================================>')
@@ -102,4 +208,9 @@ try:
 except SystemExit:
     print('\nError: Your log file contains Gbits/sec or RX/TX logs. This script only captures Mbits/sec log files.')
     
+print('\t\t<========================================================================>')
+
+plot_from_excel_simple_adjusted(output_excel_file_path)
+#plot_from_excel_simple_adjusted_interval(output_excel_file_path)
+print("Adjusted plotting complete.")
 print('\t\t<========================================================================>')

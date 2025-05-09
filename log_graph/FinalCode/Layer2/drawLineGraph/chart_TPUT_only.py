@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Read the Excel file into a pandas DataFrame
-data = pd.read_excel('2.xlsx')
+data = pd.read_excel('re.xlsx')
 
 # Extract datetime and Tput columns
 datetime = data['datetime']
@@ -31,6 +31,8 @@ plt.title('TPUT')
 #tick_interval = 10  # Adjust the interval as per your preference
 #plt.xticks(range(0, len(datetime), tick_interval), rotation=90)
 #######202306 chnage
+
+
 plt.xticks( np.linspace(0, len(datetime)-1, 100 ),rotation=90 )
 
 

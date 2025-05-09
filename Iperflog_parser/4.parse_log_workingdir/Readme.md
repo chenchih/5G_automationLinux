@@ -25,7 +25,7 @@ It will check the current working directory for files containing `.txt` and `.lo
 	- if log contains tx or tx then ignore that file(bidirectional)
 - v4: capture date with space and digit 
 	- fix issue: Capture space with two digit for date `add \\s+\\d{1,2}`
-
+- v5: implment plot graph on all sheet 
 ### check current directory for log and txt file 
 ```
 def process_log_files_to_excel(directory_path, output_excel_file):
@@ -64,6 +64,57 @@ with open(input_file_path, 'r') as infile:
 			# Modified regex to capture bits/sec, Mbits/sec, and Gbits/sec
 			match = re.match(r"(\w{3} \w{3}\s+\d{1,2} \d{2}:\d{2}:\d{2} \d{4}) \[SUM\].*?([\d\.]+) (bits|Mbits|Gbits)/sec",line)
 ```
+
+- v5
+
+adjust x axis for datetime with interval (data divide by interval in below 50, which will show how many x axis)
+>  `plt.xticks( np.linspace(0, len(datetime_col)-1, 50 ),rotation=90, ha='right' )`	
+
+
+
+```
+all_sheets_data = pd.read_excel(excel_file, sheet_name=None)
+    for sheet_name, df in all_sheets_data.items():
+        if 'Datetime' in df.columns and 'Tput' in df.columns:
+            # Ensure 'Datetime' is treated as string for direct display
+            datetime_col = df['Datetime']
+            tput_col = pd.to_numeric(df['Tput'], errors='coerce') # Convert Tput to numeric, handle errors
+            plt.figure(figsize=(12, 5), dpi=150) # Adjust figure size if needed
+            plt.plot(datetime_col, tput_col, label='Tput')
+            plt.xlabel('Time')
+            plt.ylabel('Throughput (gbps)')
+            plt.title(f'Throughput - {sheet_name}')
+            plt.legend()
+            plt.grid(True)
+            # Set y-axis limits
+            plt.ylim(0, 4)
+            # Display full datetime on x-axis
+            #plt.xticks(rotation=45, ha='right')
+            plt.xticks( np.linspace(0, len(datetime_col)-1, 50 ),rotation=90, ha='right' )
+            plt.tight_layout()
+            plt.savefig(f"tput_adjusted_{sheet_name}.png")
+            plt.close()
+            print(f"Adjusted plot for {sheet_name} saved.")
+        else:
+            print(f"Warning: Sheet '{sheet_name}' missing 'Datetime' or 'Tput' co
+```
+you can also use minute or hour as interval 
+```
+df['Datetime'] = pd.to_datetime(df['Datetime'], errors='coerce', format='%Y%m%d_%H:%M:%S')
+df.dropna(subset=['Datetime', 'Tput'], inplace=True)
+fig, ax = plt.subplots(figsize=(12, 5), dpi=150) # Use subplots for date formatting
+ax.plot(datetime_col, tput_col, label='Tput')
+ax.set_xlabel('Time')
+ax.set_ylabel('Throughput (gbps)')
+ax.set_title(f'Throughput - {sheet_name}')
+ax.legend()
+ax.grid(True)
+.....
+plt.tight_layout()
+plt.savefig(f"tput_adjusted_{sheet_name}.png")
+plt.close()
+```
+
 
 
 ### convert unit 

@@ -243,6 +243,10 @@ def plot_single_throughput(data, direction_label, output_image_file):
 
         # Legend
         ax.legend(fontsize=12)
+        
+        # --- Y-axis Limits ---
+        ax.set_ylim(bottom=0)  # Set the lower limit of the y-axis to 0
+
 
         # --- X-axis Time Formatting ---
         # Set major locator and formatter for dates
