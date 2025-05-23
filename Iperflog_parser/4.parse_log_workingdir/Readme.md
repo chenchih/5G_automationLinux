@@ -25,7 +25,7 @@ It will check the current working directory for files containing `.txt` and `.lo
 	- if log contains tx or tx then ignore that file(bidirectional)
 - v4: capture date with space and digit 
 	- fix issue: Capture space with two digit for date `add \\s+\\d{1,2}`
-- v5: implment plot graph on all sheet 
+- v5: plot graph, if contain rx and tx will not plot graph 
 ### check current directory for log and txt file 
 ```
 def process_log_files_to_excel(directory_path, output_excel_file):
@@ -77,9 +77,16 @@ all_sheets_data = pd.read_excel(excel_file, sheet_name=None)
     for sheet_name, df in all_sheets_data.items():
         if 'Datetime' in df.columns and 'Tput' in df.columns:
             # Ensure 'Datetime' is treated as string for direct display
-            datetime_col = df['Datetime']
-            tput_col = pd.to_numeric(df['Tput'], errors='coerce') # Convert Tput to numeric, handle errors
-            plt.figure(figsize=(12, 5), dpi=150) # Adjust figure size if needed
+            df['Datetime'] = pd.to_datetime(df['Datetime'], errors='coerce', format='%Y%m%d_%H:%M:%S')
+            df['Tput'] = pd.to_numeric(df['Tput'], errors='coerce')
+            df.dropna(subset=['Datetime', 'Tput'], inplace=True)  # Remove rows with NaT or NaN
+            
+			#CHECK FOR EMPTY DATA (rx and tx data will contain header)
+            if df.empty:
+                print(f"Sheet '{sheet_name}' contains no valid data after cleaning. Skipping plot generation for this sheet.")
+                continue # Skip to the next sheet
+			
+			plt.figure(figsize=(12, 5), dpi=150) # Adjust figure size if needed
             plt.plot(datetime_col, tput_col, label='Tput')
             plt.xlabel('Time')
             plt.ylabel('Throughput (gbps)')

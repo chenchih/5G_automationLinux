@@ -132,22 +132,21 @@ def plot_from_excel_simple_adjusted_interval(excel_file):
 def plot_from_excel_simple_adjusted(excel_file):
     try:
         all_sheets_data = pd.read_excel(excel_file, sheet_name=None)
+        plot_count = 0 # To track if any plots were generated
         for sheet_name, df in all_sheets_data.items():
+            print(f"Processing sheet for plotting: '{sheet_name}'")
             if 'Datetime' in df.columns and 'Tput' in df.columns:
-                # Ensure 'Datetime' is treated as string for direct display
-                
+                # Ensure 'Datetime' is treated as string for direct display                
                 df['Datetime'] = pd.to_datetime(df['Datetime'], errors='coerce', format='%Y%m%d_%H:%M:%S')
-                df.dropna(subset=['Datetime', 'Tput'], inplace=True)
+                df['Tput'] = pd.to_numeric(df['Tput'], errors='coerce')
+                df.dropna(subset=['Datetime', 'Tput'], inplace=True)  # Remove rows with NaT or NaN
                 
+                #CHECK FOR EMPTY DATA ---
+                if df.empty:
+                    print(f"Sheet '{sheet_name}' contains no valid data after cleaning. Skipping plot generation for this sheet.")
+                    continue # Skip to the next sheet
                 datetime_col = df['Datetime']
-                tput_col = pd.to_numeric(df['Tput'], errors='coerce') # Convert Tput to numeric, handle errors
-                
-                df['Datetime'] = pd.to_datetime(df['Datetime'], errors='coerce', format='%Y%m%d_%H:%M:%S')
-                df.dropna(subset=['Datetime', 'Tput'], inplace=True) # Remove rows with NaT or NaN
-
-                datetime_col = df['Datetime']
-                tput_col = pd.to_numeric(df['Tput'], errors='coerce') # Convert Tput to numeric, handle errors
-                #
+                tput_col = df['Tput']
                 '''
                 plt.figure(figsize=(12, 5), dpi=150)  # Adjust figure size if needed
                 plt.plot(datetime_col, tput_col, label='Tput')
@@ -164,8 +163,6 @@ def plot_from_excel_simple_adjusted(excel_file):
                 ax.set_title(f'Throughput - {sheet_name}')
                 ax.legend()
                 ax.grid(True)
-                
-                
                 '''
                 # Set y-axis limits
                 plt.ylim(0, 4)
@@ -181,22 +178,27 @@ def plot_from_excel_simple_adjusted(excel_file):
                 # Set y-axis limits
                 ax.set_ylim(0, 4)
                 # Set x-axis to show minute intervals
-                
-                ax.xaxis.set_major_locator(mdates.MinuteLocator(interval=1)) # Adjust interval as needed
-                ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d %H:%M')) # Format as desired
-                plt.xticks(rotation=45, ha='right') # Rotate labels for readability
+                # fix Control the number of x-axis ticks using AutoDateLocator with maxticks
+                locator = mdates.AutoDateLocator(maxticks=50) # Adjust maxticks as needed
+                formatter = mdates.DateFormatter('%Y-%m-%d %H:%M:%S')
+                ax.xaxis.set_major_locator(locator)
+                ax.xaxis.set_major_formatter(formatter)
+                plt.xticks(rotation=45, ha='right')
 
                 plt.tight_layout()
                 plt.savefig(f"tput_adjusted_{sheet_name}.png")
                 plt.close()
                 print(f"Adjusted plot for {sheet_name} saved.")
+                plot_count += 1
             else:
                 print(f"Warning: Sheet '{sheet_name}' missing 'Datetime' or 'Tput' columns.")
+        if plot_count == 0:
+            print("No plots were generated for any sheet due to lack of valid data.")
     except FileNotFoundError:
         print(f"Error: Excel file '{excel_file}' not found.")
     except Exception as e:
         print(f"An error occurred: {e}")
-        
+
 ###############################################################
         
 directory_path = "."  # Current directory (you can change this)
