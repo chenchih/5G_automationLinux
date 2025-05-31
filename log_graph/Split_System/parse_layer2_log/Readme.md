@@ -24,7 +24,7 @@
 	- [1.1 Layer 2 Single UE get only Tput Value](#1.1)
 	- [1.2 Layer 2 Single UE get related string](#1.2)
 		- [Case1: Get either DL or UL or `specfic DL/Ul ID](#1.2case1)
-		- [Case2: Get either `DL` or `UL` or `specfic DL/Ul ID`](#Case 2: Get both DL and UL string)
+		- [Case2: Get both DL and UL string](#1.2case2)
 - [2. Multiple UE parsing log](#2)
 - [3. Merge Multiple Elog into one log file ](#3)
 - [4. Plot Excel data into a visualization](#4)
