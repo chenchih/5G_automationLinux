@@ -41,6 +41,6 @@ PDCP log will record both DL and UL traffic. Ask you can see below there are ing
 ![](img/log_pdcp.PNG)
 
 I will parse `DL` and `UL` realted string, but there is one special string that is differnt for UL and DL that is Bler:
-	- `UL`: PuschBler nonWDuschBler
-    - `DL`: PdschBler nonWPdschBler
+- `UL`: PuschBler nonWDuschBler
+- `DL`: PdschBler nonWPdschBler
 

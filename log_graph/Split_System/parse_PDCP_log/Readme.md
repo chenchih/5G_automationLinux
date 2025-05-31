@@ -1,28 +1,28 @@
 # Parse PDCP Log File
 
-This automation scipt is use to parse pdcp log file, let me explain the log file:
-- `parsefile_pdcp_v2.py`: parse the elogfile and write the result into txt file
-- `excel_pdcp_v2.py`: convert the txt file to excel file 
+This automation script is used to parse pdcp log file. Let me explain the log file:
+- `parsefile_pdcp_v2.py`: parse the elogfile and write the result into a txt file
+- `excel_pdcp_v2.py`: convert the text file to Excel file 
 
 I will parse `DL` and `UL` realted string, but there is one special string that is differnt for UL and DL that is Bler:
     - `UL`: PuschBler nonWDuschBler
     - `DL`: PdschBler nonWPdschBler
 	
-![](../img/log_pdcp.PNG)
-
+![](../../img/log_pdcp.PNG)
 
 ## How to Run
 
 - **Step:**
-	- Step1: Enter your elog file name
-	- Step2: Start to parse the elog 
-	- Step3: Enter UL, DL, or both UL or DL for string to filter and save result into txt file
-	- Step4:　Convert txt file into excel file
+	- Step 1: Enter your elog file name
+	- Step 2: Start to parse the elog 
+	- Step 3: Enter UL, DL, or both UL and DL for the string to filter and save the result into a text file
+	- Step 4:　Convert the text file into an Excel file
 
-- How to run the PDCP parsing 
-![](../img/Run_PDCPscript.gif)
+- How to run the PDCP parsing
 
-- parse result output:
+  ![](https://github.com/chenchih/5G_automationLinux/blob/main/log_graph/img/Run_PDCPscript.gif)
+
+- Parse result output:
 ```
 =========================UL=========================
 datettime ingress-traffic egress-traffic 
@@ -36,10 +36,10 @@ datettime ingress-traffic egress-traffic
 20221217.194812.548238 239.968109 214.256439 
 ```
 - output:
-![](../img/PDCP_result.PNG)
+![](../../img/PDCP_result.PNG)
 
 ## Code Description summary
-### parsing result for tput and other related value
+### parsing result for tput and other related values
 
 ```
 #checking for UL or DL
@@ -56,13 +56,12 @@ def emptywrite(status):
         print("writing")
         f.write(("datettime ingress-traffic egress-traffic \n"))
 
-
 #grab the next element 
 def getelement(li, element):
     ind = li.index(element)
     return li[ind+1]
 	
-#anlsyic the logfile with regular expression finc pattern    
+# Analyze the logfile with a regular expression find pattern    
 def timeparse(data):
     datestr = data.split('[', 1)[1].split(']')[0]
     traffic: ([\d\.]+).+.', data)
@@ -90,8 +89,8 @@ if givenString =="both":
     ULDLprint(DL)
 ```
 
-### Convert txt file into excel file
-- read log file
+### Convert a text file into an Excel file
+- Read log file
 ```
 lists = {}
 current_key = None
@@ -118,28 +117,25 @@ elif "UL" in lists:
 elif "DL" in lists:
 	....
 ```
-- 
+- save to list
 ```
 ULlist= []
 DLlist= []
-
 def UL():
     for i in lists["UL"]:
     #remove end space
         i=i.rstrip().split(' ')
         ULlist.append(i)
-        
-    
 def DL():
     for i in lists["DL"]:
         i=i.rstrip().split(' ')
         DLlist.append(i)
 ```
 
-- write into excel
+- write into Excel
 ```
 def writeExcel(result):
-#writing into excel sheet
+#writing into Excel sheet
     if result =="UL":
         #uplink
         df1 = pd.DataFrame(ULlist)
