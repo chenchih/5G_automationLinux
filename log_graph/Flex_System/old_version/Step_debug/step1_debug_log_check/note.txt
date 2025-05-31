@@ -1,3 +1,0 @@
-main_importmodule.py 
-logchecking_rename.py count log file, 1 logfile will rename, and multiple lof will write all to one file. 
-

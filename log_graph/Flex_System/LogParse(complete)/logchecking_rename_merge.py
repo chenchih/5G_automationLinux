@@ -3,7 +3,7 @@
 - move merge_multiply_elogfile.py method3 function into rename_file function
     - include natsorted which will do natural sort 
 '''
-import os, glob
+import os, glob, sys
 from natsort import natsorted
 
 def check_file_count_glob(file_pattern):

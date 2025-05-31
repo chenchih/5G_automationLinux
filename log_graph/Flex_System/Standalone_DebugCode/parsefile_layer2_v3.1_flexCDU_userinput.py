@@ -45,6 +45,7 @@ def parse(data, ULDLstr):
     datestr = data.split('[', 1)[1].split(']')[0]  
     search = re.search(r'\[(\d+\.\d+\.\d+)\].*?(Tput=[^A]+)', data)
     m3New = re.sub(r"[\(\[].*?[\)\]]", "", search.group(2)).replace('=', '= ').replace(',', ' ').strip().split()
+
     result.clear()
     bler = "Bler="
     result.append(datestr)    
@@ -87,7 +88,7 @@ def main():
     if accepted_strings.match(givenString):
         if givenString == "both":
             writefile("UL")
-            ULDLprint('U-UE')
+            ULDLprint('[U-UE')
             writefile("DL")
             ULDLprint('D-UE')
         else:        
@@ -97,10 +98,9 @@ def main():
         print("Not found, please reenter correct option") 
 
 # Main script execution
-#while True:
-startscript = input("####press any key, q to exit script#####: ")
-if startscript == "q":
-    #break
-    exit
-else:
-    main()
+while True:
+    startscript = input("####press any key, q to exit script#####: ")
+    if startscript == "q":
+        break
+    else:
+        main()

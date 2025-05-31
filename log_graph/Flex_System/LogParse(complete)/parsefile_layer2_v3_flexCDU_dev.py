@@ -74,7 +74,7 @@ def main(elogfileName='elog_gnb_du_layer2.0'):
     filename = f"result-{datetime.now():%Y-%m-%d-%H-%M-%S}.txt"
     #elogfileName=logfilename
     #elogfileName = 'elog_gnb_du_layer2.0'
-    print(elogfileName)
+    #print(elogfileName)
     
     # Check if the log file not exist exit 
     if not os.path.isfile(elogfileName): 
@@ -91,4 +91,4 @@ def main(elogfileName='elog_gnb_du_layer2.0'):
     return filename
 
 if __name__ == "__main__":
-    main(elogfileName='elog_gnb_du_layer2.0')
+    main(elogfileName='elog_files')

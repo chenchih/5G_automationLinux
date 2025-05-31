@@ -1,8 +1,8 @@
 ## Introduction of parsing log file
 
-I am going to develop a automation script to parse log file of CDU throughput data, then save result into txt file, and finally convert the txt result into excel. SIne we have excel data, we can also plot into line graph. 
+I am going to develop an automation script to parse the log file of CDU throughput data, then save the result into a text file, and finally convert the text result into Excel. Since we have Excel data, we can also plot it into a line graph. 
 
-> ![flex and split cdu system log stucture](../img/Flex_split_logCompare.PNG)
+![flex and split cdu system log stucture](img/Flex_split_logCompare.PNG)
 
 ## 1. Split CDU
 
