@@ -1,3 +1,5 @@
+## How to run 
+
 ## Description of code
 
 ### Part 1 parsing DATA from a file and write into text file 

@@ -1,20 +1,20 @@
-#Description of code
+# Description of code
 
 ## LogParse(Complete)
-This is a full code, which will parse the logfile with extract result which include txt file, excel, and png file. 
+This is a full code that will parse the logfile and extract the results, including a txt file, an excel file, and a png file. 
 
-- How to Run the code: `main_importmodule.py`
-- Output: [output for parse log with flex system](#img/output.png)
-- Step and code order: You can run individual code, or just run the `main_importmodule.py` which will import all the code at once. 
+- How to run the code: `main_importmodule.py`
+- Output: ![](output.png)
+- Step and code order: You can run individual code, or just run the `main_importmodule.py`, which will import all the code at once. 
 	- Step1: `main_importmodule.py` and `logchecking_rename_merge.py`: Check logfile in working directory contain 'elog_gnb_du_layer2.0'. It will rename elog file, in case you have multiple elog will write into one file and name `elog_files`  
-	- Step2: : `parsefile_layer2_v3_flexCDU_dev.py`: parse log file and filter UL and DL tput value and save result into txt file
-	- Step3: `convert_excel_layer2_flexCDU_dev.py`: convert txt file result into excel file
-	- Step4: `plot.py`: plot the excel file result into line graph
-	- Step5: `main_importmodule.py`: wrap up all result into folder
+	- Step: : `parsefile_layer2_v3_flexCDU_dev.py`: parse log file and filter UL and DL tput value and save result into txt file
+	- Step 3: `convert_excel_layer2_flexCDU_dev.py`: convert the text file result into an Excel file
+	- Step 4: `plot.py`: plot the Excel file result into a line graph
+	- Step 5: `main_importmodule.py`: wrap up all results into a folder
 	
-## Code explaination
+## Code explanation
 
-### Read elog file and filter tput value
+### Read the elog file and filter the tput value
 
 - Filter UL TPUT data
 ```
@@ -25,8 +25,8 @@ with open('elog_gnb_du_layer2.0', 'r') as filedata:
             search = re.search(r'\[(\d+\.\d+\.\d+)\].*?(Tput=[^A]+)', line)
             print(search.group(2))   
 ```
-- User enter filter type UL DL or both
-Select the traffic string you want to parse, UL DL or both traffic. 
+- User enters filter type UL DL or both
+Select the traffic string you want to parse, UL DL, or both traffic. 
 ```
 accepted_strings = re.compile(r"^(D-UE|U-UE)(\[\d\]|\[ \d\])?$|^both$")
 givenString = input("Please enter your search (Ex: D-UE / U-UE/ U-UE[ 0] / both:):")
@@ -52,14 +52,14 @@ else:
 
 ### analysic the related string 
 
-- parse the data:
+- Parse the data:
 ```
 datestr = data.split('[', 1)[1].split(']')[0]  
 search = re.search(r'\[(\d+\.\d+\.\d+)\].*?(Tput=[^A]+)', data)
 m3New = re.sub(r"[\(\[].*?[\)\]]", "", search.group(2)).replace('=', '= ').replace(',', ' ').strip().split()
 result.clear()
 ```
-- save the value into list 
+- save the value in a list 
 ```
 givenString=ULDLstr
 bler="Bler="
@@ -71,7 +71,7 @@ result.append(getelement(m3New, bler))
 listprint() 
 ```
 
-- write into file
+- write into a file
 ```
 def listprint():
     #checkfile()

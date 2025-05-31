@@ -1,10 +1,12 @@
-## Introduction of parsing log file
+## Introduction to parsing a log file
 
 I am going to develop an automation script to parse the log file of CDU throughput data, then save the result into a text file, and finally convert the text result into Excel. Since we have Excel data, we can also plot it into a line graph. 
 
 ![flex and split cdu system log stucture](img/Flex_split_logCompare.PNG)
 
 ## 1. Split CDU
+Layer2 Log parse `single UE` and `Multiply UE`, Uplink, Downlink, and both traffic data
+![](img/log_single_multiply.PNG)
 
 ### Log FIle 
 - L2 Elog (Single UE)
@@ -44,7 +46,7 @@ I am going to develop an automation script to parse the log file of CDU throughp
 [20230311.012825.882486][info]:[UL <<<- Mcs= 19.2, RbNum= 265.8, Layers= 1.0, PuschEffecSinr= 171.58(21.8 dB), PuschSinr= 169.16(20.6 dB), PuschBler=   0.0, nonWPuschBler=   4.4, TA=  31.2, PHR= 14.6 dB, S-BSR= 7646, L-BSR= 0]
 ```
 
-- PDCP (contain ingress and egress)
+- PDCP (contains ingress and egress)
 ```
 [20221217.194812.548238][info]:[PDCP DL- ingress traffic: 239.968109(Mbps), egress traffic: 214.256439(Mbps)]
 [20221217.194812.548244][info]:[PDCP UL- ingress traffic: 96.111160(Mbps), egress traffic: 95.896652(Mbps)]
@@ -52,17 +54,21 @@ I am going to develop an automation script to parse the log file of CDU throughp
 [20221217.194817.577017][info]:[========== Mem Pool Usage ==========]
 ```
 
+
 ### Analysis parse log  
 - datetime and Tput value
 ```
 [20221102.064905.609030][info]:[[40;32m>>> DL- ingress traffic: 555.198792(Mbps), egress traffic: 551.669556(Mbps), ReTx: 0.000000(Mbps)[0m]
 ```
 
-- datetime, tput, other value such as Mcs, RbNum, and etc
+- datetime, tput, other values such as Mcs, RbNum, and etc
 ```
 [20221102.064905.609113][info]:[DL- UE[ 0]: Tput=  555.198792 Mbps, Mcs= 26.0(Sigma= 0.0), RbNum= 198.4, ReTxRatio=   0.0, Layers= 4.0, PdschBler=   0.0, nonWPdschBler=   0.0]
 ```
 ## 2. Flex CDU 
+
+L2 Log parse `single UE` Uplink, Downlink, and both traffic data: 
+![](img/log_single_flexDU.png)
 
 ### Log FIle 
 - L2 Elog 
@@ -75,9 +81,9 @@ I am going to develop an automation script to parse the log file of CDU throughp
 ```
 
 ### Analysis parse log 
-- datetime, tput, other value such as Mcs, RbNum, and etc
+- datetime, tput, other values such as Mcs, RbNum, etc
 ```
 [20240606.150020.325614][info]:[D-UE[ 1][  1]: Tput= 585.617676, Mcs=28.0, RB=262.6, ReTx=  0.0, L=4.0, Bler=  0.0, A[9490]N[  0]D[ 0]S[  17], Rssi=81]
 ```
-
-
+- **Flex CDU**
+	- L2 Log parse `single UE` Uplink, Downlink and both traffic data
