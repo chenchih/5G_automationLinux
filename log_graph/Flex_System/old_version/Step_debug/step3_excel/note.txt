@@ -1,7 +1,0 @@
-excel_layer2_parsefile_layer2_v3_flexCDU.py: parse elog data
-###############write excek############
-excel_layer2_sheet_v2_progress_type_1.py: Excel Writing Progress Bar (multiple steps or processes into a single progres show writing Excel) 
-excel_layer2_sheet_v2_progress_type_2.2_multipletask.py:     Excel Writing Progress Bar  (multiple steps or processes into a single progress, show process ul and DL, and write excel  ) 
-excel_layer2_sheet_v1.py: Excel Writing FILE (NO PROGRESS)
-excel_layer2_sheet_supportXcolumn.py: 2 column or 5 column will write 
-excel_layer2_sheet_supportXcolumn_process_.py: 2 or 5 column will write excel and show process. 
