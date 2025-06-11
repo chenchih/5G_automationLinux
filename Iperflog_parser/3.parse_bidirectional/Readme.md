@@ -24,7 +24,7 @@ will parse `[SUM][RX-C]` and `[SUM][TX-C]` and save into excel file
 	- Step1: put your bidirectional log into working directory. log need to contain [SUM][TX-C] and [SUM][RX-C]
 	- Step2: run the code `py bidirectional_exel_graph.py` or `bidirectional_exe.py`
 
-[parse_alllog_excelSheet_plot_v2 how to run](../img/howtorun/bidirectional_exel_graph.gif)
+![parse_alllog_excelSheet_plot_v2 how to run](../img/howtorun/bidirectional_exel_graph.gif)
 
 
 ## Code Version explanation

@@ -13,9 +13,13 @@ You can run with two method:
 
 
 Below is the step, I have build all script into exe file, but it's the same as above:
-You can build it by:  `pyinstaller --onefile --icon=parsing.ico .\main_importmodule.py`
+
+
 
 ![step gif file](../img/flex/flexparser.gif)
+
+You can build all python file by this command: 
+>  `pyinstaller --onefile --icon=parsing.ico .\main_importmodule.py`
 
 ### Step and code order
 

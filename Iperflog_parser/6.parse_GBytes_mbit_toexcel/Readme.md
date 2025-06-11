@@ -5,7 +5,8 @@ This script is use to parse Mbit log file, which can filter GBytes and Mbits thi
 
 ## Output
 If you enter the logfile contain gbit will show Error telling you this code only can capture mbit logfile
-![reading_parseresult_output](../img/parse_GBytes_mbit_toexcel.png)
+
+![reading_parseresult_output](../img/parse_GBytes_mbit_toexcel_output.png)
 
 
 ## Code explanation

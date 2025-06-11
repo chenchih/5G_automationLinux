@@ -8,7 +8,7 @@ formats data, and writes to separate sheets in an Excel file.
 This code user doesn't have to enter the logfile, it will parse all the logfiles or txt files inthe  current working directory. 
 
 - `parse_alllog_excelSheet_plot_v3.py`: include bidirectional log([SUM][TX-C] or [SUM][RX-C]) and plot graph
-[parse_alllog_excelSheet_skipbidir how to run](../img/howtorun/bidirectional_exel_graph_v3.gif)
+![parse_alllog_excelSheet_skipbidir how to run](../img/howtorun/bidirectional_exel_graph_v3.gif)
 
 ## output
 It will check the current working directory for files containing `.txt` and `.log` and parse, but if the content contains [RX-C] [TX-C] which is a bidirectional log then it will skip this logfile
@@ -222,7 +222,7 @@ def plot_from_excel_simple_adjusted():
 - Fix Corrupted data binary part
 
 If your log contain something like corrupted data log, the script will occur error, and stop. Like below:
-(../img/wrong_endcode_log.PNG)
+![wrong encode log file](../img/wrong_endcode_log.PNG)
 
 To fix this we need to change:
 ```

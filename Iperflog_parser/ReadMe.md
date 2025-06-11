@@ -103,14 +103,14 @@ As you can above pciture, I will get the **Datetime**, **Throughput value** `2.3
 ## 2. Python File Overview [🔝](#Content)
 
 | FileName | Mbit | Gbit |excel|txt|progress|graph|Remark|
-| :-- | :--: |:--:|:--:|:--:| :--:| :--|
+| :-- | :--: |:--:|:--:|:--:| :--:| :--| :--|
 |parse_mbit_to_gb_excel.py | V  | V | V | X |V|X|*major convert mb to gb|
 |parse_mbit_excel_release.py| V  | V | V | X |V|X|*major display mb|
 |bidirectional_excel.py| NA  | NA | V | X |V|X|*major for bidirectional log write result to excel|
 |bidirectional_exel_graph.py| NA  | NA | V | X |V|V|*major for bidirectional log write result to excel and plot graph|
 |parse_alllog_excelSheetv4.py| V  | V | V | X |V |V|*major for gbit|
 |parser_result_txt.py| V  | V | X |V |X | X|minor|
-|txt_excel_convert.py| V  | X| V  |V | X X||minor|
+|txt_excel_convert.py| V  | X| V  |V | X |X|minor|
 |parse_GBytes_mbit_toexcel.py| V  | X| V | X|X |X|minor|
 |extract_big_logFile.py| NA  |NA | X | V |V|X|Split large file|
 
@@ -164,8 +164,8 @@ This is similar to previous one, but this code only support Mbit, which will not
 	- **Support LogFile**: `iperf3_bidirectional`
 ![bidirectional_output](img/bidirectional_graphoutput.png)
 
-** How to Run**
-[bidirectional_exel_graph how to run](../img/howtorun/bidirectional_exel_graph.gif)
+**How to Run**
+![bidirectional_exel_graph how to run](img/howtorun/bidirectional_exel_graph.gif)
 
 <a name="2.4"></a>
 ### 2.4 Parse_log_workingdir: Parse All log file and write result to excel in different sheet (sheet name by filename) [🔙](#2.pythonCode)
@@ -175,8 +175,8 @@ This is similar to previous one, but this code only support Mbit, which will not
 
 ![parse_excelshee_output](img/parse_alllog_excelSheet_plot_v3.PNG)
 
-** How to Run**
-[parse_alllog_excelSheet_plot_v3 how to run](img/howtorun/parse_alllog_excelSheet_plot_v3.gif)
+**How to Run**
+![parse_alllog_excelSheet_plot_v3 how to run](img/howtorun/parse_alllog_excelSheet_plot_v3.gif)
 
 <a name="2.5"></a>
 ### 2.5 parse_result_txt: Parse and export result to txt file  [🔙](#2.pythonCode)
