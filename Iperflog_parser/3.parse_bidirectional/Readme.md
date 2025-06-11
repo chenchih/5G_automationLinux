@@ -8,13 +8,24 @@ Bidirectional mean run both UL(upload) and DL(Download) in the same time, so it 
 
 ![bidirectional](../img/bidirectional.PNG)
 
-## Output
+## Description and Output
 
-- bidirectional write result to excel
+- `bidirectional_exel_graph.py`: bidirectional write result to excel and draw graph
+will parse `[SUM][RX-C]` and `[SUM][TX-C]` and save result to excel, plot graph then save as image.
+
+![bidirectional_graphoutput](../img/bidirectional_graphoutput.png)
+
+- `bidirectional_exel.py`:  bidirectional write result to excel
+will parse `[SUM][RX-C]` and `[SUM][TX-C]` and save into excel file
+
 ![bidirectional_output](../img/bidirectional_output.png)
 
-- bidirectional write result to excel and draw graph
-![bidirectional_graphoutput](../img/bidirectional_graphoutput.png)
+- How to run
+	- Step1: put your bidirectional log into working directory. log need to contain [SUM][TX-C] and [SUM][RX-C]
+	- Step2: run the code `py bidirectional_exel_graph.py` or `bidirectional_exe.py`
+
+[parse_alllog_excelSheet_plot_v2 how to run](../img/howtorun/bidirectional_exel_graph.gif)
+
 
 ## Code Version explanation
 

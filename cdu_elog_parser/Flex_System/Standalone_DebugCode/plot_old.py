@@ -38,7 +38,7 @@ def plot_sheet_data(df, datetime_col, y_cols_to_plot, sheet_name_label, output_f
             # Ensure the column is numeric, converting if necessary and handling potential errors
             df_processed[col] = pd.to_numeric(df_processed[col], errors='coerce')
             # Drop rows where conversion to numeric might have failed (NaNs) for this column for plotting
-            plt.plot(df_processed[datetime_col].dropna(), df_processed[col].dropna(), label=col, marker='.', linestyle='-')
+            plt.plot(df_processed[datetime_col].dropna(), df_processed[col].dropna(), label=col, marker='', linestyle='-')
         else:
             print(f"Warning: Column '{col}' not found in {sheet_name_label} DataFrame. Skipping.")
 
@@ -86,9 +86,9 @@ def main(excel_file):
     
     # Define columns to plot for each sheet
     # For UL sheet
-    ul_columns_to_plot = ['UL-Tput', 'UL-RbNum', 'UL-MCS']
+    ul_columns_to_plot = ['UL-Tput', 'UL-MCS']
     # For DL sheet
-    dl_columns_to_plot = ['DL-Tput', 'DL-RbNum', 'DL-MCS']
+    dl_columns_to_plot = ['DL-Tput', 'DL-MCS']
     
     # Generate and save plot for UL sheet data
     if df_ul is not None:

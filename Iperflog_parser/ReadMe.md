@@ -102,22 +102,22 @@ As you can above pciture, I will get the **Datetime**, **Throughput value** `2.3
 <a name="2.pythonCode"></a>
 ## 2. Python File Overview [🔝](#Content)
 
-| FileName | Mbit | Gbit |excel|txt|progress|Remark|
+| FileName | Mbit | Gbit |excel|txt|progress|graph|Remark|
 | :-- | :--: |:--:|:--:|:--:| :--:| :--|
-|parse_mbit_to_gb_excel.py | V  | V | V | X |V|*major convert mb to gb|
-|parse_mbit_excel_release.py| V  | V | V | X |V|*major display mb|
-|bidirectional_excel.py| NA  | NA | V | X |V|*major for bidirectional log write result to excel|
-|bidirectional_exel_graph.py| NA  | NA | V | X |V|*major for bidirectional log write result to excel and plot graph|
-|parse_alllog_excelSheet.py| V  | V | V | X |V |*major for gbit|
-|parser_result_txt.py| V  | V | X |V |X | minor|
-|txt_excel_convert.py| V  | X| V  |V | X |minor|
-|parse_GBytes_mbit_toexcel.py| V  | X| V | X|X |minor|
-|extract_big_logFile.py| NA  |NA | X | V |V|Split large file|
+|parse_mbit_to_gb_excel.py | V  | V | V | X |V|X|*major convert mb to gb|
+|parse_mbit_excel_release.py| V  | V | V | X |V|X|*major display mb|
+|bidirectional_excel.py| NA  | NA | V | X |V|X|*major for bidirectional log write result to excel|
+|bidirectional_exel_graph.py| NA  | NA | V | X |V|V|*major for bidirectional log write result to excel and plot graph|
+|parse_alllog_excelSheetv4.py| V  | V | V | X |V |V|*major for gbit|
+|parser_result_txt.py| V  | V | X |V |X | X|minor|
+|txt_excel_convert.py| V  | X| V  |V | X X||minor|
+|parse_GBytes_mbit_toexcel.py| V  | X| V | X|X |X|minor|
+|extract_big_logFile.py| NA  |NA | X | V |V|X|Split large file|
 
 - [2.1 parse_mbit_to_gb_excel: Parse both mbit and gbit and write result to excel ](#2.1) 
 - [2.2 Parse_mbit_to_excel: Parse mbit logFile and write result to excel without convert value to gb](#2.2) 
 - [2.3 Parse_bidirectional: Parse bidrectional log and write result to excel on different sheet](#2.3) 
-- [2.4 Parse_log_workingdir: Parse All log file and write result to excel in different sheet](#2.4)
+- [2.4 Parse_log_workingdir: Parse All log file and write result to excel in different sheet and draw graph](#2.4)
 - [2.5 parse_result_txt: Parse and export result to txt file](#2.5) 
 - [2.6 parse_GBytes_mbit_toexcel: Parse log contain Mbits and GBytes value and save to excel](#2.6) 
 - [2.7 Split_LargeFile_smallFile: Split large logfile into smaller file](#2.7) 
@@ -164,13 +164,19 @@ This is similar to previous one, but this code only support Mbit, which will not
 	- **Support LogFile**: `iperf3_bidirectional`
 ![bidirectional_output](img/bidirectional_graphoutput.png)
 
+** How to Run**
+[bidirectional_exel_graph how to run](../img/howtorun/bidirectional_exel_graph.gif)
+
 <a name="2.4"></a>
 ### 2.4 Parse_log_workingdir: Parse All log file and write result to excel in different sheet (sheet name by filename) [🔙](#2.pythonCode)
 - Code Name: `parse_alllog_excelSheet_v2_release.py`
 	- **Description**: This case will just parse all the log or txt file extesion file and parse these log without enter your log file and write result into excel. 
 	- **Support LogFile**: `input_Mbits` `input_Gbits` 
 
-![parse_excelshee_output](img/parse_excelsheet_output.png)
+![parse_excelshee_output](img/parse_alllog_excelSheet_plot_v3.PNG)
+
+** How to Run**
+[parse_alllog_excelSheet_plot_v3 how to run](img/howtorun/parse_alllog_excelSheet_plot_v3.gif)
 
 <a name="2.5"></a>
 ### 2.5 parse_result_txt: Parse and export result to txt file  [🔙](#2.pythonCode)
@@ -219,6 +225,7 @@ This is similar to previous one, but this code only support Mbit, which will not
 
 - Code Name: `create_move_fileoutput_debug.py`
 	- **Description**: use for testing generate file, create folder and move file into folder.
+
 
 <a name="3"></a>
 ## 3.Code Explantion on each feature [🔝](#Content)

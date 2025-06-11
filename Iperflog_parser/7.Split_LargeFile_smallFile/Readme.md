@@ -15,7 +15,6 @@ In this code I split the file to `4000000` line as default, however you can also
 ### default line to split 
 
 ```
-
 if filelinesplit == '':
     filelinesplit = 4000000  # Assign 4000000 to filelinesplit
     
@@ -25,5 +24,4 @@ else:
     except ValueError:
         print("Invalid input. Using default value.")
         filelinesplit = 4000000
-
 ```
