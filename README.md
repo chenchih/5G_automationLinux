@@ -5,14 +5,16 @@ I been using the 5G system which ues Ubuntu as it's OS.
 The purpose of automation is to accelerating work, to work smark and indeed to much more productiv+efficiency
 
 ## checklist 
-- [x] log_graph (python)
+- [x] cdu_elog_parser (python)
+	- [x] Split system
+	- [x] Flex system
 - [x] Ubuntu_Scipt (linux bash script)
 - [x] seperate_autoscript
-- [x] Iperflog_parser 
+- [x] Iperflog_parser (python)
 
 ## Description:
 - Ubuntu Script: Common used linux command without typing command used the code
-- log_graph: Analysic CDU elog file, and capture the tput value and write result to excel, include plot graph. 
+- cdu_elog_parser: Analysic CDU elog file, and capture the tput value and write result to excel, include plot graph. 
 - Iperflog_parser: Analysic iperf3 log file, capture result (datetime, tput), and export to excel or txt file. 
 
 ## Linux commands and script:

@@ -43,8 +43,8 @@ def plot_sheet_data(df, datetime_col, y_cols_to_plot, sheet_name_label, output_f
             print(f"Warning: Column '{col}' not found in {sheet_name_label} DataFrame. Skipping.")
 
     plt.title(f'{sheet_name_label} Data Visualization', fontsize=16)
-    plt.xlabel('Datetime', fontsize=12)
-    plt.ylabel('Values', fontsize=12)
+    plt.xlabel('Datetime', fontsize=12, labelpad=20)
+    plt.ylabel('Tput', fontsize=12, labelpad=20)
     plt.legend(fontsize=10)
     plt.grid(True)
     

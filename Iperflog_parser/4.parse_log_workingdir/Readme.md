@@ -8,13 +8,29 @@ formats data, and writes to separate sheets in an Excel file.
 This code user doesn't have to enter the logfile, it will parse all the logfiles or txt files inthe  current working directory. 
 
 - `parse_alllog_excelSheet_plot_v3.py`: include bidirectional log([SUM][TX-C] or [SUM][RX-C]) and plot graph
-![parse_alllog_excelSheet_skipbidir how to run](../img/howtorun/bidirectional_exel_graph_v3.gif)
+![parse_alllog_excelSheet_skipbidir how to run](../img/howtorun/parse_alllog_excelSheet_plot_v3.gif)
 
+### Step 
+- Step1: check current directory file with .txt or .log file and read it
+- Step2: read each file and search for related string
+[SUM]:UL or DL Tput
+[SUM][RX-X] and [SUM][TX-X]: bidirectional Tput
+- Step3: analysis the log 
+	- Convert data unit 
+	- save each file into excel sheet rename as log file name
+	- Save excel
+	- Calculate duration time (only with log contain [SUM][TX-X] or [RX-C]
+- Step4: plot date into line graph
+- Step5 print the duration time fo bidirectional
+
+														
 ## output
 It will check the current working directory for files containing `.txt` and `.log` and parse, but if the content contains [RX-C] [TX-C] which is a bidirectional log then it will skip this logfile
 
 ![parse_excelshee_output](../img/parse_alllog_excelSheet_plot_v3.PNG)
 
+Ask user to enter y axis min and max value, allow user to set the range. 
+![parse_excelshee_output](../img/parse_alllog_excelSheet_plot_v3.1.PNG.PNG)
 
 ## version update
 - v1: 
@@ -42,8 +58,9 @@ It will check the current working directory for files containing `.txt` and `.lo
 	- Improvement Y-axis  Calculate Dynamic Y-axis Limit
 	- remove  plot_from_excel_simple_adjusted_old function
 	- rename images name as `{sheet_name}.png`, orignal use png_output_path `tput_adjusted_{sheet_name}.png`
-
-
+- v3.1: inmplment user enter y axis 
+	- Allow user to enter Gbps y axis min-max value, or leave empty to use default (min:0, max:5)
+	
 
 ### v1 intial release parse all log or txt file 
 
@@ -152,6 +169,29 @@ plt.tight_layout()
 plt.savefig(f"tput_adjusted_{sheet_name}.png")
 plt.close()
 ```
+- calculate duration data for logfile that contain [SUM][TX-C] and [SUM][RX-C]
+
+```
+def process_log_files_to_excel(directory_path, output_excel_file):
+	all_duration_outputs = [] # List to store duration strings
+	
+	if "[SUM][RX-C]" in line:
+		.....
+       rx_data_for_duration.append([formatted_date, transfer_value])
+	elif "[SUM][TX-C]" in line:
+		tx_data_for_duration.append([formatted_date, transfer_value])
+	............
+	# --- SIMPLIFIED FILE READING AND DECODING END ---
+    if rx_data_for_duration:
+		all_duration_outputs.append(format_duration_output(rx_data_for_duration, f"{base_sheet_name}_RX"))
+    if tx_data_for_duration:
+        all_duration_outputs.append(format_duration_output(tx_data_for_duration, f"{base_sheet_name}_TX"))
+
+if __name__ == "__main__":
+	....
+	collected_duration_outputs = process_log_files_to_excel(directory_path, output_excel_file_path)
+```
+
 
 ### v2.2 Dynamic Plotting Adjustments
 If your data log file contain time as 15 minute, then it might 
@@ -177,7 +217,16 @@ def plot_from_excel_simple_adjusted_old()
     plt.xticks(rotation=45, ha='right')
 
 ```
-- adjust Dynamic x axis
+- adjust Ticks Dynamic x axis
+
+Condition x axis interval: 
+<=15Minute: interval as 30 Second record
+<=30Minute: interval as 1 Minute record
+<=2hours: interval as 5 Minute record
+<=6 hours: interval as 10 Minute record
+<=1day: interval as 30 Minute record
+<=3day: interval as 3 hours record
+
 ```
 def plot_from_excel_simple_adjusted():
 	# Adjust figure size and locator based on total_duration
@@ -211,10 +260,8 @@ def plot_from_excel_simple_adjusted():
 		major_locator = mdates.DayLocator(interval=1) # Ticks every 1 day
 	else: # More than 7 days
 		fig_width = 25
-		major_locator = mdates.DayLocator(interval=7) # Ticks every 7 days (weekly)
-	
+		major_locator = mdates.DayLocator(interval=7) # Ticks every 7 days (weekly)	
 ```
-
 
 ### V3 
 - remove plot_from_excel_simple_adjusted_old function
@@ -240,11 +287,47 @@ def process_log_files_to_excel(directory_path, output_excel_file):
 
 - Calculate Dynamic Y-axis Limit for better visual
 ```
-# --- Calculate Dynamic Y-axis Limit ---
-max_tput = tput_col.max()
-y_upper_limit = max(max_tput * 1.10, 1.0) # Ensure a minimum upper bound for readability
-if max_tput > 4.0 and y_upper_limit < 5.0:
-    y_upper_limit = 5.0
-..........
-ax.set_ylim(0, y_upper_limit)
+def plot_from_excel_simple_adjusted(excel_file, output_dir):
+	..........
+	# --- Calculate Dynamic Y-axis Limit ---
+	max_tput = tput_col.max()
+	y_upper_limit = max(max_tput * 1.10, 1.0) # Ensure a minimum upper bound for readability
+	# If the max throughput is very close to 4.5 or just above, make sure the limit is at least 5.0
+	if max_tput > 4.0 and y_upper_limit < 5.0:
+		y_upper_limit = 5.0
+	..........
+	ax.set_ylim(0, y_upper_limit)
+
+if __name__ == "__main__":	
+	if os.path.exists(output_excel_file_path):
+		plot_from_excel_simple_adjusted(output_excel_file_path, results_folder_path)  
 ```
+
+### V3.1 user enter Dynamic Y-axis Limit range
+
+- implement user enter min and max number
+
+```
+def get_numeric_input_shorter(prompt, default_value, value_type=int):
+    user_input = input(prompt)
+    try:
+        return value_type(user_input) if user_input else default_value
+    except ValueError:
+        print(f"Invalid input. Using default value: {default_value}")
+        return default_value # Fallback to default if conversion fails
+		
+def plot_from_excel_simple_adjusted(excel_file, output_dir, yaxis_min, yaxis_max):	
+	........
+	ax.set_ylim(yaxis_min, yaxis_max)
+	......
+	
+if __name__ == "__main__":
+	print(f"\t\t<==================== Enter Graph y axis  ====================>")
+    yaxis_min = get_numeric_input_shorter('Enter y axis MIN (default: 0): ', 0)
+    yaxis_max = get_numeric_input_shorter('Enter y axis MAX (default: 5): ', 5)
+	
+	if os.path.exists(output_excel_file_path): 
+        plot_from_excel_simple_adjusted(output_excel_file_path, results_folder_path, yaxis_min, yaxis_max)
+```
+
+![parse_alllog_excelSheet_skipbidir how to run](../img/parse_alllog_excelSheet_plot_v3.1.PNG)

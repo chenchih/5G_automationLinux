@@ -5,7 +5,7 @@ main scipt for Flexram log analysic, will import serveral module or file
 import logchecking_rename_merge
 import parsefile_layer2_v3_flexCDU_dev
 import convert_excel_layer2_flexCDU_dev
-import plot
+import plot_left_axis as plot
 import os,fnmatch,sys
 from datetime import datetime
 

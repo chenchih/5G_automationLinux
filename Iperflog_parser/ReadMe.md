@@ -1,5 +1,7 @@
 # Iperf Log parser and convert the result
 This is an automation to parse or filter the iperf3 log file and write the Throughput into an Excel or TXT file. 
+You can refer to this link for slide: [Slide Automatic iperf Log result](https://www.slideshare.net/slideshow/automatic_iperf_log_result_excel_visual-pptx/280507702)
+
 
 ## 2. Updated record 
 - 2025.3.16: inital 
@@ -169,11 +171,16 @@ This is similar to previous one, but this code only support Mbit, which will not
 
 <a name="2.4"></a>
 ### 2.4 Parse_log_workingdir: Parse All log file and write result to excel in different sheet (sheet name by filename) [🔙](#2.pythonCode)
-- Code Name: `parse_alllog_excelSheet_v2_release.py`
+- Code Name: `parse_alllog_excelSheet_plot_v3.py` 
 	- **Description**: This case will just parse all the log or txt file extesion file and parse these log without enter your log file and write result into excel. 
 	- **Support LogFile**: `input_Mbits` `input_Gbits` 
-
 ![parse_excelshee_output](img/parse_alllog_excelSheet_plot_v3.PNG)
+	
+- Code Name: `parse_alllog_excelSheet_plot_v3.1.py` 
+	- **Description**: This case will ask use to enter y axis for min an dmax value to control Gbps range. 
+![parse_excelshee_output](img/parse_alllog_excelSheet_plot_v3.1.PNG)
+
+If you don't need to adjust the y axis width, then you can use v3 version, if you want to adjust then use v3.1
 
 **How to Run**
 ![parse_alllog_excelSheet_plot_v3 how to run](img/howtorun/parse_alllog_excelSheet_plot_v3.gif)

@@ -27,7 +27,8 @@ You can build all python file by this command:
 
 You can run individual code, or just run the `main_importmodule.py`, which will import all the code at once. 
 - Step 1 : `main_importmodule.py` and `logchecking_rename_merge.py`: 
-Check working directory check `elog_gnb_du_layer2.*` contain single or multiple file. If contain multiple elog file then it will read all the elog and merge into elog file and name file as elog_files. 
+Check working directory check `elog_gnb_du_layer2.*` contain single or multiple file.
+If contain single elog file, rename log to `elog_files`, if contain multiple elog file then it will read all the elog and merge into elog file and name file as `elog_files`. 
 
 Note: When you run overnight or many hrs, it will provide multiple elog file, instead one one file. 
 
@@ -48,8 +49,7 @@ As you can see all the script except the main_importmodule.py it will have ` __n
 ```
 # Ensure standalone functionality
 if __name__ == "__main__":
-	....standalone code.....
-
+    ....standalone code.....
 ```
 
 If you run the `main_importmodule.py` i will import each file like below:
@@ -58,15 +58,11 @@ import logchecking_rename_merge
 import parsefile_layer2_v3_flexCDU_dev
 import convert_excel_layer2_flexCDU_dev
 import plot
-
 ```
 
 After import these script, I will call each function of the file like :
 ```
 logchecking_rename_merge.check_file_count_glob(file_pattern)
-....
-....
-
 ```
 
 ### Read the elog file and filter the tput value
@@ -98,8 +94,8 @@ if accepted_strings.match(givenString):
             with open(elogfileName, 'r') as filedata:
                 for line in filedata:   
                     if givenString in line:
-						# Print the line, if the given string is found in the current line
-                        #print(line.strip())
+					# Print the line, if the given string is found in the current line
+                    #print(line.strip())
                         parse(line, givenString)
 else:
     print("Not found, please reenter correct option") 		
