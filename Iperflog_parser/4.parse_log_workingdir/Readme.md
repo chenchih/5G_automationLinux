@@ -47,20 +47,25 @@ Ask user to enter y axis min and max value, allow user to set the range.
 		- if log contains tx or tx then ignore that file(bidirectional)
 	- v1.4: capture date with space and digit 
 		- fix issue: Capture space with two digit for date `add \\s+\\d{1,2}`
-- v2.1: 
-	- Plot data into line graph: log contain [SUM] [RX-C] or [SUM] [TX-C] skip and will not plot graph and write into excel
-	- Create result into folder: all the result will move into new folder
-- v2.2: 
-	- Implement [SUM] [RX-C] or [SUM] [TX-C]  result 
-	- Improvement X axis: adding time condition determine interval instead of static interval 
+- v2:
+	- v2.1: 
+		- Plot data into line graph: log contain `[SUM] [RX-C]` or `[SUM] [TX-C]` skip and will not plot graph and write into excel
+		- Create result into folder: all the result will move into new folder
+	- v2.2: 
+		- Implement`[SUM] [RX-C]` or` [SUM] [TX-C]`  result 
+		- Improvement X axis: adding time condition determine interval instead of static interval 
 - v3: 
-	- Fix when log contain some wrong binary corrupted data
-	- Improvement Y-axis  Calculate Dynamic Y-axis Limit
-	- remove  plot_from_excel_simple_adjusted_old function
-	- rename images name as `{sheet_name}.png`, orignal use png_output_path `tput_adjusted_{sheet_name}.png`
-- v3.1: inmplment user enter y axis 
-	- Allow user to enter Gbps y axis min-max value, or leave empty to use default (min:0, max:5)
-	
+	- v3
+		- Fix when log contain some wrong binary corrupted data
+		- Improvement Y-axis  Calculate Dynamic Y-axis Limit
+		- remove  plot_from_excel_simple_adjusted_old function
+		- **rename images name** as `{sheet_name}.png`, orignal use png_output_path `tput_adjusted_{sheet_name}.png`
+	- v3.1: implement user enter y axis 
+		- Allow user to **enter Gbps y axis min-max value**, or leave empty to use default (min:0, max:5)
+		- Implement red dashed line indicating the **average throughput** for that specific dataset
+	- v3.2: implement print **pass fail criteria** base on average criteria. 
+
+
 
 ### v1 intial release parse all log or txt file 
 
@@ -306,6 +311,11 @@ if __name__ == "__main__":
 ### V3.1 user enter Dynamic Y-axis Limit range
 
 - implement user enter min and max number
+	- `.mean()`: method from pandas Series to calculate the average of the Tput column
+	- adds a horizontal line (axhline) at the average_tput value.
+		- `color='red`' : makes the line red.
+		- `linestyle='--'`: makes it a dashed line.
+		- `label=f'Average`: {average_tput:.2f} gbps' adds an entry for this line to the plot's legend, showing the average value.
 
 ```
 def get_numeric_input_shorter(prompt, default_value, value_type=int):
@@ -330,4 +340,109 @@ if __name__ == "__main__":
         plot_from_excel_simple_adjusted(output_excel_file_path, results_folder_path, yaxis_min, yaxis_max)
 ```
 
-![parse_alllog_excelSheet_skipbidir how to run](../img/parse_alllog_excelSheet_plot_v3.1.PNG)
+![parse_alllog_excelSheet 3.1 ](../img/parse_alllog_excelSheet_plot_v3.1.PNG)
+
+- red dashed line indicating the average throughput for that specific dataset
+```
+def plot_from_excel_simple_adjusted(excel_file, output_dir, yaxis_min, yaxis_max):
+	......
+	# --- Calculate and Plot Average Throughput ---
+	average_tput = tput_col.mean()
+	print(f"  Average Throughput for '{sheet_name}': {average_tput:.2f} gbps") # Print to console
+	.......
+	
+	# --- Plot the average line ---
+	ax.axhline(average_tput, color='red', linestyle='--', label=f'Average: {average_tput:.2f} gbps')
+```
+![parse_alllog_excelSheet 3.1 average line](../img/parse_alllog_excelSheet_plot_v3.1_average.PNG)
+
+
+Remove this section which is use for v3
+```
+def plot_from_excel_simple_adjusted(excel_file, output_dir, yaxis_min, yaxis_max):
+	....
+	# --- Calculate Dynamic Y-axis Limit ---
+    max_tput = tput_col.max()
+    # Set upper limit to 10% above max throughput, with a minimum of 1.0
+    # to prevent very small scales if throughput is near zero.
+	y_upper_limit = max(max_tput * 1.10, 1.0) # Ensure a minimum upper bound for readability
+	# If the max throughput is very close to 4.5 or just above, make sure the limit is at least 5.0
+	if max_tput > 4.0 and y_upper_limit < 5.0:
+        y_upper_limit = 5.0
+					
+	....					
+    yaxis_min= int(input('Enter y axis min: '))
+    yaxis_max= int(input('Enter y axis max: '))
+    
+    if yaxis_min='':
+        yaxis_min=0
+    if yaxis_max='':
+        yaxis_max=5 					
+```
+
+### v3.2 Implement log's type PASS Fail average criteria 
+
+Implement user will have to enter the criteria of average on correspond log type(SFP, POE, bidirectional), and it will check average base on below condition: 
+```
+#pass condition
+SFP: average_tput > 3.5 
+POE: average_tput  > 2.2 
+Bidirectional: average_tput >= 1.1 
+```
+![parse_alllog_excelSheet 3.2 display pass fail result ](../img/parse_alllog_excelSheet_plot_v3.2_output.PNG)
+
+- user enter the average value
+```
+# --- New User Inputs for Throughput Criteria ---
+print("\n\t\t<==================== Enter Throughput Criteria ====================>")
+sfp_threshold = get_numeric_input_shorter('Enter SFP average throughput PASS threshold (default: 3.5 Gbps): ', 3.5, value_type=float)
+poe_threshold = get_numeric_input_shorter('Enter POE average throughput PASS threshold (default: 2.2 Gbps): ', 2.2, value_type=float)
+bidirectional_threshold = get_numeric_input_shorter('Enter Bidirectional/Other average throughput PASS threshold (default: 1.1 Gbps): ', 1.1, value_type=float)
+```
+
+- check sheet for log type and check condition on average value
+```
+def plot_from_excel_simple_adjusted(excel_file, output_dir, yaxis_min, yaxis_max, 
+                                    sfp_threshold, poe_threshold, bidirectional_threshold):
+									
+sheet_name_lower = sheet_name.lower() # Convert to lowercase for case-insensitive checktest_result_text = ""
+test_result_text = ""
+text_color = 'black' # Default color
+```
+
+- average condition pass fail
+```
+def plot_from_excel_simple_adjusted():
+	.......									
+	 if "sfp" in sheet_name_lower:                   
+        if average_tput > sfp_threshold: # Use user-provided threshold
+            test_result_text = f"Overall test result (SFP > {sfp_threshold:.2f} Gbps): PASSED"
+            text_color = 'green'
+        else:
+            test_result_text = f"Overall test result (SFP > {sfp_threshold:.2f} Gbps): FAILED"
+            text_color = 'red'
+    elif "poe" in sheet_name_lower:
+        #if average_tput > 2.2:
+        if average_tput > poe_threshold: # Use user-provided threshold
+            test_result_text = f"Overall test result (POE > {poe_threshold:.2f} Gbps): PASSED"
+            text_color = 'green'
+        else:
+            test_result_text = f"Overall test result (POE > {poe_threshold:.2f} Gbps): FAILED"
+            text_color = 'red'
+    else: # Default for 'bidirectional' or other cases
+        if average_tput >= bidirectional_threshold: # Use user-provided threshold
+        #if average_tput >= 1.1:
+            test_result_text = f"Overall test result (Bidirectional/Other >= {bidirectional_threshold:.2f} Gbps): PASSED"
+            text_color = 'green'
+        else:
+            test_result_text = f"Overall test result (Bidirectional/Other >= {bidirectional_threshold:.2f} Gbps): FAILED"
+            text_color = 'red'
+    
+    print(f"  {test_result_text}") # Print test result to console								
+```
+
+![parse_alllog_excelSheet 3.2user enter average and check condition ](../img/parse_alllog_excelSheet_plot_v3.2.PNG)
+
+
+
+
