@@ -1,0 +1,6 @@
+plt.figure(figsize=(20, 8), dpi=300)
+20 means the figure will be 20 inches wide.
+8 means the figure will be 8 inches tall.
+
+Width in pixels = figsize_width * dpi = 20 inches * 300 dpi = 6000 pixels
+Height in pixels = figsize_height * dpi = 8 inches * 300 dpi = 2400 pixels

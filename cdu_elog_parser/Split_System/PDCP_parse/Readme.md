@@ -16,11 +16,11 @@ I will parse `DL` and `UL` realted string, but there is one special string that 
 	- Step 1: Enter your elog file name
 	- Step 2: Start to parse the elog 
 	- Step 3: Enter UL, DL, or both UL and DL for the string to filter and save the result into a text file
-	- Step 4:　Convert the text file into an Excel file
+	- Step 4: Convert the text file into an Excel file
 
 - How to run the PDCP parsing
 
-  ![](https://github.com/chenchih/5G_automationLinux/blob/main/log_graph/img/Run_PDCPscript.gif)
+![](../../img/Run_PDCPscript.gif)
 
 - Parse result output:
 ```
@@ -39,6 +39,7 @@ datettime ingress-traffic egress-traffic
 ![](../../img/PDCP_result.PNG)
 
 ## Code Description summary
+
 ### parsing result for tput and other related values
 
 ```

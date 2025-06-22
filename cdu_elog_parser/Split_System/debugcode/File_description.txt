@@ -1,0 +1,16 @@
+excel_layer2_v4_Sheet.py: UL and DL or either UL or DL, 2 or 6 column without progress ba
+===
+Single UE:
+- excel_layer2_convertULorDL.py: 6 column ONLY txtresult, will only save UL or DL either one, will not write both UL and DL
+	- Log: result_6column.txt
+- excel_layer2_BothULandDL.py: read 6 column ONLY txtfile, will write both UL and DL into excel
+	- Log: result_6column.txt
+- parsefile.py: parse datetime and tput string
+- parsefile_2.py: user can select to parse ul dl or specfic ID
+	logresult without =====
+- parsefile_layer2_v2.py" implment both UL and DL
+	logresult without =====
+
+- debug_plot_multipleUE:
+debug_print_parsefile_multUE_result.py: print the result multi ue od DL 
+parsefile_layer2_multiply_UE.py: parse and save result to txt file on both UL and DL
