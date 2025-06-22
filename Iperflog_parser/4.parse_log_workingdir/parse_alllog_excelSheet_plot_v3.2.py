@@ -1,10 +1,3 @@
-'''
-- Fix reading strange encoding in logfile will occur error not able to parse
-    - process_log_files_to_excel()
-- Remove plot_from_excel_simple_adjusted_old(), all data will static x axis, new version in v2 update condition on x axis
-    - plot_from_excel_simple_adjusted: Dynamic Plotting Adjustments
-- 3.1: user enter y axis range
-'''
 import re
 import sys
 from datetime import datetime, timedelta
@@ -96,8 +89,6 @@ def process_log_files_to_excel(directory_path, output_excel_file):
                 rx_data_for_duration = []
                 tx_data_for_duration = []
 
-                # Removed the unconditional creation of the 'default' sheet here
-
                 log_pattern = re.compile(
                     r"(\w{3} \w{3}\s+\d{1,2} \d{2}:\d{2}:\d{2} \d{4}) " # Group 1: Datetime
                     r"\[SUM\].*?"
@@ -107,15 +98,12 @@ def process_log_files_to_excel(directory_path, output_excel_file):
                 try:
                     total_file_size = os.path.getsize(input_file_path)
                     with open(input_file_path, 'rb') as infile: # Open in binary mode
-                        # tqdm to show progress of reading bytes for parsing
                         with tqdm(total=total_file_size, unit='B', unit_scale=True, desc=f"Parsing {filename}") as pbar:
                             for raw_line in infile: # Read raw byte lines
-                                pbar.update(len(raw_line)) # Update progress based on bytes read
+                                pbar.update(len(raw_line))
 
-                                # Decode each raw line, ignoring unmappable characters
                                 line = raw_line.decode('utf-8', errors='ignore')
 
-                                # Now the 'line' variable is a string, ready for regex matching
                                 match = log_pattern.match(line)
                                 if match:
                                     date_str = match.group(1)
@@ -174,7 +162,6 @@ def process_log_files_to_excel(directory_path, output_excel_file):
                                         print(f"Warning: Invalid data format in line (ValueError): '{line.strip()}'. Skipping.")
                                     except Exception as e_inner:
                                         print(f"Warning: Error processing matched line: '{line.strip()}' - {e_inner}. Skipping.")
-                                # No need for pbar.update(1) here as it's already updated by bytes read
                 except FileNotFoundError:
                     print(f"Error: Log file '{input_file_path}' not found. Skipping file.")
                     pbar_files.update(1)
@@ -183,16 +170,14 @@ def process_log_files_to_excel(directory_path, output_excel_file):
                     print(f"An unexpected error occurred while opening/reading '{input_file_path}': {e}. Skipping file.")
                     pbar_files.update(1)
                     continue
-                # --- SIMPLIFIED FILE READING AND DECODING END ---
                 if rx_data_for_duration:
                     all_duration_outputs.append(format_duration_output(rx_data_for_duration, f"{base_sheet_name}_RX"))
                 if tx_data_for_duration:
                     all_duration_outputs.append(format_duration_output(tx_data_for_duration, f"{base_sheet_name}_TX"))
 
-                # Adjust column width for 'Datetime' in all relevant sheets for this file
                 for sheet_key in current_file_sheets:
                     s = current_file_sheets[sheet_key]
-                    if s: # Only adjust if the sheet was created/used
+                    if s:
                         s.column_dimensions['A'].hidden = False
                         s.column_dimensions['A'].width = max(s.column_dimensions['A'].width, 20)
 
@@ -224,12 +209,13 @@ def process_log_files_to_excel(directory_path, output_excel_file):
         traceback.print_exc()
     return all_duration_outputs
 
-def plot_from_excel_simple_adjusted(excel_file, output_dir, yaxis_min, yaxis_max):
+def plot_from_excel_simple_adjusted(excel_file, output_dir, yaxis_min, yaxis_max, 
+                                    sfp_threshold, poe_threshold, bidirectional_threshold):
     print("\nAttempting to generate plots...")
     try:
         all_sheets_data = pd.read_excel(excel_file, sheet_name=None)
         plot_count = 0
-
+        
         for sheet_name, df in all_sheets_data.items():
             print(f"Processing sheet for plotting: '{sheet_name}'")
             if 'Datetime' in df.columns and 'Tput' in df.columns:
@@ -244,86 +230,112 @@ def plot_from_excel_simple_adjusted(excel_file, output_dir, yaxis_min, yaxis_max
                 datetime_col = df['Datetime']
                 tput_col = df['Tput']
                 
+                # --- Calculate Average Throughput ---
+                average_tput = tput_col.mean()
+                print(f"  Average Throughput for '{sheet_name}': {average_tput:.2f} gbps")
+
+                # --- Evaluate Test Result based on Sheet Name Criteria ---
+                sheet_name_lower = sheet_name.lower() # Convert to lowercase for case-insensitive check
+                test_result_text = ""
+                text_color = 'black' # Default color
+
+                if "sfp" in sheet_name_lower:
+                    #if average_tput > 3.5:
+                    if average_tput > sfp_threshold: # Use user-provided threshold
+                        test_result_text = f"Overall test result (SFP > {sfp_threshold:.2f} Gbps): PASSED"
+                        text_color = 'green'
+                    else:
+                        test_result_text = f"Overall test result (SFP > {sfp_threshold:.2f} Gbps): FAILED"
+                        text_color = 'red'
+                elif "poe" in sheet_name_lower:
+                    #if average_tput > 2.2:
+                    if average_tput > poe_threshold: # Use user-provided threshold
+                        test_result_text = f"Overall test result (POE > {poe_threshold:.2f} Gbps): PASSED"
+                        text_color = 'green'
+                    else:
+                        test_result_text = f"Overall test result (POE > {poe_threshold:.2f} Gbps): FAILED"
+                        text_color = 'red'
+                else: # Default for 'bidirectional' or other cases
+                    if average_tput >= bidirectional_threshold: # Use user-provided threshold
+                    #if average_tput >= 1.1:
+                        test_result_text = f"Overall test result (Bidirectional/Other >= {bidirectional_threshold:.2f} Gbps): PASSED"
+                        text_color = 'green'
+                    else:
+                        test_result_text = f"Overall test result (Bidirectional/Other >= {bidirectional_threshold:.2f} Gbps): FAILED"
+                        text_color = 'red'
+                
+                print(f"  {test_result_text}") # Print test result to console
+
                 # --- Calculate Dynamic Y-axis Limit ---
                 max_tput = tput_col.max()
-                # Set upper limit to 10% above max throughput, with a minimum of 1.0
-                # to prevent very small scales if throughput is near zero.
-                y_upper_limit = max(max_tput * 1.10, 1.0) # Ensure a minimum upper bound for readability
-                # If the max throughput is very close to 4.5 or just above, make sure the limit is at least 5.0
+                y_upper_limit = max(max_tput * 1.10, 1.0)
                 if max_tput > 4.0 and y_upper_limit < 5.0:
                     y_upper_limit = 5.0
-                # If max_tput is, for example, 1.8, y_upper_limit would be 1.98.
-                # If max_tput is 4.5, y_upper_limit would be 4.95, rounded up to 5.0 by the next check.
-                # If max_tput is 0.2, y_upper_limit would be max(0.22, 1.0) = 1.0
-
+                
                 # --- Dynamic Plotting Adjustments based on Data Duration ---
                 min_datetime = datetime_col.min()
                 max_datetime = datetime_col.max()
                 total_duration = max_datetime - min_datetime
 
-                # Default figure size and locator/interval settings
                 fig_width = 10
                 fig_height = 5
                 major_locator = mdates.AutoDateLocator(maxticks=10)
 
-                # Adjust figure size and locator based on total_duration
-                if total_duration <= timedelta(minutes=5): # Very short spans (e.g., few minutes)
+                if total_duration <= timedelta(minutes=5):
                     fig_width = 14
-                    major_locator = mdates.SecondLocator(interval=10) # Ticks every 10 seconds (up to ~30 labels)
-                elif total_duration <= timedelta(minutes=15): # Your 902-second log falls here
-                    fig_width = 16 # Wider plot for more labels
-                    major_locator = mdates.SecondLocator(interval=30) # Ticks every 30 seconds (approx 30 labels for 15 mins)
-                    # If you want even more (e.g., ~60 labels), change interval to 15, and consider making fig_width even larger
-                elif total_duration <= timedelta(minutes=30): # Up to 30 minutes
-                    fig_width = 18
-                    major_locator = mdates.MinuteLocator(interval=1) # Ticks every 1 minute
-                elif total_duration <= timedelta(hours=2): # Up to 2 hours
-                    fig_width = 14
-                    major_locator = mdates.MinuteLocator(interval=5) # Ticks every 5 minutes
-                #2-6 hours
-                elif total_duration <= timedelta(hours=6): # Up to 6 hours
+                    major_locator = mdates.SecondLocator(interval=10)
+                elif total_duration <= timedelta(minutes=15):
                     fig_width = 16
-                    major_locator = mdates.MinuteLocator(interval=10) # Ticks every 15 minutes
-                #Greater than 6hrs, less than or equal to 24hrs timedelta(days=1)
-                elif total_duration <= timedelta(days=1): # Up to 24 hours (e.g., overnight logs like your 14hr case)
-                    fig_width = 20 # Increased width to accommodate more labels
-                    major_locator = mdates.MinuteLocator(interval=30) # Ticks every 30 minutes
-                    # For a 14-hour log, this will give ~28 labels (14*2)
-                    # For a 24-hour log, this will give ~48 labels (24*2) 
-                elif total_duration <= timedelta(days=3): # Up to 3 days
+                    major_locator = mdates.SecondLocator(interval=30)
+                elif total_duration <= timedelta(minutes=30):
+                    fig_width = 18
+                    major_locator = mdates.MinuteLocator(interval=1)
+                elif total_duration <= timedelta(hours=2):
+                    fig_width = 14
+                    major_locator = mdates.MinuteLocator(interval=5)
+                elif total_duration <= timedelta(hours=6):
+                    fig_width = 16
+                    major_locator = mdates.MinuteLocator(interval=10)
+                elif total_duration <= timedelta(days=1):
                     fig_width = 20
-                    major_locator = mdates.HourLocator(interval=3) # Ticks every 3 hours
-                elif total_duration <= timedelta(days=7): # Up to 7 days
+                    major_locator = mdates.MinuteLocator(interval=30)
+                elif total_duration <= timedelta(days=3):
+                    fig_width = 20
+                    major_locator = mdates.HourLocator(interval=3)
+                elif total_duration <= timedelta(days=7):
                     fig_width = 22
-                    major_locator = mdates.DayLocator(interval=1) # Ticks every 1 day
-                else: # More than 7 days
+                    major_locator = mdates.DayLocator(interval=1)
+                else:
                     fig_width = 25
-                    major_locator = mdates.DayLocator(interval=7) # Ticks every 7 days (weekly)
+                    major_locator = mdates.DayLocator(interval=7)
 
-                # Maintain a reasonable aspect ratio for height
                 fig_height = fig_width * (5/12)
 
                 fig, ax = plt.subplots(figsize=(fig_width, fig_height), dpi=150)
                 ax.plot(datetime_col, tput_col, label='Tput', marker='')
+                
+                # --- Plot the average line ---
+                ax.axhline(average_tput, color='red', linestyle='--', label=f'Average: {average_tput:.2f} gbps')
                 
                 ax.set_xlabel('Time')
                 ax.set_ylabel('Throughput (gbps)')
                 ax.set_title(f'Throughput - {sheet_name}')
                 ax.legend()
                 ax.grid(True)
-                #ax.set_ylim(0, y_upper_limit)
-                #ax.set_ylim(0, 5)
                 ax.set_ylim(yaxis_min, yaxis_max)
-                #set x axis start and end range
-                ax.set_xlim(min_datetime, max_datetime) # Set x-axis limits tightly to data range
-                # Apply the dynamically chosen locator and the formatter
+                ax.set_xlim(min_datetime, max_datetime)
+                
                 formatter = mdates.DateFormatter('%Y-%m-%d %H:%M:%S')
                 ax.xaxis.set_major_locator(major_locator)
                 ax.xaxis.set_major_formatter(formatter)
                 plt.xticks(rotation=45, ha='right')
 
+                # --- Display Test Result on Plot ---
+                ax.text(0.02, 0.95, test_result_text, transform=ax.transAxes, 
+                        fontsize=14, fontweight='bold', color=text_color,
+                        bbox=dict(boxstyle="round,pad=0.3", fc='white', ec='none', alpha=0.7))
+
                 plt.tight_layout()
-                #png_output_path = os.path.join(output_dir, f"tput_adjusted_{sheet_name}.png")
                 png_output_path = os.path.join(output_dir, f"{sheet_name}.png")
                 plt.savefig(png_output_path)
                 plt.close(fig)
@@ -357,18 +369,19 @@ if __name__ == "__main__":
         sys.exit(1)
 
     output_excel_file_path = os.path.join(results_folder_path, f"all_logs_analysis_{timestamp}.xlsx")
-    print(f"\t\t<==================== Enter Graph y axis  ====================>")
-    yaxis_min = get_numeric_input_shorter('Enter y axis MIN (default: 0): ', 0)
-    yaxis_max = get_numeric_input_shorter('Enter y axis MAX (default: 5): ', 5)
-    '''
-    yaxis_min= int(input('Enter y axis min: '))
-    yaxis_max= int(input('Enter y axis max: '))
     
-    if yaxis_min='':
-        yaxis_min=0
-    if yaxis_max='':
-        yaxis_max=5
-    '''    
+    print(f"\t\t<==================== Enter Plotting Settings ====================>")
+
+    yaxis_min = get_numeric_input_shorter('Enter y axis MIN (default: 0): ', 0, value_type=float)
+    yaxis_max = get_numeric_input_shorter('Enter y axis MAX (default: 5): ', 5, value_type=float)
+    
+    # --- New User Inputs for Throughput Criteria ---
+    print("\n\t\t<==================== Enter Throughput Criteria ====================>")
+    sfp_threshold = get_numeric_input_shorter('Enter SFP average throughput PASS threshold (default: 3.5 Gbps): ', 3.5, value_type=float)
+    poe_threshold = get_numeric_input_shorter('Enter POE average throughput PASS threshold (default: 2.2 Gbps): ', 2.2, value_type=float)
+    bidirectional_threshold = get_numeric_input_shorter('Enter Bidirectional/Other average throughput PASS threshold (default: 1.1 Gbps): ', 1.1, value_type=float)
+    print("\t\t<===================================================================>")
+        
     print(f"\t\t<==================== Starting Log Processing ====================>")
     print(f"Output Excel will be saved to: {output_excel_file_path}")
     print(f"Processing logs from directory: {os.path.abspath(directory_path)}")
@@ -378,8 +391,10 @@ if __name__ == "__main__":
     print(f"\t\t<==================== Log Processing Finished ====================>")
 
     if os.path.exists(output_excel_file_path):
-        #plot_from_excel_simple_adjusted(output_excel_file_path, results_folder_path)  
-        plot_from_excel_simple_adjusted(output_excel_file_path, results_folder_path, yaxis_min, yaxis_max)
+        # Pass the new thresholds to the plotting function
+        plot_from_excel_simple_adjusted(output_excel_file_path, results_folder_path, 
+                                        yaxis_min, yaxis_max, 
+                                        sfp_threshold, poe_threshold, bidirectional_threshold)
         print("\nPlotting process complete.")
     else:
         print(f"\nExcel file '{output_excel_file_path}' was not created or found. Skipping plotting.")

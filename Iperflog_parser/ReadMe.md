@@ -14,6 +14,11 @@ You can refer to this link for slide: [Slide Automatic iperf Log result](https:/
 	- rename `bidirectional.py` to `bidirectional_excel.py` to 
 	- improvement `bidirectional_exel_graph.py`: replicate reading log in code, remove it, so will occur reading file one time
 	- create `bidirectional_exel_graph.py`: implement plot data to graph and reorganize code structure
+- 2025.06.17 adding Parse_log_workingdir
+	- implment v3.2 user enter average and check pass or fail
+	- v3.1 implment draw a average line to show average rate and allow user to enter y axis of the tput range
+	- v3.0 allow to parse all log or txt in working directory and write into excel
+	
 ## Content
 - [1. LogFile Structure](#1.LogFileStructure)
 	- [1.1 input_Gbits.txt use for run throughput log](#1.1)
@@ -171,16 +176,24 @@ This is similar to previous one, but this code only support Mbit, which will not
 
 <a name="2.4"></a>
 ### 2.4 Parse_log_workingdir: Parse All log file and write result to excel in different sheet (sheet name by filename) [🔙](#2.pythonCode)
+- Code Name: `parse_alllog_excelSheet_plot_v3.2.py`
+	- **Description**: This case will ask use to enteraverage of each log type, and print pass or fail.
+[parse_excelshee_output 3.2](img/parse_alllog_excelSheet_plot_v3.1_average.PNG)
+	
 - Code Name: `parse_alllog_excelSheet_plot_v3.py` 
 	- **Description**: This case will just parse all the log or txt file extesion file and parse these log without enter your log file and write result into excel. 
 	- **Support LogFile**: `input_Mbits` `input_Gbits` 
-![parse_excelshee_output](img/parse_alllog_excelSheet_plot_v3.PNG)
+![parse_excelshee_output v3](img/parse_alllog_excelSheet_plot_v3.PNG)
 	
-- Code Name: `parse_alllog_excelSheet_plot_v3.1.py` 
+- <s>Code Name: `parse_alllog_excelSheet_plot_v3.1.py`</s>
 	- **Description**: This case will ask use to enter y axis for min an dmax value to control Gbps range. 
 ![parse_excelshee_output](img/parse_alllog_excelSheet_plot_v3.1.PNG)
 
-If you don't need to adjust the y axis width, then you can use v3 version, if you want to adjust then use v3.1
+- <s>Implement adding line with average of tput</s>
+![parse_excelshee_output](img/parse_alllog_excelSheet_plot_v3.1_average.PNG)
+
+
+If you don't need to adjust the y axis width, then you can use v3 version, if you want to adjust then use v3.1 or 3.2
 
 **How to Run**
 ![parse_alllog_excelSheet_plot_v3 how to run](img/howtorun/parse_alllog_excelSheet_plot_v3.gif)
