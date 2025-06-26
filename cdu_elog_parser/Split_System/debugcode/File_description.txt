@@ -14,3 +14,9 @@ Single UE:
 - debug_plot_multipleUE:
 debug_print_parsefile_multUE_result.py: print the result multi ue od DL 
 parsefile_layer2_multiply_UE.py: parse and save result to txt file on both UL and DL
+
+==========================
+debug_parse_elog:
+- debug_read_elog_File.py: read and print elog content, or display 10 max match 
+- elog_onefile_multipleUE.py: elog multipleUE content save as variable 
+- elog_onefile_singleUE.py: elog singleUE content save as variable 

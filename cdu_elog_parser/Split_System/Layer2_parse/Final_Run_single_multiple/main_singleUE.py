@@ -138,3 +138,4 @@ outfileName = f"{datename}_L2_singleUE_Result" # Using an f-string for clarity
 # Call the function to wrap your results
 wrap_result(outfileName)
 print('\n#################Script DONE !!!#################')
+input('Press Enter to close...')

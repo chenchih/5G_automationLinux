@@ -5,7 +5,7 @@ main scipt for Flexram log analysic, will import serveral module or file
 import logchecking_rename_merge
 import parsefile_layer2_v3_flexCDU_dev
 import convert_excel_layer2_flexCDU_dev
-import plot_left_axis as plot
+import plot
 import os,fnmatch,sys
 from datetime import datetime
 
@@ -76,36 +76,43 @@ def wrap_result(outputdir):
 print('######Step1: Check single or multiple logfile and rename  #######')
 file_pattern = "elog_gnb_du_layer2.*"
 log_filename="elog_files"
-excelfilename='data_result'
-print(listcurrentdir())
+excelfilename='flex_singleUE_data_result'
+
+file_count, matching_files=logchecking_rename_merge.check_file_count_glob(log_filename)
+if matching_files: # Check if the list is not empty
+    print("elog_files exist. Attempting to delete it...")
+    for file_path in matching_files:
+        if os.path.isfile(file_path):
+            os.remove(file_path)
+            print(f"Successfully deleted file: {file_path}")
+            print("========================================")
 
 file_count, matching_files = logchecking_rename_merge.check_file_count_glob(file_pattern)
 logchecking_rename_merge.rename_file(file_count, matching_files, logfilename=log_filename)
+print(listcurrentdir())
 
-print('\n')
-print('######Step2: parsing the log file #######')
 # Step2 analsyic the log file and export to text file
+print('\n######Step2: parsing the log file #######')
 elogfileName = log_filename
 generated_result_filename = parsefile_layer2_v3_flexCDU_dev.main(elogfileName)
 
 
 # Step3 convert txt file to excel 
-print('\n')
-print('######Step3: Convert txt result into Excel for plot graph #######')
+print('\n######Step3: Convert txt result into Excel for plot graph #######')
 print(listcurrentdir())
 remove_excelfile()
 print('Generate result into excel File')
 convert_excel_layer2_flexCDU_dev.main(generated_result_filename, excelfilename)
 
 # Step4 plot graph
-print('\n')
-print('######Step4: Plot data and save to images #######')
+print('\n######Step4: Plot data and save to images #######')
 plot.main(excelfilename)
 
-# Step5 Wrapup result into folder
-print('\n')
-print('######Step5: Wrap up result into Folder#######')
+# Step5 Wrap up result into folder
+print('\n######Step5: Wrap up result into Folder#######')
 datename = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-outfileName = f"{datename}_result" # Using an f-string for clarity  
+outfileName = f"{datename}_L2_Flex_singleUE_Result" # Using an f-string for clarity  
 # Call the function to wrap your results
 wrap_result(outfileName)
+print('=======Script End=======')
+input('Press Enter to close...')

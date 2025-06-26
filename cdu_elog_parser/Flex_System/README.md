@@ -14,8 +14,6 @@ You can run with two method:
 
 Below is the step, I have build all script into exe file, but it's the same as above:
 
-
-
 ![step gif file](../img/flex/flexparser.gif)
 
 You can build all python file by this command: 
@@ -26,11 +24,13 @@ You can build all python file by this command:
 ![flex structure](../img/flex/Flex_complete_structure.PNG)
 
 You can run individual code, or just run the `main_importmodule.py`, which will import all the code at once. 
-- Step 1 : `main_importmodule.py` and `logchecking_rename_merge.py`: 
+- Step 1 : `main_flex_singleUE.py` and `logchecking_rename_merge.py`: 
 Check working directory check `elog_gnb_du_layer2.*` contain single or multiple file.
 If contain single elog file, rename log to `elog_files`, if contain multiple elog file then it will read all the elog and merge into elog file and name file as `elog_files`. 
 
 Note: When you run overnight or many hrs, it will provide multiple elog file, instead one one file. 
+
+Update: Rename `main_importmodule.py` script into `main_flex_singleUE.py`
 
 - Step 2: `parsefile_layer2_v3_flexCDU_dev.py`: 
 parse log file and filter both `UL` and `DL` string for the `tput`, `mcs` related value and save result into txt file
@@ -39,7 +39,7 @@ parse log file and filter both `UL` and `DL` string for the `tput`, `mcs` relate
 It will read the text file which generate in step2 and convert the result into Excel. It will record the UL in to one sheet and DL into anthoer sheet. 
 
 - Step 4: `plot.py`: plot the Excel file result into a line graph
-- Step 5: `main_importmodule.py`: 
+- Step 5: `main_flex_singleUE.py`: 
 Finish up the code will end up wrap up all the results into a new folder. This mean it will create folder, all your file text file, excel, and image will move into folder. 
 
 ## Code explanation
