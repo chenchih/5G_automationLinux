@@ -1,3 +1,4 @@
+#order of bi_poe_threshold change from orginal poe as first order
 import re
 import sys
 from datetime import datetime, timedelta
@@ -210,8 +211,8 @@ def process_log_files_to_excel(directory_path, output_excel_file):
     return all_duration_outputs
 
 def plot_from_excel_simple_adjusted(excel_file, output_dir, yaxis_min, yaxis_max, 
-                                    sfp_threshold, poe_threshold, bidirectional_threshold):
-    print("\nAttempting to generate plots...")
+                                    sfp_threshold, poe_threshold, bidirectional_threshold, bi_sfp_threshold, bi_poe_threshold):
+    print("\nAttempting to generate plots...")  
     try:
         all_sheets_data = pd.read_excel(excel_file, sheet_name=None)
         plot_count = 0
@@ -238,9 +239,27 @@ def plot_from_excel_simple_adjusted(excel_file, output_dir, yaxis_min, yaxis_max
                 sheet_name_lower = sheet_name.lower() # Convert to lowercase for case-insensitive check
                 test_result_text = ""
                 text_color = 'black' # Default color
-
-                if "sfp" in sheet_name_lower:
-                    #if average_tput > 3.5:
+                
+                
+                #elif "bidirectional-poe" in sheet_name_lower:
+                if "bidirectional-poe" in sheet_name_lower or 'bi-poe' in sheet_name_lower: 
+                    if average_tput > bi_poe_threshold: # Use user-provided threshold
+                        test_result_text = f"Overall test result (bidirectional POE > {bi_poe_threshold:.2f} Gbps): PASSED"
+                        text_color = 'green'
+                    else:
+                        test_result_text = f"Overall test result (bidirectional POE > {bi_poe_threshold:.2f} Gbps): FAILED"
+                        text_color = 'red'
+                #elif "bidirectional-sfp"  in sheet_name_lower:
+                
+                elif "bidirectional-sfp" in sheet_name_lower or 'bi-sfp' in sheet_name_lower:
+                    if average_tput > bi_sfp_threshold: # Use user-provided threshold
+                        test_result_text = f"Overall test result (bidirectional SFP > {bi_sfp_threshold:.2f} Gbps): PASSED"
+                        text_color = 'green'
+                    else:
+                        test_result_text = f"Overall test result (bidirectional SFP > {bi_sfp_threshold:.2f} Gbps): FAILED"
+                        text_color = 'red'
+                        
+                elif "sfp" in sheet_name_lower:
                     if average_tput > sfp_threshold: # Use user-provided threshold
                         test_result_text = f"Overall test result (SFP > {sfp_threshold:.2f} Gbps): PASSED"
                         text_color = 'green'
@@ -248,16 +267,15 @@ def plot_from_excel_simple_adjusted(excel_file, output_dir, yaxis_min, yaxis_max
                         test_result_text = f"Overall test result (SFP > {sfp_threshold:.2f} Gbps): FAILED"
                         text_color = 'red'
                 elif "poe" in sheet_name_lower:
-                    #if average_tput > 2.2:
                     if average_tput > poe_threshold: # Use user-provided threshold
                         test_result_text = f"Overall test result (POE > {poe_threshold:.2f} Gbps): PASSED"
                         text_color = 'green'
                     else:
                         test_result_text = f"Overall test result (POE > {poe_threshold:.2f} Gbps): FAILED"
                         text_color = 'red'
+                
                 else: # Default for 'bidirectional' or other cases
                     if average_tput >= bidirectional_threshold: # Use user-provided threshold
-                    #if average_tput >= 1.1:
                         test_result_text = f"Overall test result (Bidirectional/Other >= {bidirectional_threshold:.2f} Gbps): PASSED"
                         text_color = 'green'
                     else:
@@ -379,7 +397,11 @@ if __name__ == "__main__":
     print("\n\t\t<==================== Enter Throughput Criteria ====================>")
     sfp_threshold = get_numeric_input_shorter('Enter SFP average throughput PASS threshold (default: 3.5 Gbps): ', 3.5, value_type=float)
     poe_threshold = get_numeric_input_shorter('Enter POE average throughput PASS threshold (default: 2.2 Gbps): ', 2.2, value_type=float)
+    
+    bi_poe_threshold = get_numeric_input_shorter('Enter Bidirectional (POE) average throughput PASS threshold (default: 1.1 Gbps): ', 1.1, value_type=float)
+    bi_sfp_threshold = get_numeric_input_shorter('Enter Bidirectional (SFP) average throughput PASS threshold (default: 1.7 Gbps): ', 1.7, value_type=float)
     bidirectional_threshold = get_numeric_input_shorter('Enter Bidirectional/Other average throughput PASS threshold (default: 1.1 Gbps): ', 1.1, value_type=float)
+
     print("\t\t<===================================================================>")
         
     print(f"\t\t<==================== Starting Log Processing ====================>")
@@ -390,11 +412,11 @@ if __name__ == "__main__":
 
     print(f"\t\t<==================== Log Processing Finished ====================>")
 
-    if os.path.exists(output_excel_file_path):
+    if os.path.exists(output_excel_file_path): 
         # Pass the new thresholds to the plotting function
         plot_from_excel_simple_adjusted(output_excel_file_path, results_folder_path, 
                                         yaxis_min, yaxis_max, 
-                                        sfp_threshold, poe_threshold, bidirectional_threshold)
+                                        sfp_threshold, poe_threshold, bidirectional_threshold, bi_sfp_threshold, bi_poe_threshold )
         print("\nPlotting process complete.")
     else:
         print(f"\nExcel file '{output_excel_file_path}' was not created or found. Skipping plotting.")

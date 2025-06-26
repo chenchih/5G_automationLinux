@@ -178,7 +178,7 @@ This is similar to previous one, but this code only support Mbit, which will not
 ### 2.4 Parse_log_workingdir: Parse All log file and write result to excel in different sheet (sheet name by filename) [🔙](#2.pythonCode)
 - Code Name: `parse_alllog_excelSheet_plot_v3.2.py`
 	- **Description**: This case will ask use to enteraverage of each log type, and print pass or fail.
-[parse_excelshee_output 3.2](img/parse_alllog_excelSheet_plot_v3.1_average.PNG)
+![parse_excelshee_output 3.2](img/parse_alllog_excelSheet_plot_v3.1_average.PNG)
 	
 - Code Name: `parse_alllog_excelSheet_plot_v3.py` 
 	- **Description**: This case will just parse all the log or txt file extesion file and parse these log without enter your log file and write result into excel. 

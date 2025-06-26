@@ -8,7 +8,16 @@ formats data, and writes to separate sheets in an Excel file.
 This code user doesn't have to enter the logfile, it will parse all the logfiles or txt files inthe  current working directory. 
 
 - `parse_alllog_excelSheet_plot_v3.py`: include bidirectional log([SUM][TX-C] or [SUM][RX-C]) and plot graph
+
 ![parse_alllog_excelSheet_skipbidir how to run](../img/howtorun/parse_alllog_excelSheet_plot_v3.gif)
+
+- v3.1 (latest release): allow user to set the threshold average value
+![v3.2 how to run] (../img/howtorun/iperfLog_v2.3.gif)
+
+
+**summary:**
+- v3.2: aloow user to set average threshold on certain case, and display pass or fail
+- v3: will run without user enter, but will not have a average line or check throughput pass or fail
 
 ### Step 
 - Step1: check current directory file with .txt or .log file and read it
@@ -27,10 +36,15 @@ This code user doesn't have to enter the logfile, it will parse all the logfiles
 ## output
 It will check the current working directory for files containing `.txt` and `.log` and parse, but if the content contains [RX-C] [TX-C] which is a bidirectional log then it will skip this logfile
 
-![parse_excelshee_output](../img/parse_alllog_excelSheet_plot_v3.PNG)
+![parse_excelshee_output](../img/iperf_log_parser/parse_alllog_excelSheet_plot_v3.PNG)
 
 Ask user to enter y axis min and max value, allow user to set the range. 
-![parse_excelshee_output](../img/parse_alllog_excelSheet_plot_v3.1.PNG.PNG)
+![parse_excelshee_output](../img/iperf_log_parser/parse_alllog_excelSheet_plot_v3.1.PNG)
+
+
+Excel sheet naming use base on iperf log file:
+![iperf log naming](../img/iperf_log_parser/iperflog_excelsheet.PNG)
+
 
 ## version update
 - v1: 
@@ -58,14 +72,18 @@ Ask user to enter y axis min and max value, allow user to set the range.
 	- v3
 		- Fix when log contain some wrong binary corrupted data
 		- Improvement Y-axis  Calculate Dynamic Y-axis Limit
-		- remove  plot_from_excel_simple_adjusted_old function
+		- remove plot_from_excel_simple_adjusted_old function
 		- **rename images name** as `{sheet_name}.png`, orignal use png_output_path `tput_adjusted_{sheet_name}.png`
 	- v3.1: implement user enter y axis 
 		- Allow user to **enter Gbps y axis min-max value**, or leave empty to use default (min:0, max:5)
 		- Implement red dashed line indicating the **average throughput** for that specific dataset
-	- v3.2: implement print **pass fail criteria** base on average criteria. 
-
-
+	- v3.2: implement print **pass fail criteria** base on average threshold criteria . 
+		- use log file to set condition:
+			- POE:iperf log performance 2.5GB threshold(>= 2.5gb PASS)
+			- SFP:iperf log performance 3.5GB threshold(>= 3.5gb PASS)
+			- bidirectional: 
+				- bidirectional/ bi-poe/ bidirectional-poe: iperf poe bidirectional log performance  1.1 GB threshold(>= 1.1 gb PASS)
+				- bi-sfp/ bidirectional-sfp: iperf sfp bidirectional log performance  1.7 GB threshold(>= 1.7 gb PASS)
 
 ### v1 intial release parse all log or txt file 
 
@@ -232,6 +250,9 @@ Condition x axis interval:
 <=1day: interval as 30 Minute record
 <=3day: interval as 3 hours record
 
+![x axis dynamic axis example ](../img/iperf_log_parser/v2.2.PNG)
+
+
 ```
 def plot_from_excel_simple_adjusted():
 	# Adjust figure size and locator based on total_duration
@@ -273,8 +294,11 @@ def plot_from_excel_simple_adjusted():
 - rename images name as `{sheet_name}.png`, orignal use png_output_path `tput_adjusted_{sheet_name}.png`
 - Fix Corrupted data binary part
 
+**Output:**
+![v3 output ](../img/iperf_log_parser/v3.PNG)
+
 If your log contain something like corrupted data log, the script will occur error, and stop. Like below:
-![wrong encode log file](../img/wrong_endcode_log.PNG)
+![wrong encode log file](../img/iperf_log_parser/wrong_endcode_log.PNG)
 
 To fix this we need to change:
 ```
@@ -354,7 +378,7 @@ def plot_from_excel_simple_adjusted(excel_file, output_dir, yaxis_min, yaxis_max
 	# --- Plot the average line ---
 	ax.axhline(average_tput, color='red', linestyle='--', label=f'Average: {average_tput:.2f} gbps')
 ```
-![parse_alllog_excelSheet 3.1 average line](../img/parse_alllog_excelSheet_plot_v3.1_average.PNG)
+![parse_alllog_excelSheet 3.1 average line](../img/iperf_log_parser/parse_alllog_excelSheet_plot_v3.1_average.PNG)
 
 
 Remove this section which is use for v3
@@ -389,7 +413,7 @@ SFP: average_tput > 3.5
 POE: average_tput  > 2.2 
 Bidirectional: average_tput >= 1.1 
 ```
-![parse_alllog_excelSheet 3.2 display pass fail result ](../img/parse_alllog_excelSheet_plot_v3.2_output.PNG)
+![parse_alllog_excelSheet 3.2 display pass fail result ](../img/iperf_log_parser/parse_alllog_excelSheet_plot_v3.2_output.PNG)
 
 - user enter the average value
 ```
@@ -411,6 +435,8 @@ text_color = 'black' # Default color
 ```
 
 - average condition pass fail
+![v3.2 _threshold ](../img/iperf_log_parser/v3.2_threshold.PNG)
+
 ```
 def plot_from_excel_simple_adjusted():
 	.......									
@@ -441,7 +467,7 @@ def plot_from_excel_simple_adjusted():
     print(f"  {test_result_text}") # Print test result to console								
 ```
 
-![parse_alllog_excelSheet 3.2user enter average and check condition ](../img/parse_alllog_excelSheet_plot_v3.2.PNG)
+![v3.2 output ](../img/iperf_log_parser/parse_alllog_excelSheet_plot_v3.2.PNG)
 
 
 
