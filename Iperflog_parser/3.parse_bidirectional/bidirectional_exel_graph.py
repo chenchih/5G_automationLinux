@@ -7,10 +7,6 @@ from tqdm import tqdm
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates # Needed for date formatting and locators
 
-
-# --- Functions from your original code (parse, excel writing, duration, etc.) ---
-# --- Assumed to be the same as the previous version. Include them here. ---
-
 def parse_log_file_rx_tx(input_file):
     """Parses the log file to extract RX and TX throughput data."""
     rx_data = []
@@ -250,8 +246,8 @@ def plot_single_throughput(data, direction_label, output_image_file):
 
         # --- X-axis Time Formatting ---
         # Set major locator and formatter for dates
-       # ax.xaxis.set_major_locator(mdates.AutoDateLocator(minticks=5, maxticks=50)) # Adjust tick density
-        ax.xaxis.set_major_locator(mdates.MinuteLocator(interval=30)) # Minute Intervals, 
+        ax.xaxis.set_major_locator(mdates.AutoDateLocator(minticks=5, maxticks=50)) # Adjust tick density
+        #ax.xaxis.set_major_locator(mdates.MinuteLocator(interval=30)) # Minute Intervals, 
         #ax.xaxis.set_major_locator(mdates.HourLocator(interval=1)) # Hourly Intervals, show a tick every hour
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y%m%d_%H:%M:%S')) # Multi-line format
         
