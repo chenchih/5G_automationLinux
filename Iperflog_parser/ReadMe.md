@@ -1,7 +1,6 @@
 # Iperf Log parser and convert the result
 This is an automation to parse or filter the iperf3 log file and write the Throughput into an Excel or TXT file. 
-You can refer to this link for slide: [Slide Automatic iperf Log result](https://www.slideshare.net/slideshow/automatic_iperf_log_result_excel_visual-pptx/280507702)
-
+You can refer to this link for slide: [Slide Automatic iperf Log result](https://www.slideshare.net/slideshow/this-is-an-automation-on-how-to-parse-a-log-data-into-excel-and-even-draw-a-line-graph-what-will-you-learn-python-reading-log-analysis-log-data-and-capture-tput-value-save-result-into-excel-draw-graph_v2-pptx/281058769)
 
 ## 2. Updated record 
 - 2025.3.16: inital 
