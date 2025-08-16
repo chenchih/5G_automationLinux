@@ -177,19 +177,19 @@ This is similar to previous one, but this code only support Mbit, which will not
 ### 2.4 Parse_log_workingdir: Parse All log file and write result to excel in different sheet (sheet name by filename) [🔙](#2.pythonCode)
 - Code Name: `parse_alllog_excelSheet_plot_v3.2.py`
 	- **Description**: This case will ask use to enteraverage of each log type, and print pass or fail.
-![parse_excelshee_output 3.2](img/parse_alllog_excelSheet_plot_v3.1_average.PNG)
+![parse_excelshee_output 3.2](img/iperf_log_parser/parse_alllog_excelSheet_plot_v3.1_average.PNG)
 	
 - Code Name: `parse_alllog_excelSheet_plot_v3.py` 
 	- **Description**: This case will just parse all the log or txt file extesion file and parse these log without enter your log file and write result into excel. 
 	- **Support LogFile**: `input_Mbits` `input_Gbits` 
-![parse_excelshee_output v3](img/parse_alllog_excelSheet_plot_v3.PNG)
+![parse_excelshee_output v3](img/iperf_log_parser/parse_alllog_excelSheet_plot_v3.PNG)
 	
 - <s>Code Name: `parse_alllog_excelSheet_plot_v3.1.py`</s>
 	- **Description**: This case will ask use to enter y axis for min an dmax value to control Gbps range. 
-![parse_excelshee_output](img/parse_alllog_excelSheet_plot_v3.1.PNG)
+![parse_excelshee_output](img/iperf_log_parser/parse_alllog_excelSheet_plot_v3.1.PNG)
 
 - <s>Implement adding line with average of tput</s>
-![parse_excelshee_output](img/parse_alllog_excelSheet_plot_v3.1_average.PNG)
+![parse_excelshee_output](img/iperf_log_parser/parse_alllog_excelSheet_plot_v3.1_average.PNG)
 
 
 If you don't need to adjust the y axis width, then you can use v3 version, if you want to adjust then use v3.1 or 3.2
